@@ -1,4 +1,4 @@
-package com.garash.roznamah;
+package com.garash.rosnamah;
 
 import android.app.Application;
 

@@ -1,4 +1,4 @@
-package com.garash.roznamah;
+package com.garash.rosnamah;
 
 import com.facebook.react.ReactActivity;
 import android.widget.ImageView;
@@ -11,7 +11,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "Roznamah";
+        return "Rosnamah";
     }
     
     @Override
