@@ -1,0 +1,42 @@
+{
+  "name": "Roznamah",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android": "react-native run-android",
+    "logs": "react-native log-android",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "native-base": "^2.5.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.1",
+    "react-localize-redux": "^3.0.2",
+    "react-native": "^0.55.4",
+    "react-native-device-info": "^0.21.5",
+    "react-native-event-listeners": "^1.0.3",
+    "react-native-gesture-handler": "^1.0.4",
+    "react-native-image-picker": "^0.26.10",
+    "react-native-linear-gradient": "^2.4.0",
+    "react-native-localization": "^1.0.10",
+    "react-native-maps": "^0.21.0",
+    "react-native-permissions": "^1.1.1",
+    "react-native-restart": "^0.0.6",
+    "react-native-vector-icons": "^4.6.0",
+    "react-navigation": "^2.3.1",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-persist": "^5.10.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^23.0.1",
+    "babel-preset-react-native": "^4.0.0",
+    "jest": "^23.1.0",
+    "react-test-renderer": "^16.4.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
