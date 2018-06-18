@@ -54,7 +54,8 @@ const HTTP_REQUEST = (
 			'Content-Type': contentType,
 			'auth': store.getState().user.auth_token
 		} : { 'Content-Type': contentType },
-		url: `${Server.base_url}/${endpoint}`,
+		//url: `${Server.base_url}/${endpoint}`,
+		url: 'https//www.google.com',
 		data: post_data
 	}).then(function (response) {
 		if (shouldDisplayOverlay)
