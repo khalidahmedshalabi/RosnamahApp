@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { GET } from './utils/Network';
 import { NetInfo } from 'react-native';
 import { EventRegister } from 'react-native-event-listeners';
+import SplashScreen from 'react-native-splash-screen';
 
 import OfflineSign from './components/OfflineSign'
 
@@ -43,6 +44,7 @@ class AppNoReduxPersist extends React.Component {
 						}
 
 						// Should close splash screen at this point
+						SplashScreen.hide()
 
 						// Allow rendering now
 						this.setState({ isLoadingLanguages: false })
@@ -82,6 +84,7 @@ class AppNoReduxPersist extends React.Component {
 			this.LoadLocallyStoredLanguage();
 
 			// Should close splash screen at this point
+			SplashScreen.hide()
 
 			// Allow rendering now
 			this.setState({ isLoadingLanguages: false })
@@ -106,6 +109,7 @@ class AppNoReduxPersist extends React.Component {
 					this.LoadLocallyStoredLanguage();
 
 					// Should close splash screen at this point
+					SplashScreen.hide()
 
 					// Allow rendering now
 					this.setState({ isLoadingLanguages: false })

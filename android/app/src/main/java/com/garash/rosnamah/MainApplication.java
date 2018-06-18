@@ -15,6 +15,7 @@ import com.facebook.soloader.SoLoader;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.imagepicker.ImagePickerPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,7 +39,8 @@ public class MainApplication extends Application implements ReactApplication {
             new ReactNativeLocalizationPackage(),
             new RNGestureHandlerPackage(),
             new LinearGradientPackage(),
-            new ImagePickerPackage()
+            new ImagePickerPackage(),
+			new SplashScreenReactPackage()
       );
     }
 
