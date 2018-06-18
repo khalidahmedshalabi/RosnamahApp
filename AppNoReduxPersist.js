@@ -7,7 +7,6 @@ import { NetInfo } from 'react-native';
 import { EventRegister } from 'react-native-event-listeners';
 
 import OfflineSign from './components/OfflineSign'
-import OverlaySpinner from './components/OverlaySpinner';
 
 class AppNoReduxPersist extends React.Component {
 	fetchLanguages = (newVersion, isFirstTime) => {
@@ -162,7 +161,7 @@ class AppNoReduxPersist extends React.Component {
 				return (
 					[
 						<RootNavigation key='0' />,
-						<OverlaySpinner key='1' visible={true} />
+						null // should add a screen overlay (activity indicator) here
 					]
 				)
 			}
