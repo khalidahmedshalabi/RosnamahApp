@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
 
-export default class Template extends Component {
+class Template extends Component {
 	render () {
 		const { translate } = this.props
 
