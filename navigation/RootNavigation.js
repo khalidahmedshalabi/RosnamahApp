@@ -1,13 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { createStackNavigator } from 'react-navigation';
 
-import Template from '../containers/Template'
+import MainHeader from '../components/MainHeader'
+import Home from '../containers/Home'
 
 // This is the core of the navigator: route configs, etc...
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 	const routeConfigs = {
-		Main: { screen: Template },
-		Walkthrough: { screen: Template }
+		Home: { 
+			screen: Home,
+			navigationOptions: (props) => ({
+				header: <MainHeader {...props} />
+			})
+		},
 	};
 
 	const stackNavigatorConfigs = {
@@ -34,9 +40,9 @@ const RootNavigation = ({ initialRouteName, screenProps, seen_intro }) => (
 		// Determine what the initial route screen is based on first-run rules
 		initialRouteName={
 			seen_intro ?
-				'Main'
+				'Home'
 				:
-				'Walkthrough'
+				'Home'
 		} />
 );
 
@@ -44,7 +50,5 @@ const RootNavigation = ({ initialRouteName, screenProps, seen_intro }) => (
 const mapStateToProps = (state) => ({
 	seen_intro: state.firstRun ? state.firstRun.seen_intro : false,
 })
-
-import { connect } from 'react-redux';
 
 export default connect(mapStateToProps)(RootNavigation)
