@@ -81,29 +81,29 @@ class Signup extends Component {
 				<Form style={{
 					marginHorizontal: 20
 				}} >
-					<Text style={ styles.btnTxt } >Create an account</Text>
+					<Text style={ styles.btnTxt } >{ translate('signup_title') }</Text>
 					<Item floatingLabel>
-					<Label>     Username</Label>
+					<Label>{'     ' + translate('signup_username_input')}</Label>
 					<Input style={ styles.input } />
 					</Item>
 					<Item floatingLabel>
-					<Label>     Email</Label>
+					<Label>{'     ' + translate('signup_email_input')}</Label>
 					<Input style={ styles.input } />
 					</Item>
 					<Item floatingLabel>
-					<Label>     Password</Label>
+					<Label>{'     ' + translate('signup_password_input')}</Label>
 					<Input style={ styles.input } />
 					</Item>
 					<Item floatingLabel last>
-					<Label>     Retype Password</Label>
+					<Label>{'     ' + translate('signup_password_retype_input')}</Label>
 					<Input style={ styles.input } />
 					</Item>
 					<View style={ styles.footer } >
 					<Button rounded style={ styles.signupBtn } >
-						<Text style={ styles.footerTxt } >Sign Up</Text>
+						<Text style={ styles.footerTxt } >{ translate('signup_btn') }</Text>
 					</Button>
-					<Text style={ styles.haveAnAcc } >Have an account?</Text>
-					<Text style={ styles.privacyPolicay } >By signing up you agree to our <Text onPress={() => this.setState({ TermsModalVisible: true })} style={{ color: '#FF2A65', fontSize: 17 }} >Terms of use</Text> & <Text onPress={() => this.setState({ PrivacyModalVisible: true })} style={{ color: '#FF2A65', fontSize: 17 }} >Privacy Policies ✌🏻</Text></Text>
+					<Text style={ styles.haveAnAcc } >{ translate('signup_have_acc') }</Text>
+					<Text style={ styles.privacyPolicay } >{ translate('privacy_one') } <Text onPress={() => this.setState({ TermsModalVisible: true })} style={{ color: '#FF2A65', fontSize: 17 }} >{ translate('privacy_two') }</Text> & <Text onPress={() => this.setState({ PrivacyModalVisible: true })} style={{ color: '#FF2A65', fontSize: 17 }} >{ translate('privacy_three') }</Text></Text>
 					</View>
 				</Form>
 				</Content>
