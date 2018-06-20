@@ -5,6 +5,7 @@ import { createStackNavigator } from 'react-navigation';
 import MainHeader from '../components/MainHeader'
 import Home from '../containers/Home'
 import Signup from '../containers/Signup'
+import Login from '../containers/Login'
 import PhoneVerification from '../containers/PhoneVerification'
 
 // This is the core of the navigator: route configs, etc...
@@ -15,6 +16,9 @@ const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 			navigationOptions: (props) => ({
 				header: <MainHeader {...props} />
 			})
+		},
+		Login: {
+			screen: Login,
 		},
 		Signup: {
 			screen: Signup,
