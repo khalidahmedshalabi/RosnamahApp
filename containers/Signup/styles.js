@@ -39,6 +39,11 @@ export default StyleSheet.create({
         fontFamily: 'quicksand_regular',
         fontSize: 20,
     },
+    haveAnAcc: {
+        fontFamily: 'quicksand_regular',
+        fontSize: 20,
+        marginTop: 20
+    },
     privacyPolicay: {
         fontFamily: 'quicksand_regular',
         marginTop: 20,

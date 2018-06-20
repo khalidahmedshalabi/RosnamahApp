@@ -102,7 +102,7 @@ class Signup extends Component {
 					<Button rounded style={ styles.signupBtn } >
 						<Text style={ styles.footerTxt } >Sign Up</Text>
 					</Button>
-					<Text style={ styles.footerTxt } >Have an account?</Text>
+					<Text style={ styles.haveAnAcc } >Have an account?</Text>
 					<Text style={ styles.privacyPolicay } >By signing up you agree to our <Text onPress={() => this.setState({ TermsModalVisible: true })} style={{ color: '#FF2A65', fontSize: 17 }} >Terms of use</Text> & <Text onPress={() => this.setState({ PrivacyModalVisible: true })} style={{ color: '#FF2A65', fontSize: 17 }} >Privacy Policies ✌🏻</Text></Text>
 					</View>
 				</Form>
