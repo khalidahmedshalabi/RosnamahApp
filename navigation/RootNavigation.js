@@ -44,9 +44,9 @@ const RootNavigation = ({ initialRouteName, screenProps, seen_intro }) => (
 		// Determine what the initial route screen is based on first-run rules
 		initialRouteName={
 			seen_intro ?
-				'Signup'
+				'Home'
 				:
-				'Signup'
+				'Home'
 		} />
 );
 
