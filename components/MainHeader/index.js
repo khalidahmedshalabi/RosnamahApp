@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
-import { TouchableOpacity, View, TextInput } from 'react-native'
+import { TouchableOpacity, View, TouchableWithoutFeedback, Text } from 'react-native'
 import { Body, Left, Right, Header } from 'native-base';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { mainColor, secondColor } from '../../constants/Colors';
 
 export default class MainHeader extends Component {
-	onSearch = () => {
-
-	}
-
 	render() {
 		return (
 			<Header
@@ -28,31 +24,30 @@ export default class MainHeader extends Component {
 				</Left>
 
 				<Body style={{ flex: 0.8 }}>
-					<View style={{
-						flex: 1,
-						flexDirection: 'row',
-						alignItems: 'center',
-						backgroundColor: '#f2f2f2',
-						borderRadius: 10,
-						paddingHorizontal: 10,
-						marginVertical: 8,
-					}}>
-						<Ionicons color='#818181' name='ios-search' size={26} style={{ marginRight: 10 }} />
-						<TextInput
-							returnKeyType='search'
-							underlineColorAndroid='transparent'
-							placeholder='بحث'
-							placeholderTextColor='#a8a8a8'
-							onChangeText={(text) => this.onSearch(text)}
+					<TouchableWithoutFeedback 
+						//onPress={() => this.props.navigation.navigate('Search')}
+						onPress={() => {}}>
+						<View 
 							style={{
+								//flex: 1,
 								width: '100%',
-								color: '#a8a8a8',
-								fontSize: 17
-							}} />
-					</View>
+								flexDirection: 'row',
+								marginLeft: 8,
+								backgroundColor: '#f2f2f2',
+								borderRadius: 10,
+								paddingHorizontal: 10,
+								paddingVertical: 8
+							}}>
+							<Ionicons color='#818181' name='ios-search' size={26} style={{ marginRight: 10 }} />
+							<Text
+								style={{ color: '#a8a8a8', fontSize: 17 }}
+							>بحث</Text>
+						</View>
+
+					</TouchableWithoutFeedback>
 				</Body>
 
-				<Right style={{ flex: 0.09 }} />
+				<Right style={{ flex: 0.07 }} />
 			</Header>
 		)
 	}
