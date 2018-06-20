@@ -11,8 +11,12 @@ import FontedInput from '../../components/FontedInput';
 import FontedText from '../../components/FontedText';
 
 class Login extends Component {
+	onLogin = () => {
+		this.props.setLoggedIn(true)
+	}
+
 	render() {
-		const { translate } = this.props
+		const { translate, skipLogin, navigation } = this.props
 
 		return (
 			<Container style={{ backgroundColor: 'white' }}>
@@ -34,6 +38,7 @@ class Login extends Component {
 					<View style={{ marginTop: 50, justifyContent: 'space-between' }}>
 						<Button
 							full
+							onPress={this.onLogin}
 							style={{ 
 								backgroundColor: mainColor, 
 								elevation: 0, 
@@ -51,6 +56,7 @@ class Login extends Component {
 						<Button
 							full
 							transparent
+							onPress={() => navigation.navigate('Signup')}
 							style={{
 								borderColor: mainColor,
 								borderWidth: 1,
@@ -82,6 +88,7 @@ class Login extends Component {
 
 					<Button
 						transparent
+						onPress={() => skipLogin(true)}
 						style={{
 							elevation: 0,
 							padding: 8
@@ -101,4 +108,15 @@ const mapStateToProps = (state) => ({
 	translate: getTranslate(state.locale),
 })
 
-export default connect(mapStateToProps)(Login)
+function mergeProps(stateProps, dispatchProps, ownProps) {
+	const { dispatch } = dispatchProps;
+	const { actions } = require('../../redux/LoginRedux.js');
+	return {
+		...ownProps,
+		...stateProps,
+		skipLogin: (login) => actions.skipLogin(dispatch, login),
+		setLoggedIn: (logged_in) => actions.setLoggedIn(dispatch, logged_in),
+	};
+}
+
+export default connect(mapStateToProps, undefined, mergeProps)(Login)
