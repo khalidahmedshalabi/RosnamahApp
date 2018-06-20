@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation';
 
 import MainHeader from '../components/MainHeader'
 import Home from '../containers/Home'
+import Signup from '../containers/Signup'
 
 // This is the core of the navigator: route configs, etc...
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
@@ -14,6 +15,9 @@ const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 				header: <MainHeader {...props} />
 			})
 		},
+		Signup: {
+			screen: Signup,
+		}
 	};
 
 	const stackNavigatorConfigs = {
@@ -40,9 +44,9 @@ const RootNavigation = ({ initialRouteName, screenProps, seen_intro }) => (
 		// Determine what the initial route screen is based on first-run rules
 		initialRouteName={
 			seen_intro ?
-				'Home'
+				'Signup'
 				:
-				'Home'
+				'Signup'
 		} />
 );
 
