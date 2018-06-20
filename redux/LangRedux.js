@@ -32,7 +32,12 @@ export const actions = {
 			}, 50);
 		}
 
-		if (shouldFetchTranslation) {
+		// This will be removed
+		dispatch({ type: 'STORE_CURRENT_LANGUAGE_TRANSLATION', translation_data: currLang.code === 'ar' ? ar : en })
+		dispatch(addTranslationForLanguage(currLang.code === 'ar' ? ar : en, currLang.code));
+		doSwitchLanguage(currLang)
+
+		/*if (shouldFetchTranslation) {
 			GET(`Language/Translation?language=${currLang.key}`,
 				(response) => {
 					//dispatch({ type: 'STORE_CURRENT_LANGUAGE_TRANSLATION', translation_data: response.data.translations })
@@ -49,7 +54,7 @@ export const actions = {
 		}
 		else {
 			doSwitchLanguage(currLang)
-		}
+		}*/
 	},
 	storeLanguagesData: (dispatch, languages_data) => {
 		dispatch({ type: types.STORE_LANGUAGES_DATA, languages_data })
