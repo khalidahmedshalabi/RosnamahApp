@@ -29,7 +29,6 @@ export default class MainHeader extends Component {
 						onPress={() => {}}>
 						<View 
 							style={{
-								//flex: 1,
 								width: '100%',
 								flexDirection: 'row',
 								marginLeft: 8,
