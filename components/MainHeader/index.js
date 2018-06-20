@@ -3,7 +3,7 @@ import { TouchableOpacity, View, TextInput } from 'react-native'
 import { Body, Left, Right, Header } from 'native-base';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { mainColor } from '../../constants/Colors';
+import { mainColor, secondColor } from '../../constants/Colors';
 
 export default class MainHeader extends Component {
 	onSearch = () => {
@@ -14,10 +14,10 @@ export default class MainHeader extends Component {
 		return (
 			<Header
 				noShadow={true}
-				androidStatusBarColor='#052554'
+				androidStatusBarColor={secondColor}
 				iosBarStyle='light-content'
 				style={{
-					backgroundColor: '#02183a',
+					backgroundColor: mainColor,
 				}}>
 				<Left style={{ flex: 0.16 }}>
 					<TouchableOpacity
