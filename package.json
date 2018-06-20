@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "google-libphonenumber": "^3.1.8",
     "native-base": "^2.5.1",
     "prop-types": "^15.6.1",
     "react": "^16.4.1",

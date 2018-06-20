@@ -43,7 +43,7 @@ export const ar = {
 	privacy_three: 'سياسات الخصوصية ✌🏻',
 	Phone_verification_title: 'ما هو رقم هاتفك؟',
 	Phone_verification_phone_input: 'رقم الهاتف',
-	Phone_verification_verify_btn: 'تأكيد',
+	Phone_verification_verify_btn: 'تفعيل',
 	Phone_verification_skip: 'تخطي هذه الخطوة',
 	Phone_verification_tip: 'سيتم تأمين رقم هاتفك ، لن نرسل لك أي محتوى غير مرغوب فيه مطلقًا.'
 };

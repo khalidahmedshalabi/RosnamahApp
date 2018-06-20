@@ -99,7 +99,7 @@ class Signup extends Component {
 					<Input style={ styles.input } />
 					</Item>
 					<View style={ styles.footer } >
-					<Button rounded style={ styles.signupBtn } >
+					<Button rounded style={ styles.signupBtn } onPress={() => this.props.navigation.navigate('PhoneVerification')} >
 						<Text style={ styles.footerTxt } >{ translate('signup_btn') }</Text>
 					</Button>
 					<Text style={ styles.haveAnAcc } >{ translate('signup_have_acc') }</Text>
