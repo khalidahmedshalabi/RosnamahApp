@@ -81,7 +81,7 @@ class Signup extends Component {
 				<Form style={{
 					marginHorizontal: 20
 				}} >
-					<Text style={ styles.btnTxt } >{ translate('signup_title') }</Text>
+					<Text style={ styles.title } >{ translate('signup_title') }</Text>
 					<Item floatingLabel>
 					<Label>{'     ' + translate('signup_username_input')}</Label>
 					<Input style={ styles.input } />

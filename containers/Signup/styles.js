@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions, I18nManager } from "react-native";
 const { width, height } = Dimensions.get("window");
 
 export default StyleSheet.create({
@@ -14,14 +14,14 @@ export default StyleSheet.create({
         marginHorizontal: 10,
         lineHeight: 30
     },
-    btnTxt: {
-        fontSize: 70,
+    title: {
+        fontSize: I18nManager.isRTL ? 50 : 70,
         fontWeight: 'normal',
         textAlign: 'center',
-        fontFamily: 'quicksand_light'
+        fontFamily: I18nManager.isRTL ? 'ElMessiri-Regular' : 'quicksand_light'
     },
     input: {
-        fontFamily: 'quicksand_light',
+        fontFamily: I18nManager.isRTL ? 'ElMessiri-Regular' : 'quicksand_light',
     },
     footer: {
         flexDirection: 'column',
@@ -36,16 +36,16 @@ export default StyleSheet.create({
         flex: 1
     },
     footerTxt: {
-        fontFamily: 'quicksand_regular',
+        fontFamily: I18nManager.isRTL ? 'ElMessiri-Regular' : 'quicksand_regular',
         fontSize: 20,
     },
     haveAnAcc: {
-        fontFamily: 'quicksand_regular',
+        fontFamily: I18nManager.isRTL ? 'ElMessiri-Regular' : 'quicksand_regular',
         // fontSize: 20,
         marginTop: 20
     },
     privacyPolicay: {
-        fontFamily: 'quicksand_regular',
+        fontFamily: I18nManager.isRTL ? 'ElMessiri-Regular' : 'quicksand_regular',
         marginTop: 20,
         textAlign: 'center'
     }
