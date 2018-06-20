@@ -5,16 +5,19 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "logs": "react-native log-android",
     "test": "jest"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "google-libphonenumber": "^3.1.8",
     "native-base": "^2.5.1",
     "prop-types": "^15.6.1",
     "react": "^16.4.1",
     "react-localize-redux": "2.16.0",
     "react-native": "^0.55.4",
+    "react-native-country-picker-modal": "^0.5.1",
     "react-native-device-info": "^0.21.5",
     "react-native-event-listeners": "^1.0.3",
     "react-native-gesture-handler": "^1.0.4",

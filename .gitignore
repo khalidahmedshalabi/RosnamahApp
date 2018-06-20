@@ -22,7 +22,12 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
+#vscode
 .vscode/
+
+#Exported_Design
+Exported_Design/
+
 # Android/IntelliJ
 #
 build/
