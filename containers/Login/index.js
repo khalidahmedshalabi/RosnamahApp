@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View, StatusBar, I18nManager } from 'react-native'
 import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
 import { Container, Item, Button } from 'native-base';
@@ -20,8 +20,20 @@ class Login extends Component {
 
 		return (
 			<Container style={{ backgroundColor: 'white' }}>
-				<View style={{ flex: 0.3 }}>
+				<StatusBar
+					backgroundColor="white"
+					barStyle="dark-content"
+				/>
 
+				<View style={{ flex: 0.3, justifyContent: 'center', paddingHorizontal: 10 }}>
+					<FontedText 
+						text={translate('Login')}
+						style={{
+							color: 'black',
+							fontSize: I18nManager.isRTL ? 50 : 70,
+							fontWeight: 'normal',
+							textAlign: 'center',
+						}} />
 				</View>
 
 				<View style={{ flex: 0.6, paddingHorizontal: 65}}>
@@ -41,7 +53,7 @@ class Login extends Component {
 							onPress={this.onLogin}
 							style={{ 
 								backgroundColor: mainColor, 
-								elevation: 0, 
+								//elevation: 0, 
 								borderRadius: 20, 
 								paddingVertical: 24, 
 								paddingHorizontal: 10,
@@ -60,7 +72,7 @@ class Login extends Component {
 							style={{
 								borderColor: mainColor,
 								borderWidth: 1,
-								elevation: 0,
+								//elevation: 0,
 								borderRadius: 20,
 								paddingVertical: 24,
 								paddingHorizontal: 10
