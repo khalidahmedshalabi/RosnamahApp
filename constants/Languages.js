@@ -6,6 +6,7 @@ export const Languages = [
 
 // English
 export const en = {
+	NoInternetConnection: 'No Internet Connection',
 	// signup
 	signup_title: 'Create an account',
 	signup_username_input: 'Username',
@@ -41,6 +42,7 @@ export const en = {
 
 // Arabic
 export const ar = {
+	NoInternetConnection: 'غير مُتصل بالانترنت',
 	signup_title: 'انشئ حساب مجاني',
 	signup_username_input: 'اسم المستخدم',
 	signup_email_input: 'البريد الإلكتروني',
