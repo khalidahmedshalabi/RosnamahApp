@@ -29,7 +29,10 @@ export const en = {
 	Login: 'Login',
 	ForgotPass: 'Forgot Password',
 	SkipLogin: 'Skip',
-	CreateAccount: 'Create Account'
+	CreateAccount: 'Create Account',
+	// code confirmation
+	Enter_verification_code: 'Enter the verification code',
+	Resend: 'Resend Code',
 
 };
 
@@ -56,5 +59,8 @@ export const ar = {
 	Login: 'تسجيل الدخول',
 	ForgotPass: 'نسيت كلمة المرور',
 	SkipLogin: 'تخطي',
-	CreateAccount: 'انشاء حساب'
+	CreateAccount: 'انشاء حساب',
+	// code confirmation
+	Enter_verification_code: 'ادخل كود التفعيل',
+	Resend: 'اعد ارسال الكود'
 };

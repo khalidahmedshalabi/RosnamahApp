@@ -87,6 +87,7 @@ class Login extends Component {
 
 				<View style={{ flex: 0.1, flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10 }}>
 					<Button
+						onPress={() => navigation.navigate('PhoneVerification')}
 						transparent
 						style={{
 							elevation: 0,

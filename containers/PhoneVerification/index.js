@@ -29,7 +29,7 @@ class Signup extends Component {
 
 	}
 	render () {
-		const { translate } = this.props
+		const { translate, navigation } = this.props
 		return (
 			<Container style={styles.container} >
 				<StatusBar
@@ -70,7 +70,7 @@ class Signup extends Component {
 						</View>
 					</View>
 					<View style={ styles.footer } >
-					<Button rounded style={ styles.signupBtn } >
+					<Button rounded style={ styles.signupBtn } onPress={() => navigation.navigate('codeConfirmation')} >
 						<Text style={ styles.footerTxt } >{ translate('Phone_verification_verify_btn') }</Text>
 					</Button>
 					{/* <Text style={ styles.haveAnAcc } >{ translate('Phone_verification_skip') }</Text> */}

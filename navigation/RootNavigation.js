@@ -7,6 +7,7 @@ import Home from '../containers/Home'
 import Signup from '../containers/Signup'
 import Login from '../containers/Login'
 import PhoneVerification from '../containers/PhoneVerification'
+import codeConfirmation from '../containers/PhoneVerification/codeConfirmation'
 
 // This is the core of the navigator: route configs, etc...
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
@@ -25,6 +26,9 @@ const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 		},
 		PhoneVerification: {
 			screen: PhoneVerification,
+		},
+		codeConfirmation: {
+			screen: codeConfirmation,
 		}
 	};
 

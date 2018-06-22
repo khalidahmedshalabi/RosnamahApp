@@ -4465,6 +4465,13 @@ react-localize-redux@2.16.0:
     flat "^2.0.1"
     reselect "^3.0.1"
 
+react-native-confirmation-code-input@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-confirmation-code-input/-/react-native-confirmation-code-input-1.0.4.tgz#f5c2cced66f26b61050fea8bfd17473af1ad5ff9"
+  dependencies:
+    lodash "^4.17.4"
+    prop-types "^15.5.10"
+
 react-native-country-picker-modal@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/react-native-country-picker-modal/-/react-native-country-picker-modal-0.5.1.tgz#44a2f2767a1573040f7452d1415de3ce75adbad3"
@@ -4593,6 +4600,10 @@ react-native-tab-view@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-1.0.2.tgz#66e0bc6d38a227ed2b212e3a256b7902f6ce02ed"
   dependencies:
     prop-types "^15.6.1"
+
+react-native-timer-countdown@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-timer-countdown/-/react-native-timer-countdown-1.1.0.tgz#526576d52399f64612703c3f8c00b7d5fff6f597"
 
 react-native-vector-icons@^4.6.0:
   version "4.6.0"
