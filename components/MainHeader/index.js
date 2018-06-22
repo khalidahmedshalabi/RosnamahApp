@@ -17,8 +17,8 @@ export default class MainHeader extends Component {
 				}}>
 				<Left style={{ flex: 0.16 }}>
 					<TouchableOpacity
-						//onPress={() => this.props.navigation.toggleDrawer()}>
-						onPress={() => { }}>
+						onPress={() => this.props.navigation.toggleDrawer()}>
+						
 						<FontAwesome name='bars' size={22} color='white' />
 					</TouchableOpacity>
 				</Left>

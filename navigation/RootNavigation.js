@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStackNavigator } from 'react-navigation';
+import MainDrawerNavigator from './MainDrawerNavigator';
 
 import MainHeader from '../components/MainHeader'
 import Home from '../containers/Home'
@@ -13,11 +14,8 @@ import ResetPassword from '../containers/ResetPassword'
 // This is the core of the navigator: route configs, etc...
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 	const routeConfigs = {
-		Home: { 
-			screen: Home,
-			navigationOptions: (props) => ({
-				header: <MainHeader {...props} />
-			})
+		MainDrawerNavigator: {
+			screen: MainDrawerNavigator,
 		},
 		Login: {
 			screen: Login,
@@ -60,7 +58,7 @@ const RootNavigation = ({ initialRouteName, screenProps, logged_in, skipped_logi
 		// Determine what the initial route screen is based on first-run rules
 		initialRouteName={
 			(skipped_login || logged_in) ?
-				'Home'
+				'MainDrawerNavigator'
 				:
 				'Login'
 		} />
