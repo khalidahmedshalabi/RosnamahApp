@@ -3,7 +3,7 @@ import { View, StatusBar, I18nManager } from 'react-native'
 import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
 import { Container, Item, Button } from 'native-base';
-import { bgColor, secondColor, mainColor } from '../../constants/Colors';
+import { mainColor } from '../../constants/Colors';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
