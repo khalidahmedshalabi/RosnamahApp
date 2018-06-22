@@ -3,11 +3,16 @@ import { initialize, addTranslationForLanguage } from 'react-localize-redux';
 import RootNavigation from './navigation/RootNavigation';
 import { connect } from 'react-redux';
 import { GET } from './utils/Network';
-import { NetInfo } from 'react-native';
+import { NetInfo, YellowBox } from 'react-native';
 import { EventRegister } from 'react-native-event-listeners';
 import SplashScreen from 'react-native-splash-screen';
 
 import OfflineSign from './components/OfflineSign'
+
+// The following line is to temporarily hide a warning caused by
+// https://github.com/facebook/react-native/issues/18868
+// and it must be removed once the offical fix is released
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated'])
 
 class AppNoReduxPersist extends React.Component {
 	fetchLanguages = (newVersion, isFirstTime) => {
