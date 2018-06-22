@@ -136,7 +136,7 @@ class AppNoReduxPersist extends React.Component {
 
 	componentDidMount() {
 		this.shouldFetchLanguages()
-
+		// SplashScreen.hide()
 		// Handle first isConnected state to toggle the connectivity sign
 		NetInfo.isConnected.fetch().then(isConnected => this.setState({ isConnected }))
 		
