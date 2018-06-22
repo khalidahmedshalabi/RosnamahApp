@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
 import { Container, Item, Button } from 'native-base';
 import { bgColor, secondColor, mainColor } from '../../constants/Colors';
-
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 import FontedInput from '../../components/FontedInput';
 import FontedText from '../../components/FontedText';
