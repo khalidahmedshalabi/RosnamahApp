@@ -6,6 +6,7 @@ import { Container, Text, Content, Form, Item, Input, Label, Button } from 'nati
 import styles from './styles';
 import CodeInput from 'react-native-confirmation-code-input';
 import TimerCountdown from 'react-native-timer-countdown'
+import { mainColor } from '../../../constants/Colors';
 
 class codeConfirmation extends Component {
 	constructor(props) {
@@ -115,8 +116,8 @@ class codeConfirmation extends Component {
 					<CodeInput
 					ref="codeInputRef2"
 					compareWithCode='AsDW2'
-					activeColor='#FF2A65'
-					inactiveColor='#FF2A65'
+					activeColor={mainColor}
+					inactiveColor={mainColor}
 					autoFocus={true}
 					ignoreCase={true}
 					inputPosition='center'

@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions, I18nManager } from "react-native";
+import { mainColor } from "../../../constants/Colors";
 const { width, height } = Dimensions.get("window");
 
 export default StyleSheet.create({
@@ -31,7 +32,7 @@ export default StyleSheet.create({
         marginTop: 40
     },
     signupBtn: {
-        backgroundColor: '#FF2A65',
+        backgroundColor: mainColor,
         marginHorizontal: 60,
         paddingVertical: 30,
         flex: 1
