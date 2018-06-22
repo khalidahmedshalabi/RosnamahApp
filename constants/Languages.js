@@ -33,7 +33,10 @@ export const en = {
 	// code confirmation
 	Enter_verification_code: 'Enter the verification code',
 	Resend: 'Resend Code',
-
+	// confirme pw
+	new_password_title: 'Set a new password',
+	new_password_sec_input: 'Password confirmation',
+	new_password_btn: 'Done',
 };
 
 // Arabic
@@ -62,5 +65,8 @@ export const ar = {
 	CreateAccount: 'انشاء حساب',
 	// code confirmation
 	Enter_verification_code: 'ادخل كود التفعيل',
-	Resend: 'اعد ارسال الكود'
+	Resend: 'اعد ارسال الكود',
+	new_password_title: 'اعادة تعين كلمة المرور',
+	new_password_sec_input: 'تأكيد كلمة المرور',
+	new_password_btn: 'تأكيد',
 };

@@ -97,7 +97,7 @@ class codeConfirmation extends Component {
 	  }
 
 	render () {
-		const { translate } = this.props
+		const { translate, navigation } = this.props
 		return (
 			<Container style={styles.container} >
 				<StatusBar
@@ -127,7 +127,7 @@ class codeConfirmation extends Component {
 					/>
 				
 					<View style={ styles.footer } >
-						<Button rounded style={ styles.signupBtn } >
+						<Button rounded style={ styles.signupBtn } onPress={() => navigation.navigate('ResetPassword')} >
 							<Text style={ styles.footerTxt } >{ translate('Phone_verification_verify_btn') }</Text>
 						</Button>
 							<View style={{

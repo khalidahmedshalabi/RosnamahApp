@@ -8,6 +8,7 @@ import Signup from '../containers/Signup'
 import Login from '../containers/Login'
 import PhoneVerification from '../containers/PhoneVerification'
 import codeConfirmation from '../containers/PhoneVerification/codeConfirmation'
+import ResetPassword from '../containers/ResetPassword'
 
 // This is the core of the navigator: route configs, etc...
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
@@ -29,6 +30,9 @@ const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 		},
 		codeConfirmation: {
 			screen: codeConfirmation,
+		},
+		ResetPassword: {
+			screen: ResetPassword,
 		}
 	};
 
