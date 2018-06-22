@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StatusBar, Modal } from 'react-native';
+import { View, StatusBar, Modal, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
 import { Container, Text, Content, Form, Item, Input, Label, Button } from 'native-base';
@@ -66,7 +66,7 @@ class Signup extends Component {
         </Modal>
 	)
 	render () {
-		const { translate } = this.props
+		const { translate, navigation } = this.props
 		return (
 			<Container style={styles.container} >
 				<StatusBar
@@ -99,10 +99,10 @@ class Signup extends Component {
 					<Input style={ styles.input } />
 					</Item>
 					<View style={ styles.footer } >
-					<Button rounded style={ styles.signupBtn } onPress={() => this.props.navigation.navigate('PhoneVerification')} >
+					<Button rounded style={ styles.signupBtn } onPress={() => navigate('PhoneVerification')} >
 						<Text style={ styles.footerTxt } >{ translate('signup_btn') }</Text>
 					</Button>
-					<Text style={ styles.haveAnAcc } >{ translate('signup_have_acc') }</Text>
+					<TouchableOpacity onPress={() => navigation.navigate('Login')} ><Text style={ styles.haveAnAcc } >{ translate('signup_have_acc') }</Text></TouchableOpacity>
 					<Text style={ styles.privacyPolicay } >{ translate('privacy_one') } <Text onPress={() => this.setState({ TermsModalVisible: true })} style={{ color: '#FF2A65', fontSize: 17 }} >{ translate('privacy_two') }</Text> & <Text onPress={() => this.setState({ PrivacyModalVisible: true })} style={{ color: '#FF2A65', fontSize: 17 }} >{ translate('privacy_three') }</Text></Text>
 					</View>
 				</Form>

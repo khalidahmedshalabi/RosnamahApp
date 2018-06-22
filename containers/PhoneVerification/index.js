@@ -73,7 +73,7 @@ class Signup extends Component {
 					<Button rounded style={ styles.signupBtn } >
 						<Text style={ styles.footerTxt } >{ translate('Phone_verification_verify_btn') }</Text>
 					</Button>
-					<Text style={ styles.haveAnAcc } >{ translate('Phone_verification_skip') }</Text>
+					{/* <Text style={ styles.haveAnAcc } >{ translate('Phone_verification_skip') }</Text> */}
 					<Text style={ styles.privacyPolicay } >{ translate('Phone_verification_tip') }</Text>
 					</View>
 				</Form>
