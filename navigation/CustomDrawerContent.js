@@ -1,15 +1,10 @@
 import React from 'react';
 import {
 	ScrollView,
-	View,
 	Image,
-	Text,
-	ImageBackground,
-	TouchableOpacity,
 } from 'react-native'
 import { DrawerItems } from 'react-navigation';
 
-import { mainColor } from '../constants/Colors'
 
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
@@ -28,10 +23,10 @@ const CustomDrawerContentComponent = (props) => {
 				{...props}
 				items={filteredItems} {...rest}
 				getLabel={
-					({ route, focused }) => props.translate(`DrawerItem_${route.key}`)
+					({ route }) => props.translate(`DrawerItem_${route.key}`)
 				}
 				onItemPress={
-					({ route, focused }) => {
+					({ route }) => {
 						if (route.key === 'Logout') {
 							// Log out and send to login page
 							props.navigation.navigate('Login', { DoNotSkip: true })
@@ -39,7 +34,7 @@ const CustomDrawerContentComponent = (props) => {
 						}
 	
 						// Close drawer first
-						props.navigation.navigate('DrawerClose')
+						props.navigation.closeDrawer()
 	
 						// Then navigate
 						requestAnimationFrame(() => props.navigation.navigate(route))

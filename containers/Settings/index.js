@@ -97,7 +97,7 @@ class Settings extends Component {
 		setBirthDate(birthdate)
 		setIsMale(isMale)
 
-		navigation.goBack()
+		navigation.navigate('Home')
 	}
 
 	getGenderAsString = () => {

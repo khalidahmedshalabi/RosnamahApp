@@ -50,6 +50,7 @@ export const en = {
 	SearchBarText: 'Search',
 	// Drawer
 	DrawerItem_Home: 'Home',
+	DrawerItem_Settings: 'Settings',
 };
 
 // Arabic
@@ -95,4 +96,5 @@ export const ar = {
 	SearchBarText: 'بحث',
 	//Drawer
 	DrawerItem_Home: 'الرئيسية',
+	DrawerItem_Settings: 'الاعدادات',
 };

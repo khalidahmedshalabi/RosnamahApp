@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { FlatList, View, TouchableOpacity, Image, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
-import { Container } from 'native-base';
+import LazyContainer from '../../components/LazyContainer'
 import { bgColor, secondColor } from '../../constants/Colors';
 import MainHeader from '../../components/MainHeader'
 import CategoryBox from '../../components/CategoriesPlaces/CategoryBox.js'
@@ -49,7 +49,7 @@ class CategoriesPlaces extends Component {
 		const { translate, navigation } = this.props
 
 		return (
-			<Container style={{ backgroundColor: bgColor }}>
+			<LazyContainer style={{ flex: 1, backgroundColor: bgColor }}>
 				<MainHeader navigation={navigation} />
 				<FlatList
 					contentContainerStyle={{ paddingVertical: 12 }}
@@ -66,7 +66,7 @@ class CategoriesPlaces extends Component {
             />
           )}
 				/>
-			</Container>
+			</LazyContainer>
 		)
 	}
 }
