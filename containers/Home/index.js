@@ -44,15 +44,15 @@ class Home extends Component {
 	renderCategory = (item, index) => {
 		return (
 			<TouchableOpacity
-				style={{ flex: 1, height: 250, borderRadius: 2, marginHorizontal: 5, backgroundColor: 'white' }}>
+				style={{ flex: 1, height: 250, borderRadius: 10, marginHorizontal: 5, backgroundColor: 'white' }}>
 				<Image
 					resizeMode='cover'
-					style={{ flex: 0.8 }}
+					style={{ flex: 0.8, borderTopLeftRadius: 10, borderTopRightRadius: 13 }}
 					source={{ uri: item.img }} 
 					/>
 				
-				<View style={{ flex: 0.2, paddingHorizontal: 10, justifyContent: 'center' }}>
-					<Text style={{ color: secondColor, fontSize: 17 }}>{item.name}</Text>
+				<View style={{ flex: 0.2, paddingHorizontal: 12, justifyContent: 'center' }}>
+					<Text style={{ color: '#515254', fontSize: 17 }}>{item.name}</Text>
 				</View>
 			</TouchableOpacity>
 		)
@@ -64,12 +64,12 @@ class Home extends Component {
 		return (
 			<Container style={{ backgroundColor: bgColor }}>
 				<FlatList
-					contentContainerStyle={{ paddingVertical: 10 }}
+					contentContainerStyle={{ paddingVertical: 12 }}
 					numColumns={2}
 					data={this.state.categories}
 					style={{ flex: 1 }}
 					ItemSeparatorComponent={
-						() => <View style={{ height: 10, backgroundColor: 'transparent' }}></View>
+						() => <View style={{ height: 12, backgroundColor: 'transparent' }}></View>
 					}
 					renderItem={({ item, index }) => this.renderCategory(item, index)}
 				/>
