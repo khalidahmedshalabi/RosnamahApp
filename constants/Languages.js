@@ -47,7 +47,9 @@ export const en = {
 	BirthDate: 'Birth Date',
 	Cancel: 'Cancel',
 	Done: 'Done',
-	SearchBarText: 'Search'
+	SearchBarText: 'Search',
+	// Drawer
+	DrawerItem_Home: 'Home',
 };
 
 // Arabic
@@ -90,5 +92,7 @@ export const ar = {
 	BirthDate: 'تاريخ الميلاد',
 	Cancel: 'الغاء',
 	Done: 'تم',
-	SearchBarText: 'بحث'
+	SearchBarText: 'بحث',
+	//Drawer
+	DrawerItem_Home: 'الرئيسية',
 };
