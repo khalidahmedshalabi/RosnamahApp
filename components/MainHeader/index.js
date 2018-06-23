@@ -3,23 +3,28 @@ import { TouchableOpacity, View, TouchableWithoutFeedback, Text } from 'react-na
 import { Body, Left, Right, Header } from 'native-base';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { mainColor, secondColor } from '../../constants/Colors';
+import { mainColor } from '../../constants/Colors';
+import { connect } from 'react-redux'
+import { getTranslate } from 'react-localize-redux';
+import FontedText from '../FontedText';
 
-export default class MainHeader extends Component {
+class MainHeader extends Component {
 	render() {
+		const { translate } = this.props
+
 		return (
 			<Header
 				noShadow={true}
-				androidStatusBarColor={secondColor}
-				iosBarStyle='light-content'
+				androidStatusBarColor='#f2f2f2'
+				iosBarStyle='dark-content'
 				style={{
-					backgroundColor: mainColor,
+					backgroundColor: 'white',
 				}}>
 				<Left style={{ flex: 0.16 }}>
 					<TouchableOpacity
 						onPress={() => this.props.navigation.toggleDrawer()}>
 						
-						<FontAwesome name='bars' size={22} color='white' />
+						<FontAwesome name='bars' size={22} color={mainColor} />
 					</TouchableOpacity>
 				</Left>
 
@@ -37,10 +42,10 @@ export default class MainHeader extends Component {
 								paddingHorizontal: 10,
 								paddingVertical: 8
 							}}>
-							<Ionicons color='#818181' name='ios-search' size={26} style={{ marginRight: 10 }} />
-							<Text
-								style={{ color: '#a8a8a8', fontSize: 17 }}
-							>بحث</Text>
+							<Ionicons color='#999999' name='ios-search' size={26} style={{ marginRight: 10 }} />
+							<FontedText
+								text={translate('SearchBarText')}
+								style={{ color: '#a8a8a8', fontSize: 17 }} />
 						</View>
 
 					</TouchableWithoutFeedback>
@@ -51,3 +56,9 @@ export default class MainHeader extends Component {
 		)
 	}
 }
+
+const mapStateToProps = (state) => ({
+	translate: getTranslate(state.locale),
+})
+
+export default connect(mapStateToProps)(MainHeader)

@@ -47,6 +47,7 @@ export const en = {
 	BirthDate: 'Birth Date',
 	Cancel: 'Cancel',
 	Done: 'Done',
+	SearchBarText: 'Search'
 };
 
 // Arabic
@@ -89,4 +90,5 @@ export const ar = {
 	BirthDate: 'تاريخ الميلاد',
 	Cancel: 'الغاء',
 	Done: 'تم',
+	SearchBarText: 'بحث'
 };
