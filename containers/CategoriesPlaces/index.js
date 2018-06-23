@@ -6,7 +6,7 @@ import { Container } from 'native-base';
 import { bgColor, secondColor } from '../../constants/Colors';
 import MainHeader from '../../components/MainHeader'
 
-class Home extends Component {
+class CategoriesPlaces extends Component {
 	state = {
 		categories: [
 			{
@@ -16,7 +16,7 @@ class Home extends Component {
 			},
 			{
 				key: '2',
-				name: 'Russia',
+				name: 'amr',
 				img: 'https://vacationidea.com/pix/img25Hy8R/articles/best-russia-destinations_f.jpg'
 			},
 			{
@@ -45,7 +45,6 @@ class Home extends Component {
 	renderCategory = (item, index) => {
 		return (
 			<TouchableOpacity
-			onPress={()=> {this.props.navigation.navigate('CategoriesPlaces')}}
 				style={{ flex: 1, height: 250, borderRadius: 10, marginHorizontal: 5, backgroundColor: 'white' }}>
 				<Image
 					resizeMode='cover'
@@ -85,4 +84,4 @@ const mapStateToProps = (state) => ({
 	translate: getTranslate(state.locale),
 })
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(CategoriesPlaces)

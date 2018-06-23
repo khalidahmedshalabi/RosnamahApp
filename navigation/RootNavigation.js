@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStackNavigator } from 'react-navigation';
 import MainDrawerNavigator from './MainDrawerNavigator';
-
+import CategoriesPlaces from '../containers/CategoriesPlaces';
 import MainHeader from '../components/MainHeader'
 import Home from '../containers/Home'
 import Signup from '../containers/Signup'
@@ -11,31 +11,17 @@ import PhoneVerification from '../containers/PhoneVerification'
 import codeConfirmation from '../containers/PhoneVerification/codeConfirmation'
 import ResetPassword from '../containers/ResetPassword'
 import Settings from '../containers/Settings';
-
 // This is the core of the navigator: route configs, etc...
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 	const routeConfigs = {
-		MainDrawerNavigator: {
-			screen: MainDrawerNavigator,
-		},
-		Login: {
-			screen: Login,
-		},
-		Signup: {
-			screen: Signup,
-		},
-		PhoneVerification: {
-			screen: PhoneVerification,
-		},
-		codeConfirmation: {
-			screen: codeConfirmation,
-		},
-		ResetPassword: {
-			screen: ResetPassword,
-		},
-		Settings: {
-			screen: Settings,
-		},
+		MainDrawerNavigator: {screen: MainDrawerNavigator},
+		Login: {screen: Login},
+		CategoriesPlaces: {screen: CategoriesPlaces},
+		Signup: {screen: Signup},
+		PhoneVerification: {screen: PhoneVerification},
+		codeConfirmation: {screen: codeConfirmation},
+		ResetPassword: {screen: ResetPassword},
+		Settings: {screen: Settings},
 	};
 
 	const stackNavigatorConfigs = {
