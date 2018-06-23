@@ -34,7 +34,7 @@ const CustomDrawerContentComponent = (props) => {
 						}
 	
 						// Close drawer first
-						props.navigation.navigate('DrawerClose')
+						props.navigation.closeDrawer()
 	
 						// Then navigate
 						requestAnimationFrame(() => props.navigation.navigate(route))
