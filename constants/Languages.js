@@ -9,7 +9,7 @@ export const en = {
 	NoInternetConnection: 'No Internet Connection',
 	// signup
 	signup_title: 'Create an account',
-	signup_username_input: 'Username',
+	signup_username_input: 'Name',
 	signup_email_input: 'Email',
 	signup_password_input: 'Password',
 	signup_password_retype_input: 'Retype Password',
@@ -38,13 +38,22 @@ export const en = {
 	new_password_title: 'Set a new password',
 	new_password_sec_input: 'Password confirmation',
 	new_password_btn: 'Done',
+	Save: 'Save',
+	Unspecified: 'Unspecified',
+	Male: 'Male',
+	Female: 'Female',
+	Gender: 'Gender',
+	Bio: 'Bio',
+	BirthDate: 'Birth Date',
+	Cancel: 'Cancel',
+	Done: 'Done',
 };
 
 // Arabic
 export const ar = {
 	NoInternetConnection: 'غير مُتصل بالانترنت',
 	signup_title: 'انشئ حساب مجاني',
-	signup_username_input: 'اسم المستخدم',
+	signup_username_input: 'الاسم',
 	signup_email_input: 'البريد الإلكتروني',
 	signup_password_input: 'كلمة المرور',
 	signup_password_retype_input: 'أعد إدخال كلمة المرور',
@@ -71,4 +80,13 @@ export const ar = {
 	new_password_title: 'اعادة تعين كلمة المرور',
 	new_password_sec_input: 'تأكيد كلمة المرور',
 	new_password_btn: 'تأكيد',
+	Save: 'حفظ',
+	Unspecified: 'غير محدد',
+	Male: 'ذكر',
+	Female: 'انثى',
+	Gender: 'الجنس',
+	Bio: 'نبذة عنك',
+	BirthDate: 'تاريخ الميلاد',
+	Cancel: 'الغاء',
+	Done: 'تم',
 };

@@ -10,6 +10,7 @@ import Login from '../containers/Login'
 import PhoneVerification from '../containers/PhoneVerification'
 import codeConfirmation from '../containers/PhoneVerification/codeConfirmation'
 import ResetPassword from '../containers/ResetPassword'
+import Settings from '../containers/Settings';
 
 // This is the core of the navigator: route configs, etc...
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
@@ -31,7 +32,10 @@ const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 		},
 		ResetPassword: {
 			screen: ResetPassword,
-		}
+		},
+		Settings: {
+			screen: Settings,
+		},
 	};
 
 	const stackNavigatorConfigs = {
