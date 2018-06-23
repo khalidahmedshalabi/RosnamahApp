@@ -2,7 +2,6 @@ import React from 'react';
 import { I18nManager } from 'react-native'
 import { DrawerNavigator, createStackNavigator } from 'react-navigation';
 import Octicons from 'react-native-vector-icons/Octicons'
-import Ionicons from 'react-native-vector-icons/Ionicons'
 import { mainColor } from '../constants/Colors'
 import CustomDrawerContentComponent from './CustomDrawerContent';
 
