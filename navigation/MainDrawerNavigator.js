@@ -1,10 +1,10 @@
 import React from 'react';
 import { I18nManager } from 'react-native'
 import { DrawerNavigator, createStackNavigator } from 'react-navigation';
-import EvilIcons from 'react-native-vector-icons/EvilIcons'
+import Octicons from 'react-native-vector-icons/Octicons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { mainColor } from '../constants/Colors'
-import MainHeader from '../components/MainHeader'
+import CustomDrawerContentComponent from './CustomDrawerContent';
 
 import Home from '../containers/Home'
 
@@ -13,13 +13,14 @@ const MainDrawerNavigator = DrawerNavigator({
 	Home: {
 		screen: Home, navigationOptions: {
 			drawerIcon: ({ tintColor }) => (
-				<EvilIcons name='user' color={mainColor} size={28} tintColor={tintColor} />
+				<Octicons name='home' color={mainColor} size={26} tintColor={tintColor} />
 			),
 		}
 	},
 
 }, {
 		drawerPosition: I18nManager.isRTL ? 'right' : 'left',
+		contentComponent: CustomDrawerContentComponent,
 		contentOptions: {
 			labelStyle: { color: 'black', fontWeight: 'normal' },
 			activeTintColor: 'red',
