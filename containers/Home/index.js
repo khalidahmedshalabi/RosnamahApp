@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
 import { Container } from 'native-base';
 import { bgColor, secondColor } from '../../constants/Colors';
+import MainHeader from '../../components/MainHeader'
 
 class Home extends Component {
 	state = {
@@ -59,10 +60,11 @@ class Home extends Component {
 	} 
 
 	render () {
-		const { translate } = this.props
+		const { translate, navigation } = this.props
 
 		return (
 			<Container style={{ backgroundColor: bgColor }}>
+				<MainHeader navigation={navigation} />
 				<FlatList
 					contentContainerStyle={{ paddingVertical: 12 }}
 					numColumns={2}

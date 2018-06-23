@@ -34,7 +34,7 @@ const wrapper = createStackNavigator({
 	DrawerWrapper: { 
 		screen: MainDrawerNavigator,
 		navigationOptions: (props) => ({
-			header: <MainHeader {...props} />
+			header: null
 		})
 	},
 })
