@@ -228,7 +228,7 @@ class Settings extends Component {
 							/>
 
 							<View
-								style={[styles.setting_input, {  }]}>
+								style={styles.setting_input}>
 								<ModalSelector
 									data={gender_data}
 									initValue=""
@@ -239,7 +239,7 @@ class Settings extends Component {
 									cancelText={translate('Cancel')}
 									cancelTextStyle={{ color: 'red' }}
 									optionTextStyle={{ color: '#575757' }}
-									selectTextStyle={{ color: '#575757', fontWeight: 'normal', }}
+									selectTextStyle={{ color: '#575757' }}
 									touchableStyle={{ flex: 1 }}
 									childrenContainerStyle={{ borderWidth: 0, margin: 0, padding: 0, height: 50, justifyContent: 'center' }}
 									onChange={(option) => { this.setState({ isMale: option.key }) }}>
@@ -269,7 +269,7 @@ class Settings extends Component {
 								text={translate('BirthDate')} />
 
 							<View
-								style={[styles.setting_input, {}]}>
+								style={styles.setting_input}>
 								<DatePicker
 									style={{ width: '100%' }}
 									date={this.state.birthdate}
@@ -287,14 +287,12 @@ class Settings extends Component {
 										},
 										dateText: {
 											fontFamily: I18nManager.isRTL ? 'ElMessiri-Regular' : 'quicksand_light',
-											color: '#575757',
-											marginLeft: 7,
+											color: 'black',
 											fontSize: 17,
 										},
 										placeholderText: {
 											fontFamily: I18nManager.isRTL ? 'ElMessiri-Regular' : 'quicksand_light',
-											color: '#575757',
-											marginLeft: 7,
+											color: 'black',
 											fontSize: 17,
 										}
 									}}
