@@ -1,6 +1,6 @@
 import React from 'react'
 import { I18nManager } from 'react-native'
-import { Input, Right } from 'native-base';
+import { Input } from 'native-base';
 
 export default (props) => (
 	<Input

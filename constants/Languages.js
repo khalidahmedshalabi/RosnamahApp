@@ -48,6 +48,9 @@ export const en = {
 	Cancel: 'Cancel',
 	Done: 'Done',
 	SearchBarText: 'Search',
+	ChangePass: 'Change password',
+	ChangeEmail: 'Change email',
+	ChangePhone: 'Change phone',
 	// Drawer
 	DrawerItem_Home: 'Home',
 	DrawerItem_Settings: 'Settings',
@@ -94,6 +97,9 @@ export const ar = {
 	Cancel: 'الغاء',
 	Done: 'تم',
 	SearchBarText: 'بحث',
+	ChangePass: 'تغيير كلمة المرور',
+	ChangeEmail: 'تغيير البريد الالكتروني',
+	ChangePhone: 'تغيير رقم الجوال',
 	//Drawer
 	DrawerItem_Home: 'الرئيسية',
 	DrawerItem_Settings: 'الاعدادات',
