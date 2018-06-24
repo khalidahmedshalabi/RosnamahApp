@@ -18,18 +18,19 @@ class Settings extends Component {
 	constructor(props) {
 		super(props)
 
-		const { bio, name, isMale, birthdate, profile_img_url, translate } = this.props;
+		const { bio, name, isMale, birthdate, profile_img_url, translate, currLang } = this.props;
 		
 		this.state = {
 			accountModalShown: false,
 			newAccountSettingValue: '',
 
-			// Settings reducer
+			// Reducers
 			name,
 			bio,
 			birthdate,
 			profile_img_url,
-			isMale
+			isMale,
+			language: currLang.label
 		}
 	}
 
@@ -180,8 +181,20 @@ class Settings extends Component {
 		this.setState({ currentAccountSetting: account_setting, accountModalShown: true })
 	}
 
+	onChangeLanguage = (option) => {
+		const {
+			switchLanguage,
+			currLang
+		} = this.props;
+
+		if (option.key == currLang.key) return;
+
+		this.setState({ language: option.label })
+		switchLanguage(option)
+	}
+
 	render() {
-		const { translate } = this.props
+		const { translate, languages_data } = this.props
 
 		const gender_data = [
 			{ key: -1, label: translate('Unspecified') },
@@ -303,6 +316,36 @@ class Settings extends Component {
 							</View>
 						</View>
 
+						<View style={styles.setting_item}>
+							<FontedText
+								text={translate('Language')}
+								style={styles.setting_text}
+							/>
+
+							<View
+								style={styles.setting_input}>
+								<ModalSelector
+									data={languages_data}
+									initValue=""
+									supportedOrientations={['portrait']}
+									accessible={true}
+									//scrollViewAccessibilityLabel={'Scrollable options'}
+									//cancelButtonAccessibilityLabel={'Cancel Button'}
+									cancelText={translate('Cancel')}
+									cancelTextStyle={{ color: 'red' }}
+									optionTextStyle={{ color: '#575757' }}
+									selectTextStyle={{ color: '#575757', fontWeight: 'normal', }}
+									touchableStyle={{ flex: 1 }}
+									childrenContainerStyle={{ borderWidth: 0, margin: 0, padding: 0, height: 50, justifyContent: 'center' }}
+									onChange={(option) => this.onChangeLanguage(option)}>
+									<FontedText
+										text={this.state.language}
+										style={{ color: 'black', fontSize: 17 }}
+									/>
+								</ModalSelector>
+							</View>
+						</View>
+
 						<TouchableOpacity
 							onPress={() => this.showAccountSettingsModal(0)}
 							style={styles.setting_action}>
@@ -375,11 +418,14 @@ const mapStateToProps = (state) => ({
 	profile_img_url: state.settings.profile_img_url || null,
 	isMale: state.settings.isMale || -1,
 	birthdate: state.settings.birthdate || null,
+	currLang: state.language.currLang || null,
+	languages_data: state.language.languages_data || null,
 })
 
 function mergeProps(stateProps, dispatchProps, ownProps) {
 	const { dispatch } = dispatchProps;
 	const { actions } = require('../../redux/SettingsRedux.js');
+	const langReducerActions = require('../../redux/LangRedux.js').actions;
 	return {
 		...ownProps,
 		...stateProps,
@@ -388,6 +434,7 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
 		setProfileImg: (profile_img_url) => actions.setProfileImg(dispatch, profile_img_url),
 		setIsMale: (isMale) => actions.setIsMale(dispatch, isMale),
 		setBirthDate: (birthdate) => actions.setBirthDate(dispatch, birthdate),
+		switchLanguage: (lang) => langReducerActions.switchLanguage(dispatch, lang),
 	};
 }
 

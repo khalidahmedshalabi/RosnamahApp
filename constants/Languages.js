@@ -55,6 +55,7 @@ export const en = {
 	NewPass: 'New password',
 	NewEmail: 'New email',
 	NewPhone: 'New phone number',
+	Language: 'Language',
 	// Drawer
 	DrawerItem_Home: 'Home',
 	DrawerItem_Settings: 'Settings',
@@ -109,6 +110,7 @@ export const ar = {
 	NewPass: 'كلمة المرور الجديدة',
 	NewEmail: 'البريد الالكتروني الجديد',
 	NewPhone: 'رقم الجوال الجديد',
+	Language: 'اللغة',
 	//Drawer
 	DrawerItem_Home: 'الرئيسية',
 	DrawerItem_Settings: 'الاعدادات',
