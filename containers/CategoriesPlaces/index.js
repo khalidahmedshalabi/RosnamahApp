@@ -8,7 +8,7 @@ import MainHeader from '../../components/MainHeader'
 import CategoryBox from '../../components/CategoriesPlaces/CategoryBox.js'
 
 class CategoriesPlaces extends Component {
-	state = {
+	this.state = {
 		categories: [
 			{
 				key: '1',
@@ -60,10 +60,16 @@ class CategoriesPlaces extends Component {
 						() => <View style={{ height:10, backgroundColor:'white'  }}></View>
 					}
 					renderItem={({ item, index }) => (
+            <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'CategoriesPlaces',
+                params: {
+                    key:item.key
+                },
+                key: item.key})}>
             <CategoryBox
             title = {item.name}
             image = {item.img}
             />
+            </TouchableOpacity>
           )}
 				/>
 			</LazyContainer>
