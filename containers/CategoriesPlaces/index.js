@@ -6,9 +6,13 @@ import LazyContainer from '../../components/LazyContainer'
 import { bgColor, secondColor } from '../../constants/Colors';
 import MainHeader from '../../components/MainHeader'
 import CategoryBox from '../../components/CategoriesPlaces/CategoryBox.js'
+import Server from '../../constants/Server'
 
 class CategoriesPlaces extends Component {
-	state = {
+  constructor(props) {
+    super(props);
+
+	this.state = {
 		categories: [
 			{
 				key: '1',
@@ -40,10 +44,15 @@ class CategoriesPlaces extends Component {
 				name: 'Italy',
 				img: 'http://travelsandliving.com/wp-content/uploads/2015/02/best-places-to-visit-in-Italy-Manarola-Liguria-e1423069720386.jpg'
 			},
-		]
+		],
 	}
-
-
+}
+  componentDidMount(){
+    fetch(Server.base_url+'/api/v1/Categories?parent_id='+this.props.navigation.state.params.category_id).then(res => res.json())
+    .then(data =>{
+      this.setState({categories:data.response})
+    })
+  }
 
 	render () {
 		const { translate, navigation } = this.props
@@ -60,10 +69,16 @@ class CategoriesPlaces extends Component {
 						() => <View style={{ height:10, backgroundColor:'white'  }}></View>
 					}
 					renderItem={({ item, index }) => (
+            <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'CategoriesPlaces',
+                params: {
+                    key:item.key
+                },
+                key: item.key})}>
             <CategoryBox
             title = {item.name}
             image = {item.img}
             />
+            </TouchableOpacity>
           )}
 				/>
 			</LazyContainer>
