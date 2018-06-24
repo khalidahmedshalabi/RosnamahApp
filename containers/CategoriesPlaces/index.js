@@ -14,38 +14,8 @@ class CategoriesPlaces extends Component {
 
 	this.state = {
 		categories: [
-			{
-				key: '1',
-				name: 'Saudi Arabia',
-				img: 'https://vacationidea.com/pix/img25Hy8R/articles/best-russia-destinations_f.jpg'
-			},
-			{
-				key: '2',
-				name: 'amr',
-				img: 'https://vacationidea.com/pix/img25Hy8R/articles/best-russia-destinations_f.jpg'
-			},
-			{
-				key: '3',
-				name: 'United States',
-				img: 'https://techround.co.uk/wp-content/uploads/2018/04/bridge-2.jpg'
-			},
-			{
-				key: '4',
-				name: 'Spain',
-				img: 'https://arzotravels.com/wp-content/uploads/2017/11/valencia-Best-places-to-go-in-Spain-1000x666.jpg'
-			},
-			{
-				key: '5',
-				name: 'England',
-				img: 'http://feelindia.org/wp-content/uploads/2015/11/in-england-best-places-tourist-spots-to-visit-in-england-uk.jpg'
-			},
-			{
-				key: '6',
-				name: 'Italy',
-				img: 'http://travelsandliving.com/wp-content/uploads/2015/02/best-places-to-visit-in-Italy-Manarola-Liguria-e1423069720386.jpg'
-			},
-		],
-	}
+    ]
+  }
 }
   componentDidMount(){
     fetch(Server.base_url+'/api/v1/Categories?parent_id='+this.props.navigation.state.params.category_id).then(res => res.json())
