@@ -3,6 +3,7 @@ import { View, StatusBar, TouchableOpacity, Text, I18nManager } from 'react-nati
 import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
 import { Container, Button, Content } from 'native-base';
+import Modal from "react-native-modal"
 import DatePicker from 'react-native-datepicker'
 import ModalSelector from 'react-native-modal-selector'
 import { bgColor, mainColor } from '../../constants/Colors';
@@ -18,8 +19,12 @@ class Settings extends Component {
 		super(props)
 
 		const { bio, name, isMale, birthdate, profile_img_url, translate } = this.props;
-	
+		
 		this.state = {
+			accountModalShown: false,
+			newAccountSettingValue: '',
+
+			// Settings reducer
 			name,
 			bio,
 			birthdate,
@@ -108,6 +113,71 @@ class Settings extends Component {
 			case 0: return translate('Male');
 			case 1: return translate('Female');
 		}
+	}
+
+	accountSettingsModalContent = (account_setting) => {
+		const { translate } = this.props
+
+		let account_setting_text
+		switch(account_setting) {
+			case 0: account_setting_text = translate('NewPhone'); break;
+			case 1: account_setting_text = translate('NewEmail'); break;
+			case 2: account_setting_text = translate('NewPass'); break;
+		}
+
+		return (
+			<View style={{
+				backgroundColor: 'white',
+				borderRadius: 20,
+				alignItems: 'center',
+				justifyContent: 'center',
+				paddingHorizontal: 12,
+				paddingVertical: 18
+			}}>
+				<View
+					style={styles.setting_item}>
+					<FontedText
+						style={styles.setting_text}
+						text={account_setting_text} />
+					<FontedInput
+						defaultValue={this.state.newAccountSettingValue}
+						onChangeText={(text) => this.setState({ newAccountSettingValue: text })}
+						style={styles.setting_input} />
+				</View>
+
+				<Button
+					//onPress={}
+					style={{
+						width: '100%',
+						backgroundColor: mainColor,
+						borderRadius: 20,
+						paddingVertical: 24,
+						paddingHorizontal: 10,
+						justifyContent: 'center'
+					}}
+				>
+					<FontedText
+						style={{ color: 'white', fontSize: 19 }}
+						text={translate('Change')} />
+				</Button>
+			</View>
+		)
+	}
+
+	accountSettingsModal = () => (
+		<Modal
+			hideModalContentWhileAnimating={true}
+			swipeDirection='down'
+			onSwipe={() => this.setState({ accountModalShown: false })}
+			onBackdropPress={() => this.setState({ accountModalShown: false })}
+			onRequestClose={() => this.setState({ accountModalShown: false })}
+			isVisible={this.state.accountModalShown}>
+			{this.accountSettingsModalContent(this.state.currentAccountSetting)}
+		</Modal>
+	)
+
+	showAccountSettingsModal = (account_setting) => {
+		this.setState({ currentAccountSetting: account_setting, accountModalShown: true })
 	}
 
 	render() {
@@ -236,6 +306,7 @@ class Settings extends Component {
 						</View>
 
 						<TouchableOpacity
+							onPress={() => this.showAccountSettingsModal(0)}
 							style={styles.setting_action}>
 							<FontedText
 								style={styles.setting_action_text}
@@ -248,6 +319,7 @@ class Settings extends Component {
 						</TouchableOpacity>
 
 						<TouchableOpacity
+							onPress={() => this.showAccountSettingsModal(1)}
 							style={styles.setting_action}>
 							<FontedText
 								style={styles.setting_action_text}
@@ -260,6 +332,7 @@ class Settings extends Component {
 						</TouchableOpacity>
 
 						<TouchableOpacity
+							onPress={() => this.showAccountSettingsModal(2)}
 							style={styles.setting_action}>
 							<FontedText
 								style={styles.setting_action_text}
@@ -290,6 +363,8 @@ class Settings extends Component {
 							text={translate('Save')} />
 					</Button>
 				</View>
+
+				{this.accountSettingsModal()}
 			</Container>
 		)
 	}

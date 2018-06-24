@@ -28,6 +28,7 @@
     "react-native-linear-gradient": "^2.4.0",
     "react-native-localization": "^1.0.10",
     "react-native-maps": "^0.21.0",
+    "react-native-modal": "^6.1.0",
     "react-native-modal-selector": "^0.0.27",
     "react-native-permissions": "^1.1.1",
     "react-native-restart": "^0.0.6",
