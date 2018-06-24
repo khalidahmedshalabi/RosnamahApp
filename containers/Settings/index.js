@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { View, StatusBar, TouchableOpacity, Text } from 'react-native'
+import { View, StatusBar, TouchableOpacity, Text, I18nManager } from 'react-native'
 import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
-import { Container, Item, Button, Content, Label } from 'native-base';
+import { Container, Button, Content } from 'native-base';
 import DatePicker from 'react-native-datepicker'
 import ModalSelector from 'react-native-modal-selector'
 import { bgColor, mainColor } from '../../constants/Colors';
@@ -140,95 +140,136 @@ class Settings extends Component {
 						padding: 20, 
 						paddingTop: 30,
 					}}>
-						<Item
-							style={styles.setting_item} 
-							floatingLabel>
-							<Label>{translate('signup_username_input')}</Label>
+						<View
+							style={styles.setting_item}>
+							<FontedText
+								style={styles.setting_text}
+								text={translate('signup_username_input')} />
 							<FontedInput
 								defaultValue={this.state.name}
 								onChangeText={(text) => this.setState({ name: text })}
-								style={{ fontSize: 15 }} />
-						</Item>
+								style={styles.setting_input} />
+						</View>
+
+						<View style={styles.setting_item}>
+							<FontedText
+								text={translate('Gender')}
+								style={styles.setting_text}
+							/>
+
+							<View
+								style={[styles.setting_input, {  }]}>
+								<ModalSelector
+									data={gender_data}
+									initValue=""
+									supportedOrientations={['portrait']}
+									accessible={true}
+									//scrollViewAccessibilityLabel={'Scrollable options'}
+									//cancelButtonAccessibilityLabel={'Cancel Button'}
+									cancelText={translate('Cancel')}
+									cancelTextStyle={{ color: 'red' }}
+									optionTextStyle={{ color: '#575757' }}
+									selectTextStyle={{ color: '#575757', fontWeight: 'normal', }}
+									touchableStyle={{ flex: 1 }}
+									childrenContainerStyle={{ borderWidth: 0, margin: 0, padding: 0, height: 50, justifyContent: 'center' }}
+									onChange={(option) => { this.setState({ isMale: option.key }) }}>
+									<FontedText
+										text={this.getGenderAsString()}
+										style={{ color: 'black', fontSize: 17 }} 
+										/>
+								</ModalSelector>
+							</View>
+						</View>
 
 						<View
 							style={styles.setting_item}>
-							<ModalSelector
-								data={gender_data}
-								initValue=""
-								supportedOrientations={['portrait']}
-								accessible={true}
-								//scrollViewAccessibilityLabel={'Scrollable options'}
-								//cancelButtonAccessibilityLabel={'Cancel Button'}
-								cancelText={translate('Cancel')}
-								cancelTextStyle={{ color: 'red' }}
-								optionTextStyle={{ color: '#575757' }}
-								selectTextStyle={{ color: '#575757' }}
-								touchableStyle={{ flex: 1 }}
-								childrenContainerStyle={{
-									flexDirection: 'row',
-									justifyContent: 'space-between',
-									alignItems: 'center',
-									flex: 1,
-									paddingBottom: 5,
-									paddingLeft: 7,
-									borderBottomWidth: 1,
-									borderBottomColor: '#d9d5dc'
-								}}
-								onChange={(option) => { this.setState({ isMale: option.key }) }}>
-								<Text style={{ color: '#575757', fontSize: 16, marginRight: 6 }} uppercase={false}>
-									{translate('Gender')} {this.getGenderAsString()}
-								</Text>
-
-								<Ionicons
-									name={'ios-arrow-down'}
-									color={'#969696'}
-									size={17} />
-							</ModalSelector>
-						</View>
-
-						<Item
-							style={styles.setting_item}
-							floatingLabel>
-							<Label>{translate('Bio')}</Label>
+							<FontedText
+								style={styles.setting_text}
+								text={translate('Bio')} />
 							<FontedInput
 								defaultValue={this.state.bio}
 								onChangeText={(text) => this.setState({ bio: text })}
-								style={{ fontSize: 15 }} />
-						</Item>
+								style={styles.setting_input} />
+						</View>
 
 						<View
-							style={{ marginVertical: 22 }}>
-							<DatePicker
-								style={{ width: '100%' }}
-								date={this.state.birthdate}
-								mode="date"
-								placeholder={translate('BirthDate')}
-								format="YYYY-MM-DD"
-								minDate="1900-01-01"
-								confirmBtnText={translate('Done')}
-								cancelBtnText={translate('Cancel')}
-								showIcon={false}
-								customStyles={{
-									dateInput: {
-										borderWidth: 0,
-										borderBottomWidth: 1,
-										borderBottomColor: '#d9d5dc',
-										alignItems: 'flex-start',
-									},
-									dateText: {
-										color: '#575757',
-										marginLeft: 7,
-									},
-									placeholderText: {
-										color: '#575757',
-										marginLeft: 7,
-									}
-								}}
-								onDateChange={(date) => {
-									this.setState({ birthdate: date })
-								}}
-							/>
+							style={styles.setting_item}>
+							<FontedText
+								style={styles.setting_text}
+								text={translate('BirthDate')} />
+
+							<View
+								style={[styles.setting_input, {}]}>
+								<DatePicker
+									style={{ width: '100%' }}
+									date={this.state.birthdate}
+									mode="date"
+									placeholder={translate('Unspecified')}
+									format="YYYY-MM-DD"
+									minDate="1900-01-01"
+									confirmBtnText={translate('Done')}
+									cancelBtnText={translate('Cancel')}
+									showIcon={false}
+									customStyles={{
+										dateInput: {
+											borderWidth: 0,
+											alignItems: 'flex-start',
+										},
+										dateText: {
+											fontFamily: I18nManager.isRTL ? 'ElMessiri-Regular' : 'quicksand_light',
+											color: '#575757',
+											marginLeft: 7,
+											fontSize: 17,
+										},
+										placeholderText: {
+											fontFamily: I18nManager.isRTL ? 'ElMessiri-Regular' : 'quicksand_light',
+											color: '#575757',
+											marginLeft: 7,
+											fontSize: 17,
+										}
+									}}
+									onDateChange={(date) => {
+										this.setState({ birthdate: date })
+									}}
+								/>
+							</View>
 						</View>
+
+						<TouchableOpacity
+							style={styles.setting_action}>
+							<FontedText
+								style={styles.setting_action_text}
+								text={translate('ChangePhone')} />
+
+							<Ionicons
+								name={`ios-arrow-${I18nManager.isRTL ? 'back' : 'forward'}`}
+								color={'#575757'}
+								size={24} />
+						</TouchableOpacity>
+
+						<TouchableOpacity
+							style={styles.setting_action}>
+							<FontedText
+								style={styles.setting_action_text}
+								text={translate('ChangeEmail')} />
+
+							<Ionicons
+								name={`ios-arrow-${I18nManager.isRTL ? 'back' : 'forward'}`}
+								color={'#575757'}
+								size={24} />
+						</TouchableOpacity>
+
+						<TouchableOpacity
+							style={styles.setting_action}>
+							<FontedText
+								style={styles.setting_action_text}
+								text={translate('ChangePass')} />
+							
+							<Ionicons
+								name={`ios-arrow-${I18nManager.isRTL ? 'back' : 'forward'}`}
+								color={'#575757'}
+								size={24} />
+						</TouchableOpacity>
 					</View>
 				</Content>
 
@@ -256,6 +297,11 @@ class Settings extends Component {
 
 const mapStateToProps = (state) => ({
 	translate: getTranslate(state.locale),
+	bio: state.settings.bio || null,
+	name: state.settings.name || null,
+	profile_img_url: state.settings.profile_img_url || null,
+	isMale: state.settings.isMale || -1,
+	birthdate: state.settings.birthdate || null,
 })
 
 function mergeProps(stateProps, dispatchProps, ownProps) {

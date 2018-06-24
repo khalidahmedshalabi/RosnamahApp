@@ -44,13 +44,17 @@ export const en = {
 	Female: 'Female',
 	Gender: 'Gender',
 	Bio: 'Bio',
-	BirthDate: 'Birth Date',
+	BirthDate: 'Birthdate',
 	Cancel: 'Cancel',
 	Done: 'Done',
 	SearchBarText: 'Search',
+	ChangePass: 'Change password',
+	ChangeEmail: 'Change email',
+	ChangePhone: 'Change phone',
 	// Drawer
 	DrawerItem_Home: 'Home',
 	DrawerItem_Settings: 'Settings',
+	DrawerItem_Logout: 'Logout',
 };
 
 // Arabic
@@ -94,7 +98,11 @@ export const ar = {
 	Cancel: 'الغاء',
 	Done: 'تم',
 	SearchBarText: 'بحث',
+	ChangePass: 'تغيير كلمة المرور',
+	ChangeEmail: 'تغيير البريد الالكتروني',
+	ChangePhone: 'تغيير رقم الجوال',
 	//Drawer
 	DrawerItem_Home: 'الرئيسية',
 	DrawerItem_Settings: 'الاعدادات',
+	DrawerItem_Logout: 'خروج',
 };

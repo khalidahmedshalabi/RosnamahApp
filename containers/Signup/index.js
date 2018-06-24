@@ -114,7 +114,7 @@ class Signup extends Component {
 						<FontedInput style={{ fontSize: 15 }} placeholder={translate('signup_password_retype_input')} secureTextEntry={true} />
 					</Item>
 					<View style={ styles.footer } >
-					<Button rounded style={ styles.signupBtn } onPress={() => navigate('PhoneVerification')} >
+						<Button rounded style={styles.signupBtn} onPress={() => navigation.navigate('PhoneVerification')} >
 						<Text style={ styles.footerTxt } >{ translate('signup_btn') }</Text>
 					</Button>
 					<TouchableOpacity onPress={() => navigation.navigate('Login')} ><Text style={ styles.haveAnAcc } >{ translate('signup_have_acc') }</Text></TouchableOpacity>
