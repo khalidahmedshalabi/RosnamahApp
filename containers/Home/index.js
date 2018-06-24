@@ -45,7 +45,7 @@ class Home extends Component {
 	renderCategory = (item, index) => {
 		return (
 			<TouchableOpacity
-			onPress={()=> {this.props.navigation.navigate('CategoriesPlaces')}}
+			onPress={()=> {this.props.navigation.navigate('CategoriesPlaces',{category_id:item.key})}}
 				style={{ flex: 1, height: 250, borderRadius: 10, marginHorizontal: 5, backgroundColor: 'white' }}>
 				<Image
 					resizeMode='cover'
