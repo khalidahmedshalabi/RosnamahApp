@@ -11,6 +11,19 @@ import FontedInput from '../../components/FontedInput';
 import FontedText from '../../components/FontedText';
 
 class Login extends Component {
+	componentDidMount() {
+		const { navigation } = this.props;
+
+		if (navigation.state.params) {
+			if (navigation.state.params.DoNotSkip) {
+				const { skipLogin, setLoggedIn, setAuthToken } = this.props;
+				skipLogin(false);
+				setLoggedIn(false);
+				setAuthToken('')
+			}
+		}
+	}
+
 	onLogin = () => {
 		this.props.setLoggedIn(true)
 	}

@@ -27,14 +27,14 @@ const CustomDrawerContentComponent = (props) => {
 				}
 				onItemPress={
 					({ route }) => {
+						// Close drawer first
+						props.navigation.closeDrawer()
+
 						if (route.key === 'Logout') {
 							// Log out and send to login page
 							props.navigation.navigate('Login', { DoNotSkip: true })
 							return;
 						}
-	
-						// Close drawer first
-						props.navigation.closeDrawer()
 	
 						// Then navigate
 						requestAnimationFrame(() => props.navigation.navigate(route))

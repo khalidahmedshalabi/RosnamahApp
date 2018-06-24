@@ -44,7 +44,7 @@ export const en = {
 	Female: 'Female',
 	Gender: 'Gender',
 	Bio: 'Bio',
-	BirthDate: 'Birth Date',
+	BirthDate: 'Birthdate',
 	Cancel: 'Cancel',
 	Done: 'Done',
 	SearchBarText: 'Search',
@@ -54,6 +54,7 @@ export const en = {
 	// Drawer
 	DrawerItem_Home: 'Home',
 	DrawerItem_Settings: 'Settings',
+	DrawerItem_Logout: 'Logout',
 };
 
 // Arabic
@@ -103,4 +104,5 @@ export const ar = {
 	//Drawer
 	DrawerItem_Home: 'الرئيسية',
 	DrawerItem_Settings: 'الاعدادات',
+	DrawerItem_Logout: 'خروج',
 };
