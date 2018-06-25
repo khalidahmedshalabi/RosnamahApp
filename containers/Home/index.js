@@ -5,7 +5,7 @@ import { getTranslate } from 'react-localize-redux';
 import { Container } from 'native-base';
 import { bgColor, secondColor } from '../../constants/Colors';
 import MainHeader from '../../components/MainHeader'
-import Server from '../../constants/Server'
+import { GET } from '../../utils/Network';
 
 class Home extends Component {
 	constructor(props) {
@@ -17,12 +17,19 @@ class Home extends Component {
 		}
 
 	}
+
 	componentDidMount(){
-    fetch(Server.base_url+'/api/v1/Categories?parent_id=0').then(res => res.json())
-    .then(data =>{
-      this.setState({categories:data.response})
-    })
-  }
+		GET('Categories?parent_id=0', 
+			res => {
+				// on success
+				this.setState({ categories: res.data.response })
+			},
+			err => {
+				// on failure
+			}, 
+			false // should authorise this request?
+		)
+  	}
 
 
 	renderCategory = (item, index) => {
