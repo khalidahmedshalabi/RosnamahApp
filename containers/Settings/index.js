@@ -13,6 +13,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontedInput from '../../components/FontedInput';
 import FontedText from '../../components/FontedText';
 import styles from './styles';
+import { POST } from '../../utils/Network';
 
 class Settings extends Component {
 	constructor(props) {
@@ -30,7 +31,14 @@ class Settings extends Component {
 			birthdate,
 			profile_img_url,
 			isMale,
-			language: currLang.label
+			language: currLang.label,
+
+			// is setting changed ?
+			didNameChange: false,
+			didBioChange: false,
+			didBirthdateChange: false,
+			didGenderChange: false,
+			didLanguageChange: false
 		}
 	}
 
@@ -94,14 +102,49 @@ class Settings extends Component {
 	}
 
 	onSaveSettings = () => {
-		const { setBio, setName, setProfileImg, setIsMale, setBirthDate, navigation } = this.props;
-		const { bio, name, isMale, birthdate, profile_img_url } = this.state;
-		
-		setBio(bio)
-		setName(name)
-		setProfileImg(profile_img_url)
-		setBirthDate(birthdate)
-		setIsMale(isMale)
+		const { didNameChange, didBioChange, didBirthdateChange, didGenderChange, didLanguageChange } = this.state
+
+		let 
+			settings_to_update = {},
+			didAnySettingChange = false
+
+		if (didBioChange) {
+			this.props.setBio(this.state.bio)
+			settings_to_update['bio'] = this.state.bio
+			didAnySettingChange = true
+		}
+		if (didNameChange) {
+			this.props.setName(this.state.name)
+			settings_to_update['name'] = this.state.name
+			didAnySettingChange = true
+		}
+		if (didBirthdateChange) {
+			this.props.setBirthDate(this.state.birthdate)
+			settings_to_update['birthdate'] = this.state.birthdate
+			didAnySettingChange = true
+		}
+		if (didGenderChange) {
+			this.props.setIsMale(this.state.isMale)
+			settings_to_update['gender'] = this.state.isMale
+			didAnySettingChange = true
+		}
+		if (didLanguageChange) {
+			settings_to_update['language'] = this.state.language_id
+			didAnySettingChange = true
+		}
+
+		if (didAnySettingChange) {
+			POST('Settings',
+				settings_to_update,
+				res => {
+					// on success
+				},
+				err => {
+					// on failure
+				},
+				true
+			)
+		}
 
 		navigation.navigate('Home')
 	}
@@ -189,7 +232,7 @@ class Settings extends Component {
 
 		if (option.key == currLang.key) return;
 
-		this.setState({ language: option.label })
+		this.setState({ language: option.label, language_id: option.key, didLanguageChange: true })
 		switchLanguage(option)
 	}
 
@@ -230,7 +273,7 @@ class Settings extends Component {
 								text={translate('signup_username_input')} />
 							<FontedInput
 								defaultValue={this.state.name}
-								onChangeText={(text) => this.setState({ name: text })}
+								onChangeText={(text) => this.setState({ name: text, didNameChange: true })}
 								style={styles.setting_input} />
 						</View>
 
@@ -255,7 +298,7 @@ class Settings extends Component {
 									selectTextStyle={{ color: '#575757' }}
 									touchableStyle={{ flex: 1 }}
 									childrenContainerStyle={{ borderWidth: 0, margin: 0, padding: 0, height: 50, justifyContent: 'center' }}
-									onChange={(option) => { this.setState({ isMale: option.key }) }}>
+									onChange={(option) => { this.setState({ isMale: option.key, didGenderChange: true }) }}>
 									<FontedText
 										text={this.getGenderAsString()}
 										style={{ color: 'black', fontSize: 17 }} 
@@ -271,7 +314,7 @@ class Settings extends Component {
 								text={translate('Bio')} />
 							<FontedInput
 								defaultValue={this.state.bio}
-								onChangeText={(text) => this.setState({ bio: text })}
+								onChangeText={(text) => this.setState({ bio: text, didBioChange: true })}
 								style={styles.setting_input} />
 						</View>
 
@@ -310,7 +353,7 @@ class Settings extends Component {
 										}
 									}}
 									onDateChange={(date) => {
-										this.setState({ birthdate: date })
+										this.setState({ birthdate: date, didBirthdateChange: true })
 									}}
 								/>
 							</View>

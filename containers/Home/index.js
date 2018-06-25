@@ -3,7 +3,7 @@ import { FlatList, View, TouchableOpacity, Image, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
 import { Container } from 'native-base';
-import { bgColor, secondColor } from '../../constants/Colors';
+import { bgColor } from '../../constants/Colors';
 import MainHeader from '../../components/MainHeader'
 import { GET } from '../../utils/Network';
 
