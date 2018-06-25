@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { EventRegister } from 'react-native-event-listeners';
-import { Server } from '../constants';
 //import { types } from '../redux/LoginRedux.js';
 import { store } from '../App';
+import Server from '../constants/Server';
 
 // This function, in addition to handling when the response is a success/failure, it automatically handles other response codes.
 export const HandleHttpResponses = (response, onSuccess, onFailure) => {
@@ -54,8 +54,8 @@ const HTTP_REQUEST = (
 			'Content-Type': contentType,
 			'auth': store.getState().user.auth_token
 		} : { 'Content-Type': contentType },
-		//url: `${Server.base_url}/${endpoint}`,
-		url: 'https//www.google.com',
+		url: `${Server.base_url}${Server.api_path}${endpoint}`,
+		//url: 'https//www.google.com',
 		data: post_data
 	}).then(function (response) {
 		if (shouldDisplayOverlay)
