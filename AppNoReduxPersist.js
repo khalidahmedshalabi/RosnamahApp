@@ -80,7 +80,15 @@ class AppNoReduxPersist extends React.Component {
 	}
 
 	shouldFetchLanguages = () => {
-		const { languages_version } = this.props;
+		this.LoadLocallyStoredLanguage();
+
+		// Should close splash screen at this point
+		SplashScreen.hide()
+
+		// Allow rendering now
+		this.setState({ isLoadingLanguages: false })
+		
+		/*const { languages_version } = this.props;
 
 		// Check if local translation data exists
 		if (languages_version) {
@@ -120,7 +128,7 @@ class AppNoReduxPersist extends React.Component {
 					this.setState({ isLoadingLanguages: false })
 				}
 			},
-			false);
+			false);*/
 	}
 
 	constructor(props) {

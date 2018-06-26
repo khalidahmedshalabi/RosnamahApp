@@ -13,23 +13,32 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontedInput from '../../components/FontedInput';
 import FontedText from '../../components/FontedText';
 import styles from './styles';
+import { POST } from '../../utils/Network';
 
 class Settings extends Component {
 	constructor(props) {
 		super(props)
 
-		const { bio, name, isMale, birthdate, profile_img_url, translate } = this.props;
+		const { bio, name, isMale, birthdate, profile_img_url, translate, currLang } = this.props;
 		
 		this.state = {
 			accountModalShown: false,
 			newAccountSettingValue: '',
 
-			// Settings reducer
+			// Reducers
 			name,
 			bio,
 			birthdate,
 			profile_img_url,
-			isMale
+			isMale,
+			language: currLang.label,
+
+			// is setting changed ?
+			didNameChange: false,
+			didBioChange: false,
+			didBirthdateChange: false,
+			didGenderChange: false,
+			didLanguageChange: false
 		}
 	}
 
@@ -93,14 +102,49 @@ class Settings extends Component {
 	}
 
 	onSaveSettings = () => {
-		const { setBio, setName, setProfileImg, setIsMale, setBirthDate, navigation } = this.props;
-		const { bio, name, isMale, birthdate, profile_img_url } = this.state;
-		
-		setBio(bio)
-		setName(name)
-		setProfileImg(profile_img_url)
-		setBirthDate(birthdate)
-		setIsMale(isMale)
+		const { didNameChange, didBioChange, didBirthdateChange, didGenderChange, didLanguageChange } = this.state
+
+		let 
+			settings_to_update = {},
+			didAnySettingChange = false
+
+		if (didBioChange) {
+			this.props.setBio(this.state.bio)
+			settings_to_update['bio'] = this.state.bio
+			didAnySettingChange = true
+		}
+		if (didNameChange) {
+			this.props.setName(this.state.name)
+			settings_to_update['name'] = this.state.name
+			didAnySettingChange = true
+		}
+		if (didBirthdateChange) {
+			this.props.setBirthDate(this.state.birthdate)
+			settings_to_update['birthdate'] = this.state.birthdate
+			didAnySettingChange = true
+		}
+		if (didGenderChange) {
+			this.props.setIsMale(this.state.isMale)
+			settings_to_update['gender'] = this.state.isMale
+			didAnySettingChange = true
+		}
+		if (didLanguageChange) {
+			settings_to_update['language'] = this.state.language_id
+			didAnySettingChange = true
+		}
+
+		if (didAnySettingChange) {
+			POST('Settings',
+				settings_to_update,
+				res => {
+					// on success
+				},
+				err => {
+					// on failure
+				},
+				true
+			)
+		}
 
 		navigation.navigate('Home')
 	}
@@ -180,8 +224,20 @@ class Settings extends Component {
 		this.setState({ currentAccountSetting: account_setting, accountModalShown: true })
 	}
 
+	onChangeLanguage = (option) => {
+		const {
+			switchLanguage,
+			currLang
+		} = this.props;
+
+		if (option.key == currLang.key) return;
+
+		this.setState({ language: option.label, language_id: option.key, didLanguageChange: true })
+		switchLanguage(option)
+	}
+
 	render() {
-		const { translate } = this.props
+		const { translate, languages_data } = this.props
 
 		const gender_data = [
 			{ key: -1, label: translate('Unspecified') },
@@ -217,7 +273,7 @@ class Settings extends Component {
 								text={translate('signup_username_input')} />
 							<FontedInput
 								defaultValue={this.state.name}
-								onChangeText={(text) => this.setState({ name: text })}
+								onChangeText={(text) => this.setState({ name: text, didNameChange: true })}
 								style={styles.setting_input} />
 						</View>
 
@@ -228,7 +284,7 @@ class Settings extends Component {
 							/>
 
 							<View
-								style={[styles.setting_input, {  }]}>
+								style={styles.setting_input}>
 								<ModalSelector
 									data={gender_data}
 									initValue=""
@@ -239,10 +295,10 @@ class Settings extends Component {
 									cancelText={translate('Cancel')}
 									cancelTextStyle={{ color: 'red' }}
 									optionTextStyle={{ color: '#575757' }}
-									selectTextStyle={{ color: '#575757', fontWeight: 'normal', }}
+									selectTextStyle={{ color: '#575757' }}
 									touchableStyle={{ flex: 1 }}
 									childrenContainerStyle={{ borderWidth: 0, margin: 0, padding: 0, height: 50, justifyContent: 'center' }}
-									onChange={(option) => { this.setState({ isMale: option.key }) }}>
+									onChange={(option) => { this.setState({ isMale: option.key, didGenderChange: true }) }}>
 									<FontedText
 										text={this.getGenderAsString()}
 										style={{ color: 'black', fontSize: 17 }} 
@@ -258,7 +314,7 @@ class Settings extends Component {
 								text={translate('Bio')} />
 							<FontedInput
 								defaultValue={this.state.bio}
-								onChangeText={(text) => this.setState({ bio: text })}
+								onChangeText={(text) => this.setState({ bio: text, didBioChange: true })}
 								style={styles.setting_input} />
 						</View>
 
@@ -269,7 +325,7 @@ class Settings extends Component {
 								text={translate('BirthDate')} />
 
 							<View
-								style={[styles.setting_input, {}]}>
+								style={styles.setting_input}>
 								<DatePicker
 									style={{ width: '100%' }}
 									date={this.state.birthdate}
@@ -287,21 +343,49 @@ class Settings extends Component {
 										},
 										dateText: {
 											fontFamily: I18nManager.isRTL ? 'ElMessiri-Regular' : 'quicksand_light',
-											color: '#575757',
-											marginLeft: 7,
+											color: 'black',
 											fontSize: 17,
 										},
 										placeholderText: {
 											fontFamily: I18nManager.isRTL ? 'ElMessiri-Regular' : 'quicksand_light',
-											color: '#575757',
-											marginLeft: 7,
+											color: 'black',
 											fontSize: 17,
 										}
 									}}
 									onDateChange={(date) => {
-										this.setState({ birthdate: date })
+										this.setState({ birthdate: date, didBirthdateChange: true })
 									}}
 								/>
+							</View>
+						</View>
+
+						<View style={styles.setting_item}>
+							<FontedText
+								text={translate('Language')}
+								style={styles.setting_text}
+							/>
+
+							<View
+								style={styles.setting_input}>
+								<ModalSelector
+									data={languages_data}
+									initValue=""
+									supportedOrientations={['portrait']}
+									accessible={true}
+									//scrollViewAccessibilityLabel={'Scrollable options'}
+									//cancelButtonAccessibilityLabel={'Cancel Button'}
+									cancelText={translate('Cancel')}
+									cancelTextStyle={{ color: 'red' }}
+									optionTextStyle={{ color: '#575757' }}
+									selectTextStyle={{ color: '#575757', fontWeight: 'normal', }}
+									touchableStyle={{ flex: 1 }}
+									childrenContainerStyle={{ borderWidth: 0, margin: 0, padding: 0, height: 50, justifyContent: 'center' }}
+									onChange={(option) => this.onChangeLanguage(option)}>
+									<FontedText
+										text={this.state.language}
+										style={{ color: 'black', fontSize: 17 }}
+									/>
+								</ModalSelector>
 							</View>
 						</View>
 
@@ -377,11 +461,14 @@ const mapStateToProps = (state) => ({
 	profile_img_url: state.settings.profile_img_url || null,
 	isMale: state.settings.isMale || -1,
 	birthdate: state.settings.birthdate || null,
+	currLang: state.language.currLang || null,
+	languages_data: state.language.languages_data || null,
 })
 
 function mergeProps(stateProps, dispatchProps, ownProps) {
 	const { dispatch } = dispatchProps;
 	const { actions } = require('../../redux/SettingsRedux.js');
+	const langReducerActions = require('../../redux/LangRedux.js').actions;
 	return {
 		...ownProps,
 		...stateProps,
@@ -390,6 +477,7 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
 		setProfileImg: (profile_img_url) => actions.setProfileImg(dispatch, profile_img_url),
 		setIsMale: (isMale) => actions.setIsMale(dispatch, isMale),
 		setBirthDate: (birthdate) => actions.setBirthDate(dispatch, birthdate),
+		switchLanguage: (lang) => langReducerActions.switchLanguage(dispatch, lang),
 	};
 }
 
