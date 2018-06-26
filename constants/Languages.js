@@ -6,6 +6,12 @@ export const Languages = [
 
 // English
 export const en = {
+	// Drawer
+	DrawerItem_Home: 'Home',
+	DrawerItem_Settings: 'Settings',
+	DrawerItem_Logout: 'Logout',
+	DrawerItem_MyVisits: 'My Visits',
+	// End Drawer
 	NoInternetConnection: 'No Internet Connection',
 	// signup
 	signup_title: 'Create an account',
@@ -56,14 +62,17 @@ export const en = {
 	NewEmail: 'New email',
 	NewPhone: 'New phone number',
 	Language: 'Language',
-	// Drawer
-	DrawerItem_Home: 'Home',
-	DrawerItem_Settings: 'Settings',
-	DrawerItem_Logout: 'Logout',
+	NoContent: 'Nothing here...'
 };
 
 // Arabic
 export const ar = {
+	//Drawer
+	DrawerItem_Home: 'الرئيسية',
+	DrawerItem_Settings: 'الاعدادات',
+	DrawerItem_Logout: 'خروج',
+	DrawerItem_MyVisits: 'زياراتي',
+	// End Drawer
 	NoInternetConnection: 'غير مُتصل بالانترنت',
 	signup_title: 'انشئ حساب مجاني',
 	signup_username_input: 'الاسم',
@@ -111,8 +120,5 @@ export const ar = {
 	NewEmail: 'البريد الالكتروني الجديد',
 	NewPhone: 'رقم الجوال الجديد',
 	Language: 'اللغة',
-	//Drawer
-	DrawerItem_Home: 'الرئيسية',
-	DrawerItem_Settings: 'الاعدادات',
-	DrawerItem_Logout: 'خروج',
+	NoContent: 'لا يوجد محتوى'
 };

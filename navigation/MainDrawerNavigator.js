@@ -6,9 +6,11 @@ import CustomDrawerContentComponent from './CustomDrawerContent';
 
 import Octicons from 'react-native-vector-icons/Octicons'
 import Feather from 'react-native-vector-icons/Feather'
+import Entypo from 'react-native-vector-icons/Entypo'
 
 import Home from '../containers/Home'
 import Settings from '../containers/Settings'
+import MyVisits from '../containers/MyVisits';
 
 const drawerIconSize = 26
 
@@ -19,6 +21,14 @@ const MainDrawerNavigator = createDrawerNavigator({
 		navigationOptions: {
 			drawerIcon: ({ tintColor }) => (
 				<Octicons name='home' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
+			),
+		}
+	},
+	MyVisits: {
+		screen: MyVisits,
+		navigationOptions: {
+			drawerIcon: ({ tintColor }) => (
+				<Entypo name='aircraft' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
 			),
 		}
 	},

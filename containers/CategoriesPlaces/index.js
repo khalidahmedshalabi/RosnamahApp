@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, View, TouchableOpacity, Image, Text } from 'react-native'
+import { FlatList, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
 import LazyContainer from '../../components/LazyContainer'
