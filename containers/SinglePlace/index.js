@@ -9,7 +9,7 @@ import CategoryBox from '../../components/CategoriesPlaces/CategoryBox.js'
 import Server from '../../constants/Server'
 import PlaceBox from '../../components/CategoriesPlaces/CategoryBox.js'
 
-class CategoriesPlaces extends Component {
+class SinglePlace extends Component {
   constructor(props) {
     super(props);
 
@@ -82,4 +82,4 @@ const mapStateToProps = (state) => ({
 	translate: getTranslate(state.locale),
 })
 
-export default connect(mapStateToProps)(CategoriesPlaces)
+export default connect(mapStateToProps)(SinglePlace)
