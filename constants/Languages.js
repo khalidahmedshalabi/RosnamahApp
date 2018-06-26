@@ -11,6 +11,7 @@ export const en = {
 	DrawerItem_Settings: 'Settings',
 	DrawerItem_Logout: 'Logout',
 	DrawerItem_MyVisits: 'My Visits',
+	DrawerItem_FavPlaces: 'Favorite Places',
 	// End Drawer
 	NoInternetConnection: 'No Internet Connection',
 	// signup
@@ -72,6 +73,7 @@ export const ar = {
 	DrawerItem_Settings: 'الاعدادات',
 	DrawerItem_Logout: 'خروج',
 	DrawerItem_MyVisits: 'زياراتي',
+	DrawerItem_FavPlaces: 'اماكني المفضلة',
 	// End Drawer
 	NoInternetConnection: 'غير مُتصل بالانترنت',
 	signup_title: 'انشئ حساب مجاني',

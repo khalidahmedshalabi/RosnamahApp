@@ -11,6 +11,7 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import Home from '../containers/Home'
 import Settings from '../containers/Settings'
 import MyVisits from '../containers/MyVisits';
+import FavPlaces from '../containers/FavPlaces';
 
 const drawerIconSize = 26
 
@@ -29,6 +30,14 @@ const MainDrawerNavigator = createDrawerNavigator({
 		navigationOptions: {
 			drawerIcon: ({ tintColor }) => (
 				<Entypo name='aircraft' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
+			),
+		}
+	},
+	FavPlaces: {
+		screen: FavPlaces,
+		navigationOptions: {
+			drawerIcon: ({ tintColor }) => (
+				<Octicons name='heart' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
 			),
 		}
 	},

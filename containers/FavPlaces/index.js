@@ -8,7 +8,7 @@ import MainHeader from '../../components/MainHeader'
 import NoContent from '../../components/NoContent'
 import CategoryBox from '../../components/CategoriesPlaces/CategoryBox.js'
 
-class MyVisits extends Component {
+class FavPlaces extends Component {
 	constructor(props) {
 		super(props);
 
@@ -17,7 +17,7 @@ class MyVisits extends Component {
 		}
 	}
 	componentDidMount() {
-		// replace with users visits endpoint
+		// replace with users favorite places endpoint
 		/*GET('Categories?parent_id=0',
 			res => {
 				// on success
@@ -71,4 +71,4 @@ const mapStateToProps = (state) => ({
 	translate: getTranslate(state.locale),
 })
 
-export default connect(mapStateToProps)(MyVisits)
+export default connect(mapStateToProps)(FavPlaces)
