@@ -65,7 +65,9 @@ export const en = {
 	NewEmail: 'New email',
 	NewPhone: 'New phone number',
 	Language: 'Language',
-	NoContent: 'Nothing here...'
+	NoContent: 'Nothing here...',
+	// single post
+	comment:'comment'
 };
 
 // Arabic
@@ -126,5 +128,7 @@ export const ar = {
 	NewEmail: 'البريد الالكتروني الجديد',
 	NewPhone: 'رقم الجوال الجديد',
 	Language: 'اللغة',
-	NoContent: 'لا يوجد محتوى'
+	NoContent: 'لا يوجد محتوى',
+	// single post
+	comment:'تعليق ....'
 };

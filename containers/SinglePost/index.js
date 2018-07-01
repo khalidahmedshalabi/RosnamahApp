@@ -10,7 +10,9 @@ import Server from '../../constants/Server'
 import PlaceBox from '../../components/CategoriesPlaces/CategoryBox.js'
 import { GET } from '../../utils/Network';
 import FontedText from '../../components/FontedText';
-import { Container,Button,Icon, Header, Content,Footer, FooterTab,Left, Right, List, ListItem, Thumbnail, Text, Body } from 'native-base';
+import FontedInput from '../../components/FontedInput';
+
+import { Container,Button,Icon, Header, Content,Footer, FooterTab,Left, Right, List, ListItem, Thumbnail, Text, Body ,Form, Item, Input} from 'native-base';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
@@ -26,7 +28,8 @@ class ForumCategories extends Component {
     ],
     type:1,
     modalVisible: false,
-
+    comments:[],
+    comment:''
   }
 }
   componentDidMount(){
@@ -64,16 +67,30 @@ class ForumCategories extends Component {
 			</TouchableOpacity>
 		)
 	}
-
+comment = ()=>{
+  comments = this.state.comments;
+  comments.push({
+    comment:this.state.comment,
+    time:'3pm',
+    user:{
+      name:'مستخدم تجريبي',
+      profile_img_url:'https://images.vexels.com/media/users/3/145908/preview2/52eabf633ca6414e60a7677b0b917d92-male-avatar-maker.jpg'
+    }
+  })
+}
 	render () {
 		const { translate, navigation } = this.props
     const post = this.state.post[0];
+
     var items = ['Simon Mignolet','Nathaniel Clyne','Dejan Lovren','Mama Sakho','Emre Can'];
 
 		return (
 
 			<LazyContainer style={{ flex: 1, backgroundColor: bgColor }}>
 				<MainHeader navigation={navigation} />
+        {
+          //the post goes here
+        }
         <ScrollView>
         <Image
           source={{ uri: post.image }}
@@ -84,6 +101,9 @@ class ForumCategories extends Component {
         <FontedText style={{padding:15,textAlign:'center'}} text={post.post}/>
         </ScrollView>
 
+        {
+          //comments button
+        }
         <Footer>
           <FooterTab>
             <Button onPress={() => {
@@ -96,8 +116,6 @@ class ForumCategories extends Component {
 
 
 
-
-
         {
           //here it is comments modal
         }
@@ -107,8 +125,10 @@ class ForumCategories extends Component {
          visible={this.state.modalVisible}
          >
          <Container>
+         {
+           //head starts here
+         }
          <Header>
-
          <View style={{flexDirection:'row',flex:.9,justifyContent:'center',alignItems:'center'}}>
          <FontAwesome style={{paddingRight:3,textAlign:'center',alignItems:'center'}} name="comment-o" size={20}/>
          <FontedText style={{textAlign:'center'}}  text="التعليقات"/>
@@ -121,7 +141,15 @@ class ForumCategories extends Component {
          <Ionicons style={{}} name="ios-arrow-back" size={20}/>
          </TouchableHighlight>
         </Header>
+
+        {
+          //the end of head
+        }
+
         <Content>
+        {
+          //comments listing
+        }
         <List dataArray={this.state.comments}
             renderRow={(item) =>
               <ListItem avatar>
@@ -141,6 +169,13 @@ class ForumCategories extends Component {
           </List>
 
         </Content>
+          <Item>
+            <FontedInput
+            onChangeText={(comment) => this.setState({comment})}
+        value={this.state.comment}
+        style={{padding:15}}
+        onSubmitEditing={()=> {this.comment()}} placeholder={translate('comment')} />
+          </Item>
       </Container>
 
        </Modal>
