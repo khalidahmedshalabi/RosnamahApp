@@ -7,9 +7,15 @@ import CustomDrawerContentComponent from './CustomDrawerContent';
 import Octicons from 'react-native-vector-icons/Octicons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Feather from 'react-native-vector-icons/Feather'
+import Entypo from 'react-native-vector-icons/Entypo'
+import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import ForumCategories from '../containers/ForumCategories';
+
 import Home from '../containers/Home'
 import Settings from '../containers/Settings'
+import MyVisits from '../containers/MyVisits';
+import FavPlaces from '../containers/FavPlaces';
+import AddPlace from '../containers/AddPlace'
 
 const drawerIconSize = 26
 
@@ -28,6 +34,30 @@ const MainDrawerNavigator = createDrawerNavigator({
 		navigationOptions: {
 			drawerIcon: ({ tintColor }) => (
 				<MaterialCommunityIcons name='forum' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
+			),
+		}
+	},
+	MyVisits: {
+		screen: MyVisits,
+		navigationOptions: {
+			drawerIcon: ({ tintColor }) => (
+				<Entypo name='aircraft' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
+			),
+		}
+	},
+	AddPlace: {
+		screen: AddPlace,
+		navigationOptions: {
+			drawerIcon: ({ tintColor }) => (
+				<EvilIcons name='plus' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
+			),
+		}
+	},
+	FavPlaces: {
+		screen: FavPlaces,
+		navigationOptions: {
+			drawerIcon: ({ tintColor }) => (
+				<Octicons name='heart' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
 			),
 		}
 	},
