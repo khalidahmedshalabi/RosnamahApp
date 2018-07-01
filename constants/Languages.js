@@ -60,6 +60,7 @@ export const en = {
 	DrawerItem_Home: 'Home',
 	DrawerItem_Settings: 'Settings',
 	DrawerItem_Logout: 'Logout',
+	DrawerItem_Forum:'Forum'
 };
 
 // Arabic
@@ -115,4 +116,6 @@ export const ar = {
 	DrawerItem_Home: 'الرئيسية',
 	DrawerItem_Settings: 'الاعدادات',
 	DrawerItem_Logout: 'خروج',
+	DrawerItem_Forum:'صاله النقاش'
+
 };

@@ -19,14 +19,14 @@ class Home extends Component {
 	}
 
 	componentDidMount(){
-		GET('Categories?parent_id=0', 
+		GET('Categories?parent_id=0',
 			res => {
 				// on success
 				this.setState({ categories: res.data.response })
 			},
 			err => {
 				// on failure
-			}, 
+			},
 			false // should authorise this request?
 		)
   	}
@@ -60,6 +60,7 @@ class Home extends Component {
 					contentContainerStyle={{ paddingVertical: 12 }}
 					numColumns={2}
 					data={this.state.categories}
+					
 					style={{ flex: 1 }}
 					ItemSeparatorComponent={
 						() => <View style={{ height: 12, backgroundColor: 'transparent' }}></View>

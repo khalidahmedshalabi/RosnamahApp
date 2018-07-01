@@ -10,7 +10,7 @@ import Server from '../../constants/Server'
 import PlaceBox from '../../components/CategoriesPlaces/CategoryBox.js'
 import { GET } from '../../utils/Network';
 
-class CategoriesPlaces extends Component {
+class ForumCategories extends Component {
   constructor(props) {
     super(props);
 
@@ -21,7 +21,7 @@ class CategoriesPlaces extends Component {
   }
 }
   componentDidMount(){
-    GET('Categories?parent_id='+this.props.navigation.state.params.category_id,
+    GET('forum_categories',
 			res => {
 				// on success
         this.setState({categories:res.data.response,type:res.data.type})
@@ -33,6 +33,23 @@ class CategoriesPlaces extends Component {
 		)
 
   }
+  renderCategory = (item, index) => {
+		return (
+			<TouchableOpacity
+			onPress={()=> {this.props.navigation.navigate('ForumPosts',{category_id:item.id})}}
+				style={{ flex: 1, height: 250, borderRadius: 10, marginHorizontal: 5, backgroundColor: 'white' }}>
+				<Image
+					resizeMode='cover'
+					style={{ flex: 0.8, borderTopLeftRadius: 10, borderTopRightRadius: 13 }}
+					source={{ uri: item.image }}
+					/>
+
+				<View style={{ flex: 0.2, paddingHorizontal: 12, justifyContent: 'center' }}>
+					<Text style={{ color: '#515254', fontSize: 17 }}>{item.name}</Text>
+				</View>
+			</TouchableOpacity>
+		)
+	}
 
 	render () {
 		const { translate, navigation } = this.props
@@ -42,45 +59,13 @@ class CategoriesPlaces extends Component {
 				<MainHeader navigation={navigation} />
 				<FlatList
 					contentContainerStyle={{ paddingVertical: 12 }}
-					numColumns={1}
+					numColumns={2}
 					data={this.state.categories}
 					style={{ flex: 1 }}
 					ItemSeparatorComponent={
 						() => <View style={{ height:10, backgroundColor:'white'  }}></View>
 					}
-					renderItem={({ item, index }) =>
-                (this.state.type == 1) ? (
-                  <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'CategoriesPlaces',
-                      params: {
-                          category_id:item.id
-                      },
-                      key: Math.random() })}>
-
-                  <CategoryBox
-                  title = {item.name}
-                  image = {item.image}
-                  desc={item.descc}
-
-                  />
-                  </TouchableOpacity>
-
-                ) : (
-                  <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'SinglePlace',
-                      params: {
-                          category_id:item.id
-                      },
-                      key: Math.random() })}>
-
-                  <PlaceBox
-                  title = {item.name}
-                  image = {item.image}
-                  desc={item.description}
-                  />
-
-                  </TouchableOpacity>
-                )
-
-              }
+					renderItem={({ item, index }) => this.renderCategory(item, index)  }
               />
 			</LazyContainer>
 		)
@@ -91,4 +76,4 @@ const mapStateToProps = (state) => ({
 	translate: getTranslate(state.locale),
 })
 
-export default connect(mapStateToProps)(CategoriesPlaces)
+export default connect(mapStateToProps)(ForumCategories)

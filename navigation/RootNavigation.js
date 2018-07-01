@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { createStackNavigator } from 'react-navigation';
 import MainDrawerNavigator from './MainDrawerNavigator';
 import CategoriesPlaces from '../containers/CategoriesPlaces';
+import ForumCategories from '../containers/ForumCategories';
+import ForumPosts from '../containers/ForumPosts';
 import SinglePlace from '../containers/SinglePlace';
+import SinglePost from '../containers/SinglePost';
 import MainHeader from '../components/MainHeader'
 import Home from '../containers/Home'
 import Signup from '../containers/Signup'
@@ -16,7 +19,10 @@ import Settings from '../containers/Settings';
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 	const routeConfigs = {
 		MainDrawerNavigator: {screen: MainDrawerNavigator},
+		ForumCategories: {screen: ForumCategories},
+		ForumPosts: {screen: ForumPosts},
 		SinglePlace: {screen: SinglePlace},
+		SinglePost: {screen: SinglePost},
 		Login: {screen: Login},
 		CategoriesPlaces: {screen: CategoriesPlaces},
 		Signup: {screen: Signup},

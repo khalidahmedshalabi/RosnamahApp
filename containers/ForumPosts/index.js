@@ -7,10 +7,10 @@ import { bgColor, secondColor } from '../../constants/Colors';
 import MainHeader from '../../components/MainHeader'
 import CategoryBox from '../../components/CategoriesPlaces/CategoryBox.js'
 import Server from '../../constants/Server'
-import PlaceBox from '../../components/CategoriesPlaces/CategoryBox.js'
+import PostBox from '../../components/PostBox'
 import { GET } from '../../utils/Network';
 
-class CategoriesPlaces extends Component {
+class ForumCategories extends Component {
   constructor(props) {
     super(props);
 
@@ -21,7 +21,7 @@ class CategoriesPlaces extends Component {
   }
 }
   componentDidMount(){
-    GET('Categories?parent_id='+this.props.navigation.state.params.category_id,
+    GET('forum_posts?category_id='+this.props.navigation.state.params.category_id,
 			res => {
 				// on success
         this.setState({categories:res.data.response,type:res.data.type})
@@ -33,6 +33,23 @@ class CategoriesPlaces extends Component {
 		)
 
   }
+  renderCategory = (item, index) => {
+		return (
+			<TouchableOpacity
+			onPress={()=> {this.props.navigation.navigate('CategoriesPlaces',{category_id:item.id})}}
+				style={{ flex: 1, height: 250, borderRadius: 10, marginHorizontal: 5, backgroundColor: 'white' }}>
+				<Image
+					resizeMode='cover'
+					style={{ flex: 0.8, borderTopLeftRadius: 10, borderTopRightRadius: 13 }}
+					source={{ uri: item.image }}
+					/>
+
+				<View style={{ flex: 0.2, paddingHorizontal: 12, justifyContent: 'center' }}>
+					<Text style={{ color: '#515254', fontSize: 17 }}>{item.title}</Text>
+				</View>
+			</TouchableOpacity>
+		)
+	}
 
 	render () {
 		const { translate, navigation } = this.props
@@ -48,39 +65,23 @@ class CategoriesPlaces extends Component {
 					ItemSeparatorComponent={
 						() => <View style={{ height:10, backgroundColor:'white'  }}></View>
 					}
-					renderItem={({ item, index }) =>
-                (this.state.type == 1) ? (
-                  <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'CategoriesPlaces',
-                      params: {
-                          category_id:item.id
-                      },
-                      key: Math.random() })}>
+					renderItem={({ item, index }) => (
+            <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'SinglePost',
+                params: {
+                    post_id:item.id
+                },
+                })}>
 
-                  <CategoryBox
-                  title = {item.name}
-                  image = {item.image}
-                  desc={item.descc}
+            <PostBox
+            name = {item.title}
+            image = {item.image}
+            desc={item.title}
+            time={item.posted_time}
+            comments={item.comments}
+            />
 
-                  />
-                  </TouchableOpacity>
-
-                ) : (
-                  <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'SinglePlace',
-                      params: {
-                          category_id:item.id
-                      },
-                      key: Math.random() })}>
-
-                  <PlaceBox
-                  title = {item.name}
-                  image = {item.image}
-                  desc={item.description}
-                  />
-
-                  </TouchableOpacity>
-                )
-
-              }
+            </TouchableOpacity>
+          )  }
               />
 			</LazyContainer>
 		)
@@ -91,4 +92,4 @@ const mapStateToProps = (state) => ({
 	translate: getTranslate(state.locale),
 })
 
-export default connect(mapStateToProps)(CategoriesPlaces)
+export default connect(mapStateToProps)(ForumCategories)

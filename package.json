@@ -31,6 +31,7 @@
     "react-native-modal": "^6.1.0",
     "react-native-modal-selector": "^0.0.27",
     "react-native-permissions": "^1.1.1",
+    "react-native-ratings": "^5.3.0",
     "react-native-restart": "^0.0.6",
     "react-native-snap-carousel": "^3.7.2",
     "react-native-splash-screen": "^3.0.9",

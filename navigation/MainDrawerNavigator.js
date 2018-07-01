@@ -5,8 +5,9 @@ import { mainColor } from '../constants/Colors'
 import CustomDrawerContentComponent from './CustomDrawerContent';
 
 import Octicons from 'react-native-vector-icons/Octicons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Feather from 'react-native-vector-icons/Feather'
-
+import ForumCategories from '../containers/ForumCategories';
 import Home from '../containers/Home'
 import Settings from '../containers/Settings'
 
@@ -15,15 +16,23 @@ const drawerIconSize = 26
 const MainDrawerNavigator = createDrawerNavigator({
 
 	Home: {
-		screen: Home, 
+		screen: Home,
 		navigationOptions: {
 			drawerIcon: ({ tintColor }) => (
 				<Octicons name='home' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
 			),
 		}
 	},
+	Forum: {
+		screen: ForumCategories,
+		navigationOptions: {
+			drawerIcon: ({ tintColor }) => (
+				<MaterialCommunityIcons name='forum' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
+			),
+		}
+	},
 	Settings: {
-		screen: Settings, 
+		screen: Settings,
 		navigationOptions: {
 			drawerIcon: ({ tintColor }) => (
 				<Octicons name='gear' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
@@ -53,7 +62,7 @@ const MainDrawerNavigator = createDrawerNavigator({
 });
 
 const wrapper = createStackNavigator({
-	DrawerWrapper: { 
+	DrawerWrapper: {
 		screen: MainDrawerNavigator,
 		navigationOptions: (props) => ({
 			header: null
