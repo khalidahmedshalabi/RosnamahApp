@@ -16,7 +16,7 @@ import com.BV.LinearGradient.LinearGradientPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.imagepicker.ImagePickerPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
-
+import com.RNFetchBlob.RNFetchBlobPackage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,7 +40,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNGestureHandlerPackage(),
             new LinearGradientPackage(),
             new ImagePickerPackage(),
-			new SplashScreenReactPackage()
+            new RNFetchBlobPackage(),
+      			new SplashScreenReactPackage()
       );
     }
 

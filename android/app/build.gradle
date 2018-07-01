@@ -150,6 +150,7 @@ dependencies {
 	compile project(':react-native-vector-icons')
 	compile project(':react-native-restart')
 	compile project(':react-native-device-info')
+    compile project(':react-native-fetch-blob')
     compile(project(':react-native-maps')){
         exclude group: 'com.google.android.gms', module: 'play-services-base'
         exclude group: 'com.google.android.gms', module: 'play-services-maps'
