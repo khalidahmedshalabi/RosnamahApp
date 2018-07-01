@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, View, TouchableOpacity, Image, Text } from 'react-native'
+import { FlatList, View, TouchableOpacity, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
 import LazyContainer from '../../components/LazyContainer'
@@ -9,6 +9,7 @@ import CategoryBox from '../../components/CategoriesPlaces/CategoryBox.js'
 import Server from '../../constants/Server'
 import PostBox from '../../components/PostBox'
 import { GET } from '../../utils/Network';
+import { Container, Header, Content, Card, CardItem, Thumbnail,Text, Button, Icon, Left, Body, Right } from 'native-base';
 
 class ForumCategories extends Component {
   constructor(props) {
@@ -72,13 +73,38 @@ class ForumCategories extends Component {
                 },
                 })}>
 
-            <PostBox
-            name = {item.title}
-            image = {item.image}
-            desc={item.title}
-            time={item.posted_time}
-            comments={item.comments}
-            />
+          <Card>
+            <CardItem>
+              <Left>
+                <Thumbnail source={{uri: item.image}} />
+                <Body>
+                  <Text>{item.title}</Text>
+                  <Text note>{item.title}</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem cardBody>
+              <Image source={{uri: item.image}} style={{height: 200, width: null, flex: 1}}/>
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Button transparent>
+                  <Icon active name="thumbs-up" />
+                  <Text>12 Likes</Text>
+                </Button>
+              </Left>
+              <Body>
+                <Button transparent>
+                  <Icon active name="chatbubbles" />
+                  <Text>{item.comments} Comments</Text>
+                </Button>
+              </Body>
+              <Right>
+                <Text>{item.posted_time}</Text>
+              </Right>
+            </CardItem>
+          </Card>
+
 
             </TouchableOpacity>
           )  }

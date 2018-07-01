@@ -67,8 +67,8 @@
 		75FFE9DC20DCF35E005082CE /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75FFE9C620DCF35D005082CE /* SimpleLineIcons.ttf */; };
 		75FFE9DD20DCF35E005082CE /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75FFE9C720DCF35D005082CE /* Zocial.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		A5ABADB817831A3B3D8A33F4 /* libPods-Rosnamah.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F476326DE81EB2845E3D91D /* libPods-Rosnamah.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		D8B1D86F843F6551F16CA81A /* libPods-Rosnamah.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EE7FCDF5E6A5A5C2E57FE9 /* libPods-Rosnamah.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -440,6 +440,9 @@
 		2D02E47B1E0B4A5D006451C7 /* Rosnamah-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rosnamah-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Rosnamah-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rosnamah-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F476326DE81EB2845E3D91D /* libPods-Rosnamah.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Rosnamah.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5039936362974D7A9A770504 /* Pods-Rosnamah.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosnamah.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rosnamah/Pods-Rosnamah.debug.xcconfig"; sourceTree = "<group>"; };
+		532A77B9D034A5D3A5F98FF8 /* Pods-Rosnamah.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosnamah.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rosnamah/Pods-Rosnamah.release.xcconfig"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		75FFE93720DCD273005082CE /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		75FFE96620DCD376005082CE /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
@@ -474,9 +477,6 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		B1EE7FCDF5E6A5A5C2E57FE9 /* libPods-Rosnamah.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Rosnamah.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBA0FF69C002A6312C2C0FDB /* Pods-Rosnamah.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosnamah.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rosnamah/Pods-Rosnamah.release.xcconfig"; sourceTree = "<group>"; };
-		EF043533160B12582CD1E277 /* Pods-Rosnamah.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosnamah.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rosnamah/Pods-Rosnamah.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -513,7 +513,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				D8B1D86F843F6551F16CA81A /* libPods-Rosnamah.a in Frameworks */,
+				A5ABADB817831A3B3D8A33F4 /* libPods-Rosnamah.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,22 +659,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1E5A91E8E11B7A2B3DA14D71 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5039936362974D7A9A770504 /* Pods-Rosnamah.debug.xcconfig */,
+				532A77B9D034A5D3A5F98FF8 /* Pods-Rosnamah.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				B1EE7FCDF5E6A5A5C2E57FE9 /* libPods-Rosnamah.a */,
+				4F476326DE81EB2845E3D91D /* libPods-Rosnamah.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4EF760367717E8897D154ED2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EF043533160B12582CD1E277 /* Pods-Rosnamah.debug.xcconfig */,
-				EBA0FF69C002A6312C2C0FDB /* Pods-Rosnamah.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -836,7 +836,7 @@
 				00E356EF1AD99517003FC87E /* RosnamahTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				4EF760367717E8897D154ED2 /* Pods */,
+				1E5A91E8E11B7A2B3DA14D71 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -888,12 +888,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Rosnamah" */;
 			buildPhases = (
-				E1B7D62B5F0F7831C06B1BC7 /* [CP] Check Pods Manifest.lock */,
+				9AA6EAD58723837DB20D537B /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				2883E1EB7AADB9AE50F7054D /* [CP] Copy Pods Resources */,
+				89CE41DF55A82D23D5F426CE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1470,7 +1470,21 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		2883E1EB7AADB9AE50F7054D /* [CP] Copy Pods Resources */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		89CE41DF55A82D23D5F426CE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1488,21 +1502,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rosnamah/Pods-Rosnamah-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		E1B7D62B5F0F7831C06B1BC7 /* [CP] Check Pods Manifest.lock */ = {
+		9AA6EAD58723837DB20D537B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1624,14 +1624,16 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF043533160B12582CD1E277 /* Pods-Rosnamah.debug.xcconfig */;
+			baseConfigurationReference = 5039936362974D7A9A770504 /* Pods-Rosnamah.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				ENABLE_BITCODE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-splash-screen/ios";
 				INFOPLIST_FILE = Rosnamah/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1644,13 +1646,15 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EBA0FF69C002A6312C2C0FDB /* Pods-Rosnamah.release.xcconfig */;
+			baseConfigurationReference = 532A77B9D034A5D3A5F98FF8 /* Pods-Rosnamah.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_BITCODE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-splash-screen/ios";
 				INFOPLIST_FILE = Rosnamah/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
