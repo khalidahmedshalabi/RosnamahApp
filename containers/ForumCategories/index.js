@@ -2,40 +2,41 @@ import React, { Component } from 'react'
 import { FlatList, View, TouchableOpacity, Image, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
-import { Container } from 'native-base';
-import { bgColor } from '../../constants/Colors';
+import LazyContainer from '../../components/LazyContainer'
+import { bgColor, secondColor } from '../../constants/Colors';
 import MainHeader from '../../components/MainHeader'
+import CategoryBox from '../../components/CategoriesPlaces/CategoryBox.js'
+import Server from '../../constants/Server'
+import PlaceBox from '../../components/CategoriesPlaces/CategoryBox.js'
 import { GET } from '../../utils/Network';
 
-class Home extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			categories: [
+class ForumCategories extends Component {
+  constructor(props) {
+    super(props);
 
-			]
-		}
-
-	}
-
-	componentDidMount(){
-		GET('Categories?parent_id=0',
+	this.state = {
+		categories: [
+    ],
+    type:1
+  }
+}
+  componentDidMount(){
+    GET('forum_categories',
 			res => {
 				// on success
-				this.setState({ categories: res.data.response })
+        this.setState({categories:res.data.response,type:res.data.type})
 			},
 			err => {
-				// on failure
+        alert('error loading data please restart the app')
 			},
 			false // should authorise this request?
 		)
-  	}
 
-
-	renderCategory = (item, index) => {
+  }
+  renderCategory = (item, index) => {
 		return (
 			<TouchableOpacity
-			onPress={()=> {this.props.navigation.navigate('CategoriesPlaces',{category_id:item.id})}}
+			onPress={()=> {this.props.navigation.navigate('ForumPosts',{category_id:item.id})}}
 				style={{ flex: 1, height: 250, borderRadius: 10, marginHorizontal: 5, backgroundColor: 'white' }}>
 				<Image
 					resizeMode='cover'
@@ -54,20 +55,19 @@ class Home extends Component {
 		const { translate, navigation } = this.props
 
 		return (
-			<Container style={{ backgroundColor: bgColor }}>
+			<LazyContainer style={{ flex: 1, backgroundColor: bgColor }}>
 				<MainHeader navigation={navigation} />
 				<FlatList
 					contentContainerStyle={{ paddingVertical: 12 }}
 					numColumns={2}
 					data={this.state.categories}
-					
 					style={{ flex: 1 }}
 					ItemSeparatorComponent={
-						() => <View style={{ height: 12, backgroundColor: 'transparent' }}></View>
+						() => <View style={{ height:10, backgroundColor:'white'  }}></View>
 					}
-					renderItem={({ item, index }) => this.renderCategory(item, index)}
-				/>
-			</Container>
+					renderItem={({ item, index }) => this.renderCategory(item, index)  }
+              />
+			</LazyContainer>
 		)
 	}
 }
@@ -76,4 +76,4 @@ const mapStateToProps = (state) => ({
 	translate: getTranslate(state.locale),
 })
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(ForumCategories)

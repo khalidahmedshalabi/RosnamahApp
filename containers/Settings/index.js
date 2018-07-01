@@ -20,7 +20,7 @@ class Settings extends Component {
 		super(props)
 
 		const { bio, name, isMale, birthdate, profile_img_url, translate, currLang } = this.props;
-		
+
 		this.state = {
 			accountModalShown: false,
 			newAccountSettingValue: '',
@@ -104,7 +104,7 @@ class Settings extends Component {
 	onSaveSettings = () => {
 		const { didNameChange, didBioChange, didBirthdateChange, didGenderChange, didLanguageChange } = this.state
 
-		let 
+		let
 			settings_to_update = {},
 			didAnySettingChange = false
 
@@ -146,7 +146,7 @@ class Settings extends Component {
 			)
 		}
 
-		navigation.navigate('Home')
+		this.props.navigation.navigate('Home')
 	}
 
 	getGenderAsString = () => {
@@ -251,19 +251,19 @@ class Settings extends Component {
 					backgroundColor="white"
 					barStyle="dark-content"
 				/>
-				
+
 				<Content style={{ flex: 0.8 }}>
 					<View
 						style={{ justifyContent: 'center', alignItems: 'center', padding: 24, zIndex: 1 }}>
 						{this.renderProfileImage()}
 					</View>
 
-					<View style={{ 
-						backgroundColor: 'white', 
-						borderRadius: 20, 
-						margin: 14, 
-						marginTop: -50, 
-						padding: 20, 
+					<View style={{
+						backgroundColor: 'white',
+						borderRadius: 20,
+						margin: 14,
+						marginTop: -50,
+						padding: 20,
 						paddingTop: 30,
 					}}>
 						<View
@@ -301,7 +301,7 @@ class Settings extends Component {
 									onChange={(option) => { this.setState({ isMale: option.key, didGenderChange: true }) }}>
 									<FontedText
 										text={this.getGenderAsString()}
-										style={{ color: 'black', fontSize: 17 }} 
+										style={{ color: 'black', fontSize: 17 }}
 										/>
 								</ModalSelector>
 							</View>
@@ -421,7 +421,7 @@ class Settings extends Component {
 							<FontedText
 								style={styles.setting_action_text}
 								text={translate('ChangePass')} />
-							
+
 							<Ionicons
 								name={`ios-arrow-${I18nManager.isRTL ? 'back' : 'forward'}`}
 								color={'#575757'}

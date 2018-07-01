@@ -8,6 +8,7 @@ import MainHeader from '../../components/MainHeader'
 import CategoryBox from '../../components/CategoriesPlaces/CategoryBox.js'
 import Server from '../../constants/Server'
 import PlaceBox from '../../components/CategoriesPlaces/CategoryBox.js'
+import { GET } from '../../utils/Network';
 
 class CategoriesPlaces extends Component {
   constructor(props) {
@@ -20,10 +21,17 @@ class CategoriesPlaces extends Component {
   }
 }
   componentDidMount(){
-    fetch(Server.base_url+'/api/v1/Categories?parent_id='+this.props.navigation.state.params.category_id).then(res => res.json())
-    .then(data =>{
-      this.setState({categories:data.response,type:data.type})
-    })
+    GET('Categories?parent_id='+this.props.navigation.state.params.category_id,
+			res => {
+				// on success
+        this.setState({categories:res.data.response,type:res.data.type})
+			},
+			err => {
+        alert('error loading data please restart the app')
+			},
+			false // should authorise this request?
+		)
+
   }
 
 	render () {
@@ -57,7 +65,7 @@ class CategoriesPlaces extends Component {
                   </TouchableOpacity>
 
                 ) : (
-                  <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'CategoriesPlaces',
+                  <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'SinglePlace',
                       params: {
                           category_id:item.id
                       },
@@ -68,6 +76,7 @@ class CategoriesPlaces extends Component {
                   image = {item.image}
                   desc={item.description}
                   />
+
                   </TouchableOpacity>
                 )
 
