@@ -8,6 +8,8 @@ import Octicons from 'react-native-vector-icons/Octicons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Feather from 'react-native-vector-icons/Feather'
 import Entypo from 'react-native-vector-icons/Entypo'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import ForumCategories from '../containers/ForumCategories';
 
@@ -16,6 +18,7 @@ import Settings from '../containers/Settings'
 import MyVisits from '../containers/MyVisits';
 import FavPlaces from '../containers/FavPlaces';
 import AddPlace from '../containers/AddPlace'
+import AboutUs from '../containers/AboutUs';
 
 const drawerIconSize = 26
 
@@ -74,6 +77,14 @@ const MainDrawerNavigator = createDrawerNavigator({
 		navigationOptions: {
 			drawerIcon: ({ tintColor }) => (
 				<Feather name='log-out' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
+			),
+		}
+	},
+	AboutUs: {
+		screen: AboutUs,
+		navigationOptions: {
+			drawerIcon: ({ tintColor }) => (
+				<Ionicons name='ios-call-outline' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
 			),
 		}
 	},

@@ -14,6 +14,8 @@ export const en = {
 	DrawerItem_FavPlaces: 'Favorite Places',
 	DrawerItem_Forum:'Forum',
 	DrawerItem_AddPlace:'Add Place',
+	DrawerItem_AboutUs:'About Us',
+
 	// End Drawer
 	NoInternetConnection: 'No Internet Connection',
 	// signup
@@ -80,6 +82,7 @@ export const ar = {
 	DrawerItem_FavPlaces: 'اماكني المفضلة',
 	DrawerItem_Forum:'صاله النقاش',
 	DrawerItem_AddPlace:'اضافه مكان',
+	DrawerItem_AboutUs:'عنا',
 	// End Drawer
 	NoInternetConnection: 'غير مُتصل بالانترنت',
 	signup_title: 'انشئ حساب مجاني',

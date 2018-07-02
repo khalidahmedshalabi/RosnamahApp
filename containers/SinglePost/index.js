@@ -76,7 +76,8 @@ comment = ()=>{
       name:'مستخدم تجريبي',
       profile_img_url:'https://images.vexels.com/media/users/3/145908/preview2/52eabf633ca6414e60a7677b0b917d92-male-avatar-maker.jpg'
     }
-  })
+  });
+  this.setState({comments,comment:''});
 }
 	render () {
 		const { translate, navigation } = this.props

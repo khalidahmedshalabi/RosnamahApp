@@ -15,6 +15,8 @@ import PhoneVerification from '../containers/PhoneVerification'
 import codeConfirmation from '../containers/PhoneVerification/codeConfirmation'
 import ResetPassword from '../containers/ResetPassword'
 import Settings from '../containers/Settings';
+import AboutUs from '../containers/AboutUs';
+
 // This is the core of the navigator: route configs, etc...
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 	const routeConfigs = {
@@ -22,6 +24,7 @@ const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 		ForumCategories: {screen: ForumCategories},
 		ForumPosts: {screen: ForumPosts},
 		SinglePlace: {screen: SinglePlace},
+		AboutUs: {screen: AboutUs},
 		SinglePost: {screen: SinglePost},
 		Login: {screen: Login},
 		CategoriesPlaces: {screen: CategoriesPlaces},
