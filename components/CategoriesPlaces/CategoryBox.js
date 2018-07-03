@@ -19,7 +19,7 @@ export default class CategoryBox extends Component{
 				/>
 			<View style={{justifyContent: 'center',height:100,borderColor:borderColor,borderWidth:.2  }}>
 				<FontedText style={{ flex:.4, paddingHorizontal: 27 ,color: headerColor, fontSize: 20,fontWeight:'bold' }} text={this.props.title}></FontedText>
-				<FontedText style={{flex:.2,paddingHorizontal: 26, color: 'gray', fontSize: 15 }} text={this.props.desc}></FontedText>
+				<FontedText style={{flex:.2,paddingHorizontal: 26, color: 'gray', fontSize: 15 }} text={this.props.title}></FontedText>
 			</View>
 
 		</View>

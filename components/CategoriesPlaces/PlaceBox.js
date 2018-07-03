@@ -14,7 +14,7 @@ export default class CategoryBox extends Component{
 			style={{ flex: 1,height:250, borderRadius: 10, marginHorizontal: 5,backgroundColor:'white' }}>
 			<Image
 				resizeMode='cover'
-				style={{ flex: 1  }}
+				style={{ flex: 1 ,borderRadius:4 }}
 				source={{ uri: this.props.image }}
 				/>
 			<View style={{justifyContent: 'center',height:100,borderColor:borderColor,borderWidth:.2  }}>

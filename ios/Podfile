@@ -26,6 +26,7 @@ target 'Rosnamah' do
   # React Native third party dependencies podspecs
   pod 'DoubleConversion', :podspec => "#{rn_path}/third-party-podspecs/DoubleConversion.podspec"
   pod 'glog', :podspec => "#{rn_path}/third-party-podspecs/glog.podspec"
+  pod 'react-native-fetch-blob',:path => '../node_modules/react-native-fetch-blob'
   # If you are using React Native <0.54, you will get the following error:
   # "The name of the given podspec `GLog` doesn't match the expected one `glog`"
   # Use the following line instead:

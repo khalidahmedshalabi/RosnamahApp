@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, View, TouchableOpacity, Image, Text,Dimensions, Platform } from 'react-native'
+import { FlatList, View, TouchableOpacity,ScrollView, Image, Text,Dimensions, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
 import LazyContainer from '../../components/LazyContainer'
@@ -8,14 +8,15 @@ import MainHeader from '../../components/MainHeader'
 import CategoryBox from '../../components/CategoriesPlaces/CategoryBox.js'
 import Server from '../../constants/Server'
 import PlaceBox from '../../components/CategoriesPlaces/CategoryBox.js'
-import Carousel from 'react-native-snap-carousel';
+import Carousel,{ ParallaxImage } from 'react-native-snap-carousel';
 import Pagination from 'react-native-snap-carousel';
 import { Body, Left, Right, Header } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import FontedText from '../../components/FontedText';
 import { NavigationActions } from 'react-navigation'
-import { Rating, AirbnbRating } from 'react-native-ratings';
-
+import StarRating from 'react-native-star-rating';
+import {Container,Icon,Content, Accordion} from 'native-base'
 class SinglePlace extends Component {
   constructor(props) {
     super(props);
@@ -32,8 +33,16 @@ class SinglePlace extends Component {
         title:'https://lh3.googleusercontent.com/i9ihFYsnaLujPL9sMcI25sW88eQLjYY12Czq9QJnG4KE1Poj6RLoXIB_ePzTyN50wZsAko9XQg=w640-h400-e365'
       },
     ],
-    type:1
+    type:1,
+    activeSlide:1,
+    post:{
+      text:'we are here welcoming any usual user for a new invitaion to this app we are here welcoming any usual user for a new invitaion to this app we are here welcoming any usual user for a new invitaion to this app we are here welcoming any usual user for a new invitaion to this app we are here welcoming any usual user for a new invitaion to this app we are here welcoming any usual user for a new invitaion to this app we are here welcoming any usual user for a new invitaion to this app',
+      times:'saturday : 9 am to 5 pm'+
+      '- sunday : 9 am to 9 pm - monday: 9 am to 6pm - tusday : 6 am to 4 pm - wednsday: 7 am to 7 pm - thursday : 8 am to 8 pm - friday :holiday'
+    },
+    starCount:3
   }
+
 }
   componentDidMount(){
     fetch(Server.base_url+'/api/v1/Categories?parent_id='+this.props.navigation.state.params.category_id).then(res => res.json())
@@ -43,32 +52,78 @@ class SinglePlace extends Component {
   }
   _renderItem ({item, index}) {
        return (
-           <Image
-             resizeMode='cover'
-             style={{ flex: 1  }}
-             source={{ uri: item.title}}
-             style={{height:200}}
-             />
+           <View>
+             <Image
+                  source={{ uri: item.title }}
+                  containerStyle={{height:200}}
+                  style={{height:200,borderRadius:4}}
+                  parallaxFactor={0.4}
 
+                    />
+
+            </View>
 
        );
    }
 
-   ratingCompleted(rating) {
-  console.log("Rating is: " + rating)
+   onStarRatingPress(rating) {
+    this.setState({
+      starCount: rating
+    });
   }
 
+
+//acording data ---->
+_renderHeader(title, expanded) {
+return (
+  <View
+    style={{
+      flexDirection: "row",
+      padding: 10,
+      justifyContent: "space-between",
+      alignItems: "center",
+      backgroundColor: secondColor,
+      borderRadius:4
+    }}
+  >
+    <FontedText style={{color:'white',fontSize:18}} text={title}/>
+
+
+    {expanded
+      ? <Icon style={{ fontSize: 18 ,color:'white',}} name="remove-circle" />
+      : <Icon style={{ fontSize: 18 ,color:'white',}} name="add-circle" />}
+  </View>
+);
+}
+_renderContent(content) {
+return (
+  <FontedText
+    style={{
+      backgroundColor: "#f7f7f7",
+      padding: 10,
+      fontStyle: "italic",
+      borderRadius:4
+    }}
+    text={content}
+  />
+
+);
+}
 	render () {
 		const { translate, navigation } = this.props
     const IS_IOS = Platform.OS === 'ios';
     const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
-
+    const dataArray = [
+      { title: "opening times", content: ""+this.state.post.times },
+    ];
     function wp (percentage) {
         const value = (percentage * viewportWidth) / 100;
         return Math.round(value);
     }
+
 		return (
-			<LazyContainer style={{ flex: 1, backgroundColor: bgColor }}>
+      <Container>
+			<LazyContainer style={{ flex: 1, backgroundColor: '#fff' }}>
       <Header
         noShadow={true}
         androidStatusBarColor='#f2f2f2'
@@ -93,32 +148,100 @@ class SinglePlace extends Component {
           }
         } style={{flex:.1,padding:10}} />
         </Header>
-        <Rating
-        onFinishRating={this.ratingCompleted}
-        style={{justifyContent:'center'}}
-        />
+        <ScrollView>
       <Carousel
         data={this.state.images}
         renderItem={this._renderItem}
         sliderWidth={wp(100)}
         itemWidth={wp(90)}
         sliderHeight={0}
-        contentContainerCustomStyle	={{justifyContent:'center',paddingHorizontal:20}}
-        containerCustomStyle={{paddingVertical: 10}}
+        contentContainerCustomStyle	={{justifyContent:'center',paddingHorizontal:20,height:10}}
+        containerCustomStyle={{paddingVertical: 20,height:220}}
         itemHeight={0}
         inactiveSlideScale={0.95}
         inactiveSlideOpacity={.7}
-        enableMomentum={true}
         activeSlideAlignment={'start'}
+        loop={true}
+
         activeAnimationType={'spring'}
+        onSnapToItem={(index) => this.setState({ activeSlide: index }) }
         activeAnimationOptions={{
             friction: 1,
             tension: 1
         }}
       />
-      <Text>aaaa</Text>
+      {
+        //post text -------->
+      }
+      <FontedText style={{padding:15}} text={this.state.post.text}/>
+      {
+        //rating box -------->
+      }
+      <View style={{justifyContent:'center',alignItems:'center'}}>
+        <View style={{flexDirection:'row',borderRadius:4,backgroundColor:'#f7f7f7',padding:15,width:'90%',justifyContent:'center',alignItems:'center'}}>
+          <StarRating
+          disabled={false}
+          maxStars={5}
+          fullStarColor={'gold'}
+          emptyStarColor={'gold'}
+          rating={this.state.starCount}
+          selectedStar={(rating) => this.onStarRatingPress(rating)}
+          />
+        </View>
+      </View>
 
-			</LazyContainer>
+      {
+        //buttons box ---------->
+      }
+      <View style={{flexDirection:'row',backgroundColor:'#f7f7f7',padding:15,marginTop:15}}>
+        <View style={{flex:.2,justifyContent:'center',alignItems:'center'}}>
+        <Ionicons name="ios-share-outline" size={30} color={secondColor}  />
+        <FontedText style={{color:secondColor}} text='share'/>
+        </View>
+
+
+        <View style={{flex:.2,alignItems:'center'}}>
+        <Ionicons name="ios-checkmark-circle-outline" size={30} color={secondColor}  />
+        <FontedText style={{color:secondColor}} text='check in'/>
+        </View>
+
+
+        <View style={{flex:.2,alignItems:'center'}}>
+        <Ionicons name="ios-camera-outline" size={30} color={secondColor}  />
+        <FontedText style={{color:secondColor}} text='image'/>
+        </View>
+
+
+        <View style={{flex:.2,alignItems:'center'}}>
+        <Ionicons name="ios-call-outline" size={30} color={secondColor}  />
+        <FontedText style={{color:secondColor}} text='call'/>
+        </View>
+
+
+        <View style={{flex:.2,alignItems:'center'}}>
+        <Ionicons name="ios-browsers-outline" size={30} color={secondColor}  />
+        <FontedText style={{color:secondColor}} text='web'/>
+        </View>
+      </View>
+      {
+        // times content ------>
+      }
+      <Container>
+        <Content padder>
+          <Accordion
+          dataArray={dataArray}
+          renderHeader={this._renderHeader}
+renderContent={this._renderContent}
+
+         />
+       </Content>
+     </Container>
+
+
+      </ScrollView>
+      </LazyContainer>
+      </Container>
+
 
 		)
 	}

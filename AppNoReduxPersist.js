@@ -22,10 +22,10 @@ class AppNoReduxPersist extends React.Component {
 				const { languages } = response.data;
 
 				storeLanguagesData(languages);
-				
-				let  
-					langToGet = isFirstTime ? 
-						languages.find(lang => lang.isDefault === true) : 
+
+				let
+					langToGet = isFirstTime ?
+						languages.find(lang => lang.isDefault === true) :
 						languages.find(lang => lang.code === this.props.currLang.code);
 
 				// Initialize react-localize-redux with our array of languages
@@ -87,7 +87,7 @@ class AppNoReduxPersist extends React.Component {
 
 		// Allow rendering now
 		this.setState({ isLoadingLanguages: false })
-		
+
 		/*const { languages_version } = this.props;
 
 		// Check if local translation data exists
@@ -152,7 +152,7 @@ class AppNoReduxPersist extends React.Component {
 		// SplashScreen.hide()
 		// Handle first isConnected state to toggle the connectivity sign
 		NetInfo.isConnected.fetch().then(isConnected => this.setState({ isConnected }))
-		
+
 		// Listen for future changes too
 		NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectivityChange);
 
