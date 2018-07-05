@@ -30,8 +30,7 @@ class MainHeader extends Component {
 
 				<Body style={{ flex: 0.8 }}>
 					<TouchableWithoutFeedback 
-						//onPress={() => this.props.navigation.navigate('Search')}
-						onPress={() => {}}>
+						onPress={() => this.props.navigation.navigate('Search')}>
 						<View 
 							style={{
 								width: '100%',

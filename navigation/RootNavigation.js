@@ -7,8 +7,6 @@ import ForumCategories from '../containers/ForumCategories';
 import ForumPosts from '../containers/ForumPosts';
 import SinglePlace from '../containers/SinglePlace';
 import SinglePost from '../containers/SinglePost';
-import MainHeader from '../components/MainHeader'
-import Home from '../containers/Home'
 import Signup from '../containers/Signup'
 import Login from '../containers/Login'
 import PhoneVerification from '../containers/PhoneVerification'
@@ -16,6 +14,7 @@ import codeConfirmation from '../containers/PhoneVerification/codeConfirmation'
 import ResetPassword from '../containers/ResetPassword'
 import Settings from '../containers/Settings';
 import AboutUs from '../containers/AboutUs';
+import Search from '../containers/Search';
 
 // This is the core of the navigator: route configs, etc...
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
@@ -33,11 +32,12 @@ const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 		codeConfirmation: {screen: codeConfirmation},
 		ResetPassword: {screen: ResetPassword},
 		Settings: {screen: Settings},
+		Search: { screen: Search }
 	};
 
 	const stackNavigatorConfigs = {
 		initialRouteName, // this is passed to the navigator (see RootNavigation below)
-		navigationOptions: (props) => ({
+		navigationOptions: () => ({
 			header: null,
 			headerTitleStyle: {
 				fontWeight: 'normal'
@@ -51,7 +51,7 @@ const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 
 
 // This acts as a wrapper for the navigator
-const RootNavigation = ({ initialRouteName, screenProps, logged_in, skipped_login, }) => (
+const RootNavigation = ({ screenProps, logged_in, skipped_login, }) => (
 	<RootNavigatorCore
 		// Pass screen props normally
 		screenProps={screenProps}
