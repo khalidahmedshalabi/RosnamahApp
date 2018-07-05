@@ -4755,6 +4755,12 @@ react-native-easy-grid@0.1.17:
   dependencies:
     lodash "^4.11.1"
 
+react-native-easy-toast@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-easy-toast/-/react-native-easy-toast-1.1.0.tgz#7d3a34ed298d32c4827b8d43ddfab6a71b98a2e3"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-event-listeners@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/react-native-event-listeners/-/react-native-event-listeners-1.0.3.tgz#8e210491b0eab8f714317a0f8c2d322bb2036268"
