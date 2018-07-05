@@ -21,7 +21,16 @@ class ForumCategories extends Component {
   }
 }
   componentDidMount(){
-    GET('forum_categories',
+    const { currLang } = this.props
+
+		const {
+			key, // id
+			label, // full name
+			code, // iso2 code
+			isRTL, // if RTL
+			isDefault // if default
+		 } = currLang
+    GET('forum_categories?lang='+code,
 			res => {
 				// on success
         this.setState({categories:res.data.response,type:res.data.type})
@@ -74,6 +83,7 @@ class ForumCategories extends Component {
 
 const mapStateToProps = (state) => ({
 	translate: getTranslate(state.locale),
+  currLang: state.language.currLang || {},
 })
 
 export default connect(mapStateToProps)(ForumCategories)

@@ -69,7 +69,15 @@ export const en = {
 	Language: 'Language',
 	NoContent: 'Nothing here...',
 	// single post
-	comment:'comment'
+	comment:'Comment',
+	//single place
+	opening_times:'Working Times',
+	share:'Share',
+	check_in:'Check In',
+	image:'Image',
+	call:'Call',
+	web:'Web'
+
 };
 
 // Arabic
@@ -133,5 +141,12 @@ export const ar = {
 	Language: 'اللغة',
 	NoContent: 'لا يوجد محتوى',
 	// single post
-	comment:'تعليق ....'
+	comment:'تعليق ....',
+	//single Place
+	opening_times:'مواعيد العمل',
+	share:'مشاركه',
+	check_in:'سجل زياره',
+	image:'صوره',
+	call:'اتصل',
+	web:'موقع الويب',
 };

@@ -21,7 +21,16 @@ class CategoriesPlaces extends Component {
   }
 }
   componentDidMount(){
-    GET('Categories?parent_id='+this.props.navigation.state.params.category_id,
+    const { currLang } = this.props
+
+		const {
+			key, // id
+			label, // full name
+			code, // iso2 code
+			isRTL, // if RTL
+			isDefault // if default
+		 } = currLang
+    GET('Categories?parent_id='+this.props.navigation.state.params.category_id+'&lang='+code,
 			res => {
 				// on success
         this.setState({categories:res.data.response,type:res.data.type})
@@ -67,7 +76,8 @@ class CategoriesPlaces extends Component {
                 ) : (
                   <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'SinglePlace',
                       params: {
-                          category_id:item.id
+                          category_id:item.id,
+                          place_name:item.name
                       },
                       key: Math.random() })}>
 
@@ -89,6 +99,7 @@ class CategoriesPlaces extends Component {
 
 const mapStateToProps = (state) => ({
 	translate: getTranslate(state.locale),
+  currLang: state.language.currLang || {},
 })
 
 export default connect(mapStateToProps)(CategoriesPlaces)
