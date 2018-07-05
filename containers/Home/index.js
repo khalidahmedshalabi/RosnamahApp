@@ -19,6 +19,16 @@ class Home extends Component {
 	}
 
 	componentDidMount(){
+		const { currLang } = this.props
+
+		const { 
+			key, // id
+			label, // full name
+			code, // iso2 code
+			isRTL, // if RTL
+			isDefault // if default
+		 } = currLang
+
 		GET('Categories?parent_id=0',
 			res => {
 				// on success
@@ -74,6 +84,7 @@ class Home extends Component {
 
 const mapStateToProps = (state) => ({
 	translate: getTranslate(state.locale),
+	currLang: state.language.currLang || {},
 })
 
 export default connect(mapStateToProps)(Home)
