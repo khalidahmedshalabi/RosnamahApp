@@ -36,7 +36,7 @@ class SinglePlace extends Component {
     type:1,
     activeSlide:1,
     post:{
-      text:'we are here welcoming any usual user for a new invitaion to this app we are here welcoming any usual user for a new invitaion to this app we are here welcoming any usual user for a new invitaion to this app we are here welcoming any usual user for a new invitaion to this app we are here welcoming any usual user for a new invitaion to this app we are here welcoming any usual user for a new invitaion to this app we are here welcoming any usual user for a new invitaion to this app',
+      text:'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.ومن هنا وجب على المصممأيضعنصوصا مؤقتة على التصميً.',
       times:'saturday : 9 am to 5 pm'+
       '- sunday : 9 am to 9 pm - monday: 9 am to 6pm - tusday : 6 am to 4 pm - wednsday: 7 am to 7 pm - thursday : 8 am to 8 pm - friday :holiday'
     },
@@ -114,7 +114,7 @@ return (
     const IS_IOS = Platform.OS === 'ios';
     const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
     const dataArray = [
-      { title: "opening times", content: ""+this.state.post.times },
+      { title: translate('opening_times'), content: ""+this.state.post.times },
     ];
     function wp (percentage) {
         const value = (percentage * viewportWidth) / 100;
@@ -140,7 +140,7 @@ return (
         marginTop: 10,
         flex:.8,
         color:bgColor
-        }} text='الدوحه'/>
+      }} text={this.props.navigation.state.params.place_name}/>
 
         <Ionicons name="ios-arrow-round-back" size={30} color={bgColor} onPress={
           ()=>{
@@ -171,13 +171,9 @@ return (
         }}
       />
       {
-        //post text -------->
-      }
-      <FontedText style={{padding:15}} text={this.state.post.text}/>
-      {
         //rating box -------->
       }
-      <View style={{justifyContent:'center',alignItems:'center'}}>
+      <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
         <View style={{flexDirection:'row',borderRadius:4,backgroundColor:'#f7f7f7',padding:15,width:'90%',justifyContent:'center',alignItems:'center'}}>
           <StarRating
           disabled={false}
@@ -189,6 +185,14 @@ return (
           />
         </View>
       </View>
+      {
+        //post text -------->
+      }
+      <View style={{
+
+}}>
+      <FontedText style={{padding:15}} text={this.state.post.text}/>
+      </View>
 
       {
         //buttons box ---------->
@@ -196,31 +200,26 @@ return (
       <View style={{flexDirection:'row',backgroundColor:'#f7f7f7',padding:15,marginTop:15}}>
         <View style={{flex:.2,justifyContent:'center',alignItems:'center'}}>
         <Ionicons name="ios-share-outline" size={30} color={secondColor}  />
-        <FontedText style={{color:secondColor}} text='share'/>
         </View>
 
 
         <View style={{flex:.2,alignItems:'center'}}>
         <Ionicons name="ios-checkmark-circle-outline" size={30} color={secondColor}  />
-        <FontedText style={{color:secondColor}} text='check in'/>
         </View>
 
 
         <View style={{flex:.2,alignItems:'center'}}>
         <Ionicons name="ios-camera-outline" size={30} color={secondColor}  />
-        <FontedText style={{color:secondColor}} text='image'/>
         </View>
 
 
         <View style={{flex:.2,alignItems:'center'}}>
         <Ionicons name="ios-call-outline" size={30} color={secondColor}  />
-        <FontedText style={{color:secondColor}} text='call'/>
         </View>
 
 
         <View style={{flex:.2,alignItems:'center'}}>
         <Ionicons name="ios-browsers-outline" size={30} color={secondColor}  />
-        <FontedText style={{color:secondColor}} text='web'/>
         </View>
       </View>
       {

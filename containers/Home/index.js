@@ -6,10 +6,12 @@ import { Container } from 'native-base';
 import { bgColor } from '../../constants/Colors';
 import MainHeader from '../../components/MainHeader'
 import { GET } from '../../utils/Network';
+import FontedText from '../../components/FontedText';
 
 class Home extends Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			categories: [
 
@@ -21,15 +23,14 @@ class Home extends Component {
 	componentDidMount(){
 		const { currLang } = this.props
 
-		const { 
+		const {
 			key, // id
 			label, // full name
 			code, // iso2 code
 			isRTL, // if RTL
 			isDefault // if default
 		 } = currLang
-
-		GET('Categories?parent_id=0',
+		GET('Categories?parent_id=0&lang='+code,
 			res => {
 				// on success
 				this.setState({ categories: res.data.response })
@@ -54,11 +55,12 @@ class Home extends Component {
 					/>
 
 				<View style={{ flex: 0.2, paddingHorizontal: 12, justifyContent: 'center' }}>
-					<Text style={{ color: '#515254', fontSize: 17 }}>{item.name}</Text>
+					<FontedText style={{ color: '#515254', fontSize: 17 }} text={item.name}/>
 				</View>
 			</TouchableOpacity>
 		)
 	}
+
 
 	render () {
 		const { translate, navigation } = this.props
@@ -70,7 +72,7 @@ class Home extends Component {
 					contentContainerStyle={{ paddingVertical: 12 }}
 					numColumns={2}
 					data={this.state.categories}
-					
+
 					style={{ flex: 1 }}
 					ItemSeparatorComponent={
 						() => <View style={{ height: 12, backgroundColor: 'transparent' }}></View>
