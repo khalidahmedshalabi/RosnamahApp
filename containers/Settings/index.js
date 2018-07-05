@@ -61,7 +61,7 @@ class Settings extends Component {
 		)
 	}
 
-	componentWillMount () {
+	componentDidMount () {
 		GET('/Settings/GetLastUpdated',
 			res => {
 				if(res.data.settings_last_updated !== this.props.settings_last_updated) {
