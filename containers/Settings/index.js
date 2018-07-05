@@ -13,7 +13,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontedInput from '../../components/FontedInput';
 import FontedText from '../../components/FontedText';
 import styles from './styles';
-import { POST } from '../../utils/Network';
+import { POST, GET } from '../../utils/Network';
 
 class Settings extends Component {
 	constructor(props) {
@@ -40,6 +40,39 @@ class Settings extends Component {
 			didGenderChange: false,
 			didLanguageChange: false
 		}
+	}
+
+	// Fetch remote data and update local
+	updateLocalSettings = () => {
+		GET('/Settings/GetSettings',
+			res => {
+				const { name, birthdate, bio, gender } = res.data.settings
+
+				this.props.setBio(bio)
+				this.props.setName(name)
+				this.props.setBirthDate(birthdate)
+				this.props.setIsMale(gender)
+				this.setState({ name, birthdate, bio, isMale: gender })
+			},
+			err => {
+
+			},
+			true
+		)
+	}
+
+	componentWillMount () {
+		GET('/Settings/GetLastUpdated',
+			res => {
+				if(res.data.settings_last_updated !== this.props.settings_last_updated) {
+					this.updateLocalSettings()
+				}
+			},
+			err => {
+
+			},
+			true
+		)
 	}
 
 	renderProfileImage = () => {
@@ -137,7 +170,8 @@ class Settings extends Component {
 			POST('Settings',
 				settings_to_update,
 				res => {
-					// on success
+					const { setSettingsLastUpdated } = this.props
+					setSettingsLastUpdated(res.data.settings_last_updated)
 				},
 				err => {
 					// on failure
@@ -461,6 +495,7 @@ const mapStateToProps = (state) => ({
 	profile_img_url: state.settings.profile_img_url || null,
 	isMale: state.settings.isMale || -1,
 	birthdate: state.settings.birthdate || null,
+	settings_last_updated: state.settings.settings_last_updated || '',
 	currLang: state.language.currLang || null,
 	languages_data: state.language.languages_data || null,
 })
@@ -477,6 +512,7 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
 		setProfileImg: (profile_img_url) => actions.setProfileImg(dispatch, profile_img_url),
 		setIsMale: (isMale) => actions.setIsMale(dispatch, isMale),
 		setBirthDate: (birthdate) => actions.setBirthDate(dispatch, birthdate),
+		setSettingsLastUpdated: (settings_last_updated) => actions.setSettingsLastUpdated(dispatch, settings_last_updated),
 		switchLanguage: (lang) => langReducerActions.switchLanguage(dispatch, lang),
 	};
 }

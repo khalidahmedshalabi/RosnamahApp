@@ -4,6 +4,7 @@ const types = {
 	SET_PROFILE_IMG: 'SET_PROFILE_IMG',
 	SET_IS_MALE: 'SET_IS_MALE',
 	SET_BIRTHDATE: 'SET_BIRTHDATE',
+	SET_SETTINGS_LAST_UPDATED: 'SET_SETTINGS_LAST_UPDATED'
 };
 
 export const actions = {
@@ -22,6 +23,9 @@ export const actions = {
 	setBirthDate: (dispatch, birthdate) => {
 		dispatch({ type: types.SET_BIRTHDATE, birthdate })
 	},
+	setSettingsLastUpdated: (dispatch, settings_last_updated) => {
+		dispatch({ type: types.SET_SETTINGS_LAST_UPDATED, settings_last_updated })
+	},
 }
 
 const initialState = {
@@ -29,11 +33,12 @@ const initialState = {
 	name: '',
 	profile_img_url: '',
 	isMale: -1,
-	birthdate: ''
+	birthdate: '',
+	settings_last_updated: '',
 }
 
 export const reducer = (state = initialState, action) => {
-	const { bio, name, isMale, birthdate, profile_img_url } = action;
+	const { bio, name, isMale, birthdate, profile_img_url, settings_last_updated } = action;
 
 	switch (action.type) {
 		case types.SET_BIO:
@@ -46,6 +51,8 @@ export const reducer = (state = initialState, action) => {
 			return { ...state, isMale };
 		case types.SET_BIRTHDATE:
 			return { ...state, birthdate };
+		case types.SET_SETTINGS_LAST_UPDATED:
+			return { ...state, settings_last_updated };
 		default:
 			return state
 	}
