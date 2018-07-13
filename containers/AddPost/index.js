@@ -53,7 +53,8 @@ export default class RichTextExample extends Component {
       onPressAddImage={() => {
         // let imageSrc = this._pickImage()
         ImagePicker.launchImageLibrary({}, response  => {
-          this.richtext.insertImage({ src: response.path, width: 200, height: 200});  
+          var src = Platform.OS === 'ios' ? response.uri : response.path
+          this.richtext.insertImage({ src, width: 200, height: 200});  
         })
       }}
           />
