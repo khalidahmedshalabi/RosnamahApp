@@ -2876,6 +2876,12 @@ inquirer@^3.0.6:
     strip-ansi "^4.0.0"
     through "^2.3.6"
 
+invariant@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.0.tgz#c8d7e847366a49cc18b622f058a689d481e895f2"
+  dependencies:
+    loose-envify "^1.0.0"
+
 invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.2:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -3587,6 +3593,10 @@ jsprim@^1.2.2:
     extsprintf "1.3.0"
     json-schema "0.2.3"
     verror "1.10.0"
+
+keymirror@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/keymirror/-/keymirror-0.1.1.tgz#918889ea13f8d0a42e7c557250eee713adc95c35"
 
 kind-of@^1.1.0:
   version "1.1.0"
@@ -4797,6 +4807,10 @@ react-native-keyboard-aware-scroll-view@0.5.0:
     prop-types "^15.6.0"
     react-native-iphone-x-helper "^1.0.1"
 
+react-native-keyboard-spacer@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-keyboard-spacer/-/react-native-keyboard-spacer-0.4.1.tgz#46f18a320432098a25ea9fa89f5143dd254d332d"
+
 react-native-linear-gradient@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.4.0.tgz#51d8ea12bb72a59bede9edc87b694b16b64cf435"
@@ -4907,6 +4921,26 @@ react-native-vector-icons@~4.5.0:
     lodash "^4.0.0"
     prop-types "^15.5.10"
     yargs "^8.0.2"
+
+react-native-webview-bridge-updated@^1.0.0:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-webview-bridge-updated/-/react-native-webview-bridge-updated-1.0.9.tgz#930b4e6444f4a2b5f3151607c6eb6eba8deda08f"
+  dependencies:
+    invariant "2.2.0"
+    keymirror "0.1.1"
+
+react-native-webview-bridge@^0.33.0:
+  version "0.33.0"
+  resolved "https://registry.yarnpkg.com/react-native-webview-bridge/-/react-native-webview-bridge-0.33.0.tgz#7f9b7fb903b4ed13f4edcab52e654e9bffea4fd4"
+  dependencies:
+    invariant "2.2.0"
+    keymirror "0.1.1"
+
+react-native-zss-rich-text-editor@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-zss-rich-text-editor/-/react-native-zss-rich-text-editor-1.1.0.tgz#c197d797a8ca65e46e2ccbe36e73fa2624d07c1c"
+  dependencies:
+    react-native-webview-bridge-updated "^1.0.0"
 
 react-native@^0.55.4:
   version "0.55.4"
@@ -6052,7 +6086,7 @@ wordwrap@~0.0.2:
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
 
 world-countries@1.8.0:
-  version "1.8.0"
+  version v1.8.0
   resolved "https://registry.yarnpkg.com/world-countries/-/world-countries-1.8.0.tgz#17f48e7e8470ac5a2136ad6938dfc656fc2bcb95"
 
 wrap-ansi@^2.0.0:
