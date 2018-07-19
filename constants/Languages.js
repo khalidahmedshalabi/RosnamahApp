@@ -76,7 +76,9 @@ export const en = {
 	check_in:'Check In',
 	image:'Image',
 	call:'Call',
-	web:'Web'
+	web:'Web',
+	CantHaveEmptyInputs: 'Please fill in all inputs',
+	NetworkFailure: 'Network Failure',
 
 };
 
@@ -149,4 +151,6 @@ export const ar = {
 	image:'صوره',
 	call:'اتصل',
 	web:'موقع الويب',
+	CantHaveEmptyInputs: 'من فضلك قم بملء كل المدخلات',
+	NetworkFailure: 'فشل فى الشبكة',
 };

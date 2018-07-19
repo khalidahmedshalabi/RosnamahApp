@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
 import { Container, Item, Button } from 'native-base';
 import { mainColor } from '../../constants/Colors';
+import Toast from 'react-native-easy-toast';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
@@ -11,6 +12,11 @@ import FontedInput from '../../components/FontedInput';
 import FontedText from '../../components/FontedText';
 
 class Login extends Component {
+	state = {
+		identifier: '',
+		password: '',
+	}
+
 	componentDidMount() {
 		const { navigation } = this.props;
 
@@ -25,7 +31,30 @@ class Login extends Component {
 	}
 
 	onLogin = () => {
-		this.props.setLoggedIn(true)
+		const { password, identifier } = this.state;
+		const { translate } = this.props;
+
+		if (!identifier || !password) {
+			this.refs.toast.show(translate('CantHaveEmptyInputs'), 1000);
+			return;
+		}
+
+		POST('Signin', {
+			identifier,
+			password
+		},
+			(response) => {
+				const { setAuthToken, setLoggedIn } = this.props;
+				setAuthToken(response.data.auth);
+				setLoggedIn(true);
+			},
+			(error) => {
+				console.log(error)
+
+				const { translate } = this.props;
+				this.refs.toast.show(translate('NetworkFailure'), 1000);
+			},
+			false);
 	}
 
 	render() {
@@ -39,7 +68,11 @@ class Login extends Component {
 				/>
 
 				<View style={{ flex: 0.3, justifyContent: 'center', paddingHorizontal: 10 }}>
-					<FontedText 
+					<FontedText
+						onChangeText={(text) => this.setState({ identifier: text })}
+						onSubmitEditing={(event) => {
+							this.onLogin()
+						}}
 						text={translate('Login')}
 						style={{
 							color: 'black',
@@ -57,7 +90,14 @@ class Login extends Component {
 
 					<Item>
 						<SimpleLineIcons name='lock' size={26} style={{ marginRight: 12 }} />
-						<FontedInput style={{ fontSize: 15 }} placeholder={translate('Password')} secureTextEntry={true} />
+						<FontedInput 
+							onChangeText={(text) => this.setState({ password: text })}
+							onSubmitEditing={(event) => {
+								this.onLogin()
+							}}
+							style={{ fontSize: 15 }} 
+							placeholder={translate('Password')} 
+							secureTextEntry={true} />
 					</Item>
 
 					<View style={{ marginTop: 50, justifyContent: 'space-between' }}>
@@ -125,6 +165,8 @@ class Login extends Component {
 							text={translate('SkipLogin')} />
 					</Button>
 				</View>
+
+				<Toast ref="toast" />
 			</Container>
 		)
 	}
@@ -137,11 +179,13 @@ const mapStateToProps = (state) => ({
 function mergeProps(stateProps, dispatchProps, ownProps) {
 	const { dispatch } = dispatchProps;
 	const { actions } = require('../../redux/LoginRedux.js');
+	const userRedux = require('../../redux/UserRedux.js');
 	return {
 		...ownProps,
 		...stateProps,
 		skipLogin: (login) => actions.skipLogin(dispatch, login),
 		setLoggedIn: (logged_in) => actions.setLoggedIn(dispatch, logged_in),
+		setAuthToken: (auth_token) => userRedux.actions.setAuthToken(dispatch, auth_token)
 	};
 }
 

@@ -18,6 +18,7 @@ import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.imagepicker.ImagePickerPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
+import com.github.alinz.reactnativewebviewbridge.WebViewBridgePackage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,7 +44,8 @@ public class MainApplication extends Application implements ReactApplication {
             new LinearGradientPackage(),
             new ImagePickerPackage(),
             new RNFetchBlobPackage(),
-      			new SplashScreenReactPackage()
+      			new SplashScreenReactPackage(),
+            new WebViewBridgePackage()
       );
     }
 
