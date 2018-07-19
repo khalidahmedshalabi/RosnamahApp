@@ -16,15 +16,20 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontedText from '../../components/FontedText';
 import { NavigationActions } from 'react-navigation'
 import StarRating from 'react-native-star-rating';
+import YouTube from 'react-native-youtube'
 import {Container,Icon,Content, Accordion} from 'native-base'
+import { GET } from '../../utils/Network';
+
 class SinglePlace extends Component {
   constructor(props) {
     super(props);
 
 	this.state = {
+    isReady:false,
 		images: [
       {
         title:'https://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg'
+
       },
       {
         title:'https://media.istockphoto.com/photos/plant-growing-picture-id510222832?k=6&m=510222832&s=612x612&w=0&h=Pzjkj2hf9IZiLAiXcgVE1FbCNFVmKzhdcT98dcHSdSk='
@@ -36,31 +41,64 @@ class SinglePlace extends Component {
     type:1,
     activeSlide:1,
     post:{
-      text:'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.ومن هنا وجب على المصممأيضعنصوصا مؤقتة على التصميً.',
-      times:'saturday : 9 am to 5 pm'+
-      '- sunday : 9 am to 9 pm - monday: 9 am to 6pm - tusday : 6 am to 4 pm - wednsday: 7 am to 7 pm - thursday : 8 am to 8 pm - friday :holiday'
+      description:'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.ومن هنا وجب على المصممأيضعنصوصا مؤقتة على التصميً.',
+      times:'..'
     },
     starCount:3
   }
 
 }
   componentDidMount(){
-    fetch(Server.base_url+'/api/v1/Categories?parent_id='+this.props.navigation.state.params.category_id).then(res => res.json())
-    .then(data =>{
-      this.setState({categories:data.response,type:data.type})
-    })
+    const { currLang } = this.props
+
+		const {
+			key, // id
+			label, // full name
+			code, // iso2 code
+			isRTL, // if RTL
+			isDefault // if default
+		 } = currLang
+
+
+    GET('place/single_place?place_id='+this.props.navigation.state.params.place_id+'&lang='+code,
+			res => {
+				// on success
+        this.setState({post:res.data.place[0],starCount:res.data.rating,images:res.data.place[0].images})
+			},
+			err => {
+				// on failure
+			},
+			false // should authorise this request?
+		)
+
   }
-  _renderItem ({item, index}) {
+
+  _renderItem = ({item, index}) => {
        return (
            <View>
+           {(item.type == 1) ?
              <Image
-                  source={{ uri: item.title }}
+                  source={{ uri: item.image }}
                   containerStyle={{height:200}}
                   style={{height:200,borderRadius:4}}
                   parallaxFactor={0.4}
 
                     />
+                    :
+                    <YouTube
+      videoId='2GyL8-Ks5TY'   // The YouTube video ID
+      play={false}             // control playback of video with true/false
+      fullscreen={true}       // control whether the video should play in fullscreen or inline
+      loop={false}             // control whether the video should loop when ended
 
+      onReady={e => this.setState({ isReady: true })}
+      onChangeState={e => this.setState({ status: e.state })}
+      onChangeQuality={e => this.setState({ quality: e.quality })}
+      onError={e => this.setState({ error: e.error })}
+
+      style={{ alignSelf: 'stretch', height: 300 }}
+    />
+              }
             </View>
 
        );
@@ -188,10 +226,8 @@ return (
       {
         //post text -------->
       }
-      <View style={{
-
-}}>
-      <FontedText style={{padding:15}} text={this.state.post.text}/>
+      <View >
+      <FontedText style={{padding:15}} text={this.state.post.description}/>
       </View>
 
       {
@@ -248,6 +284,7 @@ renderContent={this._renderContent}
 
 const mapStateToProps = (state) => ({
 	translate: getTranslate(state.locale),
+  currLang: state.language.currLang || {},
 })
 
 export default connect(mapStateToProps)(SinglePlace)

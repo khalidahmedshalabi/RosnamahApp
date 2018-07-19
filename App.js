@@ -1,5 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { Platform ,Linking} from 'react-native'
+
 import AppNoReduxPersist from './AppNoReduxPersist';
 import { PersistGate } from 'redux-persist/es/integration/react'
 import configureStore from './redux/configureStore'
@@ -15,6 +17,7 @@ const onBeforeLift = () => {
 }
 
 class App extends React.Component {
+	
 	render() {
 		return (
 			<Provider store={store}>
