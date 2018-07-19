@@ -43,7 +43,7 @@ export const HandleHttpResponses = (response, onSuccess, onFailure) => {
 const HTTP_REQUEST = (
 	method, endpoint, post_data, 
 	onSuccess, onFailure, shouldAuthorize, 
-	shouldDisplayOverlay = true, contentType = 'application/json') => {
+	shouldDisplayOverlay = true, contentType = 'application/json; charset=UTF-8') => {
 
 	if (shouldDisplayOverlay)
 		EventRegister.emit('onHttpRequestStateChange', true);

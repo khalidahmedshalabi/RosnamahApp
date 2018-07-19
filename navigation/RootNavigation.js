@@ -15,7 +15,6 @@ import ResetPassword from '../containers/ResetPassword'
 import Settings from '../containers/Settings';
 import AboutUs from '../containers/AboutUs';
 import Search from '../containers/Search';
-import AddPost from '../containers/AddPost'
 
 // This is the core of the navigator: route configs, etc...
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
@@ -34,7 +33,6 @@ const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 		ResetPassword: {screen: ResetPassword},
 		Settings: {screen: Settings},
 		Search: { screen: Search },
-		AddPost: { screen: AddPost },
 	};
 
 	const stackNavigatorConfigs = {
@@ -61,7 +59,7 @@ const RootNavigation = ({ screenProps, logged_in, skipped_login, }) => (
 		// Determine what the initial route screen is based on first-run rules
 		initialRouteName={
 			(skipped_login || logged_in) ?
-				'AddPost'
+				'MainDrawerNavigator'
 				:
 				'Login'
 		} />

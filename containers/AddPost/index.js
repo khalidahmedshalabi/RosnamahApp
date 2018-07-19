@@ -13,6 +13,8 @@ import { uploadImage } from '../../utils'
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 import ImagePicker from 'react-native-image-picker'
+import MainHeader from '../../components/MainHeader'
+
 const actions = {
 	setBold: 'bold',
 	setItalic: 'italic',
@@ -29,11 +31,13 @@ export default class RichTextExample extends Component {
     this.setFocusHandlers = this.setFocusHandlers.bind(this);
   }
   render() {
+    const { navigation } = this.props 
     return (
         <View style={styles.container}>
         {/* <TouchableOpacity style={{  }} onPress={() => this._pickImage()} >
           <Text>asklfhalksfh</Text>
         </TouchableOpacity> */}
+        <MainHeader navigation={navigation} />
           <RichTextEditor
               ref={(r)=>this.richtext = r}
               style={styles.richText}

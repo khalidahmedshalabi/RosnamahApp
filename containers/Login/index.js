@@ -34,27 +34,27 @@ class Login extends Component {
 		const { password, identifier } = this.state;
 		const { translate } = this.props;
 
-		if (!identifier || !password) {
-			this.refs.toast.show(translate('CantHaveEmptyInputs'), 1000);
-			return;
-		}
+		// if (!identifier || !password) {
+		// 	this.refs.toast.show(translate('CantHaveEmptyInputs'), 1000);
+		// 	return;
+		// }
 
-		POST('Signin', {
-			identifier,
-			password
-		},
-			(response) => {
+		// POST('Signin', {
+		// 	identifier,
+		// 	password
+		// },
+		// 	(response) => {
 				const { setAuthToken, setLoggedIn } = this.props;
-				setAuthToken(response.data.auth);
+				// setAuthToken(response.data.auth);
 				setLoggedIn(true);
-			},
-			(error) => {
-				console.log(error)
+		// 	},
+		// 	(error) => {
+		// 		console.log(error)
 
-				const { translate } = this.props;
-				this.refs.toast.show(translate('NetworkFailure'), 1000);
-			},
-			false);
+		// 		const { translate } = this.props;
+		// 		this.refs.toast.show(translate('NetworkFailure'), 1000);
+		// 	},
+		// 	false);
 	}
 
 	render() {

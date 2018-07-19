@@ -1,6 +1,6 @@
 import React from 'react';
 import { I18nManager } from 'react-native'
-import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
+import { createDrawerNavigator, createStackNavigator, } from 'react-navigation';
 import { mainColor } from '../constants/Colors'
 import CustomDrawerContentComponent from './CustomDrawerContent';
 
@@ -19,8 +19,20 @@ import MyVisits from '../containers/MyVisits';
 import FavPlaces from '../containers/FavPlaces';
 import AddPlace from '../containers/AddPlace'
 import AboutUs from '../containers/AboutUs';
-
+import AddPost from '../containers/AddPost'
+import ForumPosts from '../containers/ForumPosts';
+import SinglePost from '../containers/SinglePost';
 const drawerIconSize = 26
+
+const ForumStack = createStackNavigator({
+	Main: {screen: ForumCategories},
+	ForumPosts: {screen: ForumPosts},
+	SinglePost: {screen: SinglePost},
+}, {
+	navigationOptions: {
+		header: null
+	}
+})
 
 const MainDrawerNavigator = createDrawerNavigator({
 
@@ -33,7 +45,7 @@ const MainDrawerNavigator = createDrawerNavigator({
 		}
 	},
 	Forum: {
-		screen: ForumCategories,
+		screen: ForumStack,
 		navigationOptions: {
 			drawerIcon: ({ tintColor }) => (
 				<MaterialCommunityIcons name='forum' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
@@ -50,6 +62,14 @@ const MainDrawerNavigator = createDrawerNavigator({
 	},
 	AddPlace: {
 		screen: AddPlace,
+		navigationOptions: {
+			drawerIcon: ({ tintColor }) => (
+				<EvilIcons name='plus' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
+			),
+		}
+	},
+	AddPost: {
+		screen: AddPost,
 		navigationOptions: {
 			drawerIcon: ({ tintColor }) => (
 				<EvilIcons name='plus' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
