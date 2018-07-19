@@ -1092,13 +1092,12 @@
 					ProjectRef = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
 				},
 				{
-<<<<<<< HEAD
 					ProductGroup = 299D19C220EE805C0006D6D0 /* Products */;
 					ProjectRef = F635FB1667D24B28A86E4617 /* RCTYouTube.xcodeproj */;
-=======
+				},
+				{
 					ProductGroup = 757502EB20F9365B00BCEBCF /* Products */;
 					ProjectRef = 757502EA20F9365B00BCEBCF /* React-Native-Webview-Bridge.xcodeproj */;
->>>>>>> a4508437853a18861259904f96c215ee333d9ea6
 				},
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
