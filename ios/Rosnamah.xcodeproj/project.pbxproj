@@ -953,6 +953,10 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 7E27H2Z38Z;
+						ProvisioningStyle = Manual;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -1627,8 +1631,10 @@
 			baseConfigurationReference = 5039936362974D7A9A770504 /* Pods-Rosnamah.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = 7E27H2Z38Z;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-splash-screen/ios";
 				INFOPLIST_FILE = Rosnamah/Info.plist;
@@ -1639,7 +1645,10 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tashfier.rosnamah;
 				PRODUCT_NAME = Rosnamah;
+				PROVISIONING_PROFILE = "6bf8eaf8-8d89-46eb-9216-485d9e078b9f";
+				PROVISIONING_PROFILE_SPECIFIER = "Design Samples Development";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1649,7 +1658,10 @@
 			baseConfigurationReference = 532A77B9D034A5D3A5F98FF8 /* Pods-Rosnamah.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7E27H2Z38Z;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-splash-screen/ios";
 				INFOPLIST_FILE = Rosnamah/Info.plist;
@@ -1660,7 +1672,10 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tashfier.rosnamah;
 				PRODUCT_NAME = Rosnamah;
+				PROVISIONING_PROFILE = "13f4385d-ce22-4459-88b2-61ce6b20df59";
+				PROVISIONING_PROFILE_SPECIFIER = "Design Samples Production";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
