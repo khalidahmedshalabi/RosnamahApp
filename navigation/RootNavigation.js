@@ -32,7 +32,7 @@ const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 		codeConfirmation: {screen: codeConfirmation},
 		ResetPassword: {screen: ResetPassword},
 		Settings: {screen: Settings},
-		Search: { screen: Search },
+		Search: { screen: Search }
 	};
 
 	const stackNavigatorConfigs = {

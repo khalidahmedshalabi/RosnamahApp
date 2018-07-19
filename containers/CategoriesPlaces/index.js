@@ -76,7 +76,7 @@ class CategoriesPlaces extends Component {
                 ) : (
                   <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'SinglePlace',
                       params: {
-                          place_id:item.id,
+                          category_id:item.id,
                           place_name:item.name
                       },
                       key: Math.random() })}>

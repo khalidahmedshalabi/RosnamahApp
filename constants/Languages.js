@@ -15,7 +15,7 @@ export const en = {
 	DrawerItem_Forum:'Forum',
 	DrawerItem_AddPlace:'Add Place',
 	DrawerItem_AboutUs:'About Us',
-	DrawerItem_AddPost:'Add Post',
+
 	// End Drawer
 	NoInternetConnection: 'No Internet Connection',
 	// signup
@@ -153,5 +153,4 @@ export const ar = {
 	web:'موقع الويب',
 	CantHaveEmptyInputs: 'من فضلك قم بملء كل المدخلات',
 	NetworkFailure: 'فشل فى الشبكة',
-	DrawerItem_AddPost:'اضافه بوست تجريبي'
 };

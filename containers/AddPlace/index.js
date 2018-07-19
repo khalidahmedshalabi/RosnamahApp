@@ -123,41 +123,41 @@ class Addplace extends Component {
     })
 	}
 	
-	componentWillMount() {
-		// navigator.geolocation.getCurrentPosition(
-		//    (position) => {
-		// 	 this.setState({
-		// 		region: {
-		// 			latitude: position.coords.latitude,
-		// 			longitude: position.coords.longitude,
-		// 			latitudeDelta: 0.0922,
-		// 			longitudeDelta: 0.0421,
-		// 		},
-		// 	   error: null,
-		// 	 });
-		//    },
-		//    (error) => this.setState({ error: error.message }),
-		//    { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
-		// );
-		// this.watchId = navigator.geolocation.watchPosition(
-		// 	(position) => {
-		// 		this.setState({
-		// 			region: {
-		// 				latitude: position.coords.latitude,
-		// 				longitude: position.coords.longitude,
-		// 				latitudeDelta: 0.0922,
-		// 				longitudeDelta: 0.0421,
-		// 			},
-		// 		   error: null,
-		// 		 });
-		// 	},
-		// 	(error) => this.setState({ error: error.message }),
-		// 	{ enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
-		//   );
+	componentDidMount() {
+		navigator.geolocation.getCurrentPosition(
+		   (position) => {
+			 this.setState({
+				region: {
+					latitude: position.coords.latitude,
+					longitude: position.coords.longitude,
+					latitudeDelta: 0.0922,
+					longitudeDelta: 0.0421,
+				},
+			   error: null,
+			 });
+		   },
+		   (error) => this.setState({ error: error.message }),
+		   { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
+		);
+		this.watchId = navigator.geolocation.watchPosition(
+			(position) => {
+				this.setState({
+					region: {
+						latitude: position.coords.latitude,
+						longitude: position.coords.longitude,
+						latitudeDelta: 0.0922,
+						longitudeDelta: 0.0421,
+					},
+				   error: null,
+				 });
+			},
+			(error) => this.setState({ error: error.message }),
+			{ enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
+		  );
 	}
 
 	componentWillUnmount() {
-		// navigator.geolocation.clearWatch(this.watchId);
+		navigator.geolocation.clearWatch(this.watchId);
 		}
 
 	  // pickImage = key => {

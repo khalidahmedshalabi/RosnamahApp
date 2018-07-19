@@ -14,7 +14,6 @@ import FontedInput from '../../components/FontedInput';
 import FontedText from '../../components/FontedText';
 import styles from './styles';
 import { POST, GET } from '../../utils/Network';
-import MainHeader from '../../components/MainHeader'
 
 class Settings extends Component {
 	constructor(props) {
@@ -272,7 +271,7 @@ class Settings extends Component {
 	}
 
 	render() {
-		const { translate, languages_data, navigation } = this.props
+		const { translate, languages_data } = this.props
 
 		const gender_data = [
 			{ key: -1, label: translate('Unspecified') },
@@ -282,7 +281,6 @@ class Settings extends Component {
 
 		return (
 			<Container style={{ backgroundColor: bgColor }}>
-			<MainHeader navigation={navigation} />
 				<StatusBar
 					backgroundColor="white"
 					barStyle="dark-content"
