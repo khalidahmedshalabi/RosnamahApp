@@ -1,0 +1,59 @@
+{
+  "name": "Rosnamah",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "logs": "react-native log-android",
+    "test": "jest",
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/YourAppName/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "firebase": "^5.2.0",
+    "google-libphonenumber": "^3.1.8",
+    "native-base": "^2.5.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.1",
+    "react-localize-redux": "2.16.0",
+    "react-native": "^0.55.4",
+    "react-native-confirmation-code-input": "^1.0.4",
+    "react-native-country-picker-modal": "^0.5.1",
+    "react-native-datepicker": "^1.7.2",
+    "react-native-device-info": "^0.21.5",
+    "react-native-easy-toast": "^1.1.0",
+    "react-native-event-listeners": "^1.0.3",
+    "react-native-fetch-blob": "^0.10.8",
+    "react-native-gesture-handler": "^1.0.4",
+    "react-native-image-picker": "^0.26.10",
+    "react-native-linear-gradient": "^2.4.0",
+    "react-native-localization": "^1.0.10",
+    "react-native-maps": "^0.21.0",
+    "react-native-modal": "^6.1.0",
+    "react-native-modal-selector": "^0.0.27",
+    "react-native-permissions": "^1.1.1",
+    "react-native-ratings": "^5.3.0",
+    "react-native-restart": "^0.0.6",
+    "react-native-snap-carousel": "^3.7.2",
+    "react-native-splash-screen": "^3.0.9",
+    "react-native-star-rating": "^1.0.9",
+    "react-native-timer-countdown": "^1.1.0",
+    "react-native-vector-icons": "^4.6.0",
+    "react-native-webview-bridge": "^0.33.0",
+    "react-navigation": "^2.6.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-persist": "^5.10.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^23.0.1",
+    "babel-preset-react-native": "^4.0.0",
+    "jest": "^23.1.0",
+    "react-test-renderer": "^16.4.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
