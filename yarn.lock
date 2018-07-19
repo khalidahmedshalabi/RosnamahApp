@@ -4922,13 +4922,6 @@ react-native-vector-icons@~4.5.0:
     prop-types "^15.5.10"
     yargs "^8.0.2"
 
-<<<<<<< HEAD
-react-native-youtube@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-youtube/-/react-native-youtube-1.1.0.tgz#efa30c4f7385d1951af643188e30760efd6c0784"
-  dependencies:
-    prop-types "^15.5.0"
-=======
 react-native-webview-bridge-updated@^1.0.0:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/react-native-webview-bridge-updated/-/react-native-webview-bridge-updated-1.0.9.tgz#930b4e6444f4a2b5f3151607c6eb6eba8deda08f"
@@ -4943,12 +4936,17 @@ react-native-webview-bridge@^0.33.0:
     invariant "2.2.0"
     keymirror "0.1.1"
 
+react-native-youtube@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-youtube/-/react-native-youtube-1.1.0.tgz#efa30c4f7385d1951af643188e30760efd6c0784"
+  dependencies:
+    prop-types "^15.5.0"
+
 react-native-zss-rich-text-editor@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-zss-rich-text-editor/-/react-native-zss-rich-text-editor-1.1.0.tgz#c197d797a8ca65e46e2ccbe36e73fa2624d07c1c"
   dependencies:
     react-native-webview-bridge-updated "^1.0.0"
->>>>>>> a4508437853a18861259904f96c215ee333d9ea6
 
 react-native@^0.55.4:
   version "0.55.4"
@@ -6089,7 +6087,7 @@ wordwrap@~0.0.2:
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
 
 world-countries@1.8.0:
-  version v1.8.0
+  version "1.8.0"
   resolved "https://registry.yarnpkg.com/world-countries/-/world-countries-1.8.0.tgz#17f48e7e8470ac5a2136ad6938dfc656fc2bcb95"
 
 wrap-ansi@^2.0.0:
