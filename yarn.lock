@@ -4581,6 +4581,13 @@ prop-types@15.6.0:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+prop-types@^15.5.0:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
+  dependencies:
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
 prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
@@ -4807,6 +4814,10 @@ react-native-keyboard-aware-scroll-view@0.5.0:
     prop-types "^15.6.0"
     react-native-iphone-x-helper "^1.0.1"
 
+react-native-keyboard-spacer@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-keyboard-spacer/-/react-native-keyboard-spacer-0.4.1.tgz#46f18a320432098a25ea9fa89f5143dd254d332d"
+
 react-native-linear-gradient@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.4.0.tgz#51d8ea12bb72a59bede9edc87b694b16b64cf435"
@@ -4918,12 +4929,31 @@ react-native-vector-icons@~4.5.0:
     prop-types "^15.5.10"
     yargs "^8.0.2"
 
+react-native-webview-bridge-updated@^1.0.0:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-webview-bridge-updated/-/react-native-webview-bridge-updated-1.0.9.tgz#930b4e6444f4a2b5f3151607c6eb6eba8deda08f"
+  dependencies:
+    invariant "2.2.0"
+    keymirror "0.1.1"
+
 react-native-webview-bridge@^0.33.0:
   version "0.33.0"
   resolved "https://registry.yarnpkg.com/react-native-webview-bridge/-/react-native-webview-bridge-0.33.0.tgz#7f9b7fb903b4ed13f4edcab52e654e9bffea4fd4"
   dependencies:
     invariant "2.2.0"
     keymirror "0.1.1"
+
+react-native-youtube@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-youtube/-/react-native-youtube-1.1.0.tgz#efa30c4f7385d1951af643188e30760efd6c0784"
+  dependencies:
+    prop-types "^15.5.0"
+
+react-native-zss-rich-text-editor@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-zss-rich-text-editor/-/react-native-zss-rich-text-editor-1.1.0.tgz#c197d797a8ca65e46e2ccbe36e73fa2624d07c1c"
+  dependencies:
+    react-native-webview-bridge-updated "^1.0.0"
 
 react-native@^0.55.4:
   version "0.55.4"
