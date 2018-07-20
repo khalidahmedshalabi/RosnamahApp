@@ -22,12 +22,24 @@ import AboutUs from '../containers/AboutUs';
 import AddPost from '../containers/AddPost'
 import ForumPosts from '../containers/ForumPosts';
 import SinglePost from '../containers/SinglePost';
+import CategoriesPlaces from '../containers/CategoriesPlaces';
+import SinglePlace from '../containers/SinglePlace';
 const drawerIconSize = 26
 
 const ForumStack = createStackNavigator({
-	Main: {screen: ForumCategories},
+	ForumCategories: {screen: ForumCategories},
 	ForumPosts: {screen: ForumPosts},
 	SinglePost: {screen: SinglePost},
+}, {
+	navigationOptions: {
+		header: null
+	}
+})
+
+const HomeStack = createStackNavigator({
+	Home: {screen: Home},
+	CategoriesPlaces: {screen: CategoriesPlaces},
+	SinglePlace: {screen: SinglePlace},
 }, {
 	navigationOptions: {
 		header: null
@@ -37,7 +49,7 @@ const ForumStack = createStackNavigator({
 const MainDrawerNavigator = createDrawerNavigator({
 
 	Home: {
-		screen: Home,
+		screen: HomeStack,
 		navigationOptions: {
 			drawerIcon: ({ tintColor }) => (
 				<Octicons name='home' color={mainColor} size={drawerIconSize} tintColor={tintColor} />

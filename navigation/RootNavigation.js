@@ -20,11 +20,11 @@ import Search from '../containers/Search';
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 	const routeConfigs = {
 		MainDrawerNavigator: {screen: MainDrawerNavigator},
-		ForumCategories: {screen: ForumCategories},
-		ForumPosts: {screen: ForumPosts},
+		// ForumCategories: {screen: ForumCategories},
+		// ForumPosts: {screen: ForumPosts},
 		SinglePlace: {screen: SinglePlace},
 		AboutUs: {screen: AboutUs},
-		SinglePost: {screen: SinglePost},
+		// SinglePost: {screen: SinglePost},
 		Login: {screen: Login},
 		CategoriesPlaces: {screen: CategoriesPlaces},
 		Signup: {screen: Signup},
