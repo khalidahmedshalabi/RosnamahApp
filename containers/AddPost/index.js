@@ -14,6 +14,8 @@ const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 import ImagePicker from 'react-native-image-picker'
 import MainHeader from '../../components/MainHeader'
+import LazyContainer from '../../components/LazyContainer'
+import colors, { bgColor, mainColor } from '../../constants/Colors';
 
 const actions = {
 	setBold: 'bold',
@@ -33,6 +35,7 @@ export default class RichTextExample extends Component {
   render() {
     const { navigation } = this.props 
     return (
+      <LazyContainer style={{ flex: 1, backgroundColor: bgColor }}>
         <View style={styles.container}>
         {/* <TouchableOpacity style={{  }} onPress={() => this._pickImage()} >
           <Text>asklfhalksfh</Text>
@@ -42,7 +45,7 @@ export default class RichTextExample extends Component {
               ref={(r)=>this.richtext = r}
               style={styles.richText}
               initialTitleHTML={'Title!!'}
-              initialContentHTML={''}
+              initialContentHTML={'                                    '}
               editorInitializedCallback={() => this.onEditorInitialized()}
           />
           <RichTextToolbar
@@ -57,13 +60,14 @@ export default class RichTextExample extends Component {
       onPressAddImage={() => {
         // let imageSrc = this._pickImage()
         ImagePicker.launchImageLibrary({}, response  => {
-          var src = Platform.OS === 'ios' ? response.uri : response.path
-          this.richtext.insertImage({ src, width: 200, height: 200});  
+          // var src = Platform.OS === 'ios' ? response.uri : response.path
+          this.richtext.insertImage({ src: response.path, width: 200, height: 200});    
         })
       }}
           />
           {Platform.OS === 'ios' && <KeyboardSpacer/>}
         </View>
+        </LazyContainer>
     );
   }
 
@@ -93,7 +97,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#ffffff',
-    paddingTop: 40
   },
   richText: {
     alignItems:'center',
