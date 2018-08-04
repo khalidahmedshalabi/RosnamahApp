@@ -1,6 +1,6 @@
 import React from 'react';
+import { InitAdMobInterstitial } from './utils/AdMob'
 import { Provider } from 'react-redux';
-import { Platform ,Linking} from 'react-native'
 
 import AppNoReduxPersist from './AppNoReduxPersist';
 import { PersistGate } from 'redux-persist/es/integration/react'
@@ -31,5 +31,7 @@ class App extends React.Component {
 		);
 	}
 }
+
+InitAdMobInterstitial();
 
 export default App;

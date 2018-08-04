@@ -7,6 +7,7 @@ import { bgColor } from '../../constants/Colors';
 import MainHeader from '../../components/MainHeader'
 import { GET } from '../../utils/Network';
 import FontedText from '../../components/FontedText';
+import { shouldShowAdMobInterstitial } from '../../utils/AdMob';
 //import CategoryBox from '../../components/CategoriesPlaces/CategoryBox';
 
 class Home extends Component {
@@ -14,14 +15,13 @@ class Home extends Component {
 		super(props);
 
 		this.state = {
-			categories: [
-
-			]
+			categories: []
 		}
-
 	}
 
 	componentDidMount(){
+		shouldShowAdMobInterstitial();
+
 		const { currLang } = this.props
 		const { code } = currLang
 		

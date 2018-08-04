@@ -3,6 +3,7 @@ package com.garash.rosnamah;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.sbugert.rnadmob.RNAdMobPackage;
 import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.avishayil.rnrestart.ReactNativeRestartPackage;
@@ -35,6 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
 		  	new RNDeviceInfo(),
           	new MainReactPackage(),
+			new RNAdMobPackage(),
             new ReactNativeYouTube(),
             new VectorIconsPackage(),
             new ReactNativeRestartPackage(),
@@ -44,7 +46,7 @@ public class MainApplication extends Application implements ReactApplication {
             new LinearGradientPackage(),
             new ImagePickerPackage(),
             new RNFetchBlobPackage(),
-      			new SplashScreenReactPackage(),
+      		new SplashScreenReactPackage(),
             new WebViewBridgePackage()
       );
     }
