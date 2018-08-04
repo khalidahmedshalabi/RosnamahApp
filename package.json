@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "firebase": "^5.2.0",
+    "firebase": "5.0.3",
     "google-libphonenumber": "^3.1.8",
     "native-base": "^2.5.1",
     "prop-types": "^15.6.1",
