@@ -52,7 +52,7 @@ const HTTP_REQUEST = (
 		method,
 		headers: shouldAuthorize || shouldAuthorize === undefined ? {
 			'Content-Type': contentType,
-			'auth': store.getState().user.auth_token
+			'Authorization': store.getState().user.auth_token
 		} : { 'Content-Type': contentType },
 		url: `${Server.base_url}${Server.api_path}${endpoint}`,
 		//url: 'https//www.google.com',

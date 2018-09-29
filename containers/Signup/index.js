@@ -9,6 +9,7 @@ import FontedInput from '../../components/FontedInput';
 import FontedText from '../../components/FontedText';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 import { bgColor, secondColor, mainColor } from '../../constants/Colors';
+import isValidEmail from "../../utils/Email"
 
 class Signup extends Component {
 	constructor(props) {
@@ -16,6 +17,10 @@ class Signup extends Component {
 		this.state = {
 			PrivacyModalVisible: false,
 			TermsModalVisible: false,
+			name: null,
+			email: `${Math.random().toString()}@a.com`,
+			password: null,
+			passwordConf: null,
 		}
 	}
 	PrivacyModal = () => (
@@ -70,6 +75,27 @@ class Signup extends Component {
 			</Container>
         </Modal>
 	)
+	signUp = () => {
+		const { name, email, password, passwordConf } = this.state
+		const { translate, navigation } = this.props;
+		if(!(name != null && email != null && password != null && passwordConf != null)) {
+			if(isValidEmail(email)) {
+				if(passwordConf == password) {
+					navigation.navigate('PhoneVerification', {
+						user: {
+							name: Math.random().toString(), email: `${Math.random().toString()}@a.com`, password: Math.random().toString()
+						}
+					})
+				} else {
+					alert(translate("error_wrong_password"))
+				}
+			} else {
+				alert(translate("error_wrong_email"))
+			}
+		} else {
+			alert(translate("error_empty_inputs"))
+		}
+	}
 	render () {
 		const { translate, navigation } = this.props
 		return (
@@ -99,22 +125,22 @@ class Signup extends Component {
 				</View>
 					<Item>
 						<SimpleLineIcons name='user' size={26} style={{ marginRight: 12 }} />
-						<FontedInput style={{ fontSize: 15 }} placeholder={translate('signup_username_input')} />
+						<FontedInput onChangeText={name => this.setState({ name })} style={{ fontSize: 15 }} placeholder={translate('signup_username_input')} />
 					</Item>
 					<Item>
 						<SimpleLineIcons name='envelope' size={26} style={{ marginRight: 12 }} />
-						<FontedInput style={{ fontSize: 15 }} placeholder={translate('signup_email_input')} />
+						<FontedInput onChangeText={email => this.setState({ email })} style={{ fontSize: 15 }} placeholder={translate('signup_email_input')} />
 					</Item>
 					<Item>
 						<SimpleLineIcons name='lock' size={26} style={{ marginRight: 12 }} />
-						<FontedInput style={{ fontSize: 15 }} placeholder={translate('signup_password_input')} secureTextEntry={true} />
+						<FontedInput onChangeText={password => this.setState({ password })} style={{ fontSize: 15 }} placeholder={translate('signup_password_input')} secureTextEntry={true} />
 					</Item>
 					<Item last>
 						<SimpleLineIcons name='lock' size={26} style={{ marginRight: 12 }} />
-						<FontedInput style={{ fontSize: 15 }} placeholder={translate('signup_password_retype_input')} secureTextEntry={true} />
+						<FontedInput onChangeText={passwordConf => this.setState({ passwordConf })} style={{ fontSize: 15 }} placeholder={translate('signup_password_retype_input')} secureTextEntry={true} />
 					</Item>
 					<View style={ styles.footer } >
-						<Button rounded style={styles.signupBtn} onPress={() => navigation.navigate('PhoneVerification')} >
+						<Button rounded style={styles.signupBtn} onPress={this.signUp} >
 						<Text style={ styles.footerTxt } >{ translate('signup_btn') }</Text>
 					</Button>
 					<TouchableOpacity onPress={() => navigation.navigate('Login')} ><Text style={ styles.haveAnAcc } >{ translate('signup_have_acc') }</Text></TouchableOpacity>

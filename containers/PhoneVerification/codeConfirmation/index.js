@@ -7,6 +7,7 @@ import styles from './styles';
 import CodeInput from 'react-native-confirmation-code-input';
 import TimerCountdown from 'react-native-timer-countdown'
 import { mainColor } from '../../../constants/Colors';
+import { POST } from "../../../utils/Network"
 
 class codeConfirmation extends Component {
 	constructor(props) {
@@ -36,66 +37,41 @@ class codeConfirmation extends Component {
 		// ..
 	}
 
-	_onFulfill(code) {
-		// TODO: call API to check code here
-		// If code does not match, clear input with: this.refs.codeInputRef1.clear()
-		if (code == 'Q234E') {
-		  Alert.alert(
-			'Confirmation Code',
-			'Successful!',
-			[{text: 'OK'}],
-			{ cancelable: false }
-		  );
-		} else {
-		  Alert.alert(
-			'Confirmation Code',
-			'Code not match!',
-			[{text: 'OK'}],
-			{ cancelable: false }
-		  );
-		  
-		  this.refs.codeInputRef1.clear();
-		}
+	  
+	  _onFinishCheckingCode(code) {
+			this.setState({ code }, this.VerifyCode);
+		// if (!isValid) {
+		//   Alert.alert(
+		// 	'Confirmation Code',
+		// 	'Code not match!',
+		// 	[{text: 'OK'}],
+		// 	{ cancelable: false }
+		//   );
+		// } else {
+		//   Alert.alert(
+		// 	'Confirmation Code',
+		// 	'Successful!',
+		// 	[{text: 'OK'}],
+		// 	{ cancelable: false }
+		//   );
+		// }
 	  }
 	  
-	  _onFinishCheckingCode1(isValid) {
-		console.log(isValid);
-		if (!isValid) {
-		  Alert.alert(
-			'Confirmation Code',
-			'Code not match!',
-			[{text: 'OK'}],
-			{ cancelable: false }
-		  );
-		} else {
-		  Alert.alert(
-			'Confirmation Code',
-			'Successful!',
-			[{text: 'OK'}],
-			{ cancelable: false }
-		  );
+		
+		VerifyCode = () => {
+			// navigation.navigate('ResetPassword')
+			console.log(this.state.code)
+			POST("Verify", {
+				code: this.state.code
+			}, res => {
+				if(res.status === 200) {
+					console.log(res.data)
+				} else {
+					// handle errs here.....
+					console.log(res);
+				}
+			}, err => console.log(err))
 		}
-	  }
-	  
-	  _onFinishCheckingCode2(isValid, code) {
-		console.log(isValid);
-		if (!isValid) {
-		  Alert.alert(
-			'Confirmation Code',
-			'Code not match!',
-			[{text: 'OK'}],
-			{ cancelable: false }
-		  );
-		} else {
-		  this.setState({ code });
-		  Alert.alert(
-			'Confirmation Code',
-			'Successful!',
-			[{text: 'OK'}],
-			{ cancelable: false }
-		  );
-		}
-	  }
 
 	render () {
 		const { translate, navigation } = this.props
@@ -114,21 +90,21 @@ class codeConfirmation extends Component {
 				}} >
 					<Text style={ styles.title } >{ translate('Enter_verification_code') }</Text>
 					<CodeInput
-					ref="codeInputRef2"
-					compareWithCode='AsDW2'
-					activeColor={mainColor}
-					inactiveColor={mainColor}
-					autoFocus={true}
-					ignoreCase={true}
-					inputPosition='center'
-					size={50}
-					onFulfill={(isValid) => this._onFinishCheckingCode1(isValid)}
-					containerStyle={{ marginTop: 30 }}
-					codeInputStyle={{ borderWidth: 1.5 }}
+						ref="codeInputRef2"
+						compareWithCode={null}
+						activeColor={mainColor}
+						inactiveColor={mainColor}
+						autoFocus={true}
+						ignoreCase={true}
+						inputPosition='center'
+						size={50}
+						onFulfill={(code) => this._onFinishCheckingCode(code)}
+						containerStyle={{ marginTop: 30 }}
+						codeInputStyle={{ borderWidth: 1.5 }}
 					/>
 				
 					<View style={ styles.footer } >
-						<Button rounded style={ styles.signupBtn } onPress={() => navigation.navigate('ResetPassword')} >
+						<Button rounded style={ styles.signupBtn } onPress={this.VerifyCode} >
 							<Text style={ styles.footerTxt } >{ translate('Phone_verification_verify_btn') }</Text>
 						</Button>
 							<View style={{

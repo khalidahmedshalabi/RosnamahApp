@@ -29,6 +29,10 @@ export const en = {
 	privacy_one: 'By signing up you agree to our',
 	privacy_two: 'Terms of use',
 	privacy_three: 'Privacy Policies ✌🏻',
+	error_wrong_password: "passwords does not match",
+	error_wrong_email: "wrong email",
+	error_empty_inputs: "please fill all the fields",
+	error_wrong_phone: "phone number is not correct",
 	// Phone verification
 	Phone_verification_title: "what's your phone number?",
 	Phone_verification_phone_input: 'Phone Number',
@@ -110,6 +114,10 @@ export const ar = {
 	Phone_verification_verify_btn: 'تفعيل',
 	Phone_verification_skip: 'تخطي هذه الخطوة',
 	Phone_verification_tip: 'سيتم تأمين رقم هاتفك ، لن نرسل لك أي محتوى غير مرغوب فيه مطلقًا.',
+	error_wrong_password: "كلمة المرور غير متطابقة",
+	error_wrong_email: "البريد الالكتروني غير صحيح",
+	error_empty_inputs: "رجاء إملأ كافة الحقول",
+	error_wrong_phone: "رقم الهاتف غير صحيح",
 	// Login
 	EmailOrPhone: 'الايميل او رقم الجوال',
 	Password: 'كلمة المرور',
