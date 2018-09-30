@@ -8,6 +8,7 @@ import {
     TouchableOpacity,
     FlatList
 } from 'react-native';
+import { Button } from 'native-base';
 import { uploadImage } from '../../utils'
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
@@ -20,7 +21,10 @@ import applyWrapFormat from './applyWrapFormat'
 import applyWebLinkFormat from './applyWebLinkFormat'
 import applyListFormat from './applyListFormat'
 import { TextInput } from 'react-native-gesture-handler';
-// import renderButtons from './renderButtons'
+import applyImage from './applyImage';
+// var shortUrl = require('node-url-shortener');
+// const { setKey, shorten, expand } = require('react-native-google-shortener');
+// setKey("AIzaSyCgZhI2uotbTgGJ4u2urJJTc3L1kpj0k24");
 
 const FOREGROUND_COLOR = 'rgba(82, 194, 175, 1)';
 const defaultStyles = { padding: 8, color: FOREGROUND_COLOR, fontSize: 16 };
@@ -43,6 +47,7 @@ const CUSTOM_Formats = [
     onPress: applyWrapFormat,
     style: { textDecorationLine: 'line-through' },
   },
+  { key: 'IMG', title: 'Image', onPress: applyImage },
   { key: 'WEB', title: 'YouTube', onPress: applyWebLinkFormat },
   { key: 'H1', title: 'H1', prefix: '#', onPress: applyListFormat },
   { key: 'H2', title: 'H2', prefix: '##', onPress: applyListFormat },
@@ -58,6 +63,35 @@ export default class RichTextExample extends Component {
       post: "",
       shouldRenderButtons: true
     }
+  }
+  componentDidMount() {
+    // alert("mounted")
+    // shortUrl.short('https://google.com', function(err, url){
+    //   alert(url);
+    // });
+  }
+  submitPost = () => {
+    // alert("uploading...")
+    // var i = 0;
+    // var imgs = [];
+    // var uploadedImgs = [];
+
+    // var str = this.state.post;
+
+    // if(str.includes("[IMG]")) {
+    //   while (str.search("content://") != -1) {
+    //     var uri = str.substring(
+    //         str.lastIndexOf("]") + 2, 
+    //         str.lastIndexOf(")")
+    //     )
+    //     imgs.push(uri)
+    //     str = str.replace(uri, i++)
+    // }
+    // }
+
+    // uploadedImgs.map((item, i) => {
+    //   str = str.replace(`[IMG](${i})`, `[IMG:${item}]`);
+    // })
   }
   onStrChange = str => {
     this.setState({ post: str }, () => {
@@ -84,12 +118,15 @@ export default class RichTextExample extends Component {
     return (
       <LazyContainer style={{ flex: 1, backgroundColor: bgColor }}>
         <MainHeader navigation={navigation} />
+        <Button onPress={this.submitPost} style={{ width, backgroundColor: "#6e2edd", justifyContent: "center", alignContent: "center" }}>
+          <Text style={{ color: '#ffffff', textAlign: "center", fontSize: 18 }}>Submit</Text>
+        </Button>
         <View style={styles.container}>
-          <TextInput style={{ fontSize: 28, fontWeight: "bold" }} placeholder="post title" />
+          <TextInput style={{ fontSize: 28, fontWeight: "bold", color: "#6e2edd", borderBottomWidth: 0 }} placeholder="post title" />
           <MarkdownEditor markdownButton={this.defaultMarkdownButton} onMarkdownChange={str => this.onStrChange(str)} Formats={CUSTOM_Formats} />
         </View>
         {
-          this.state.post === "" ? <View style={{ width, height: 50, backgroundColor: "#ffffff", position: "absolute", bottom: 0 }}></View> : null
+          this.state.post === "" ? <View style={{ width, height: 50, backgroundColor: "#ffffff", position: "absolute", zIndex: 1, bottom: 0 }}></View> : null
         }
         </LazyContainer>
     );
