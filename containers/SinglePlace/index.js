@@ -291,15 +291,6 @@ return (
 renderContent={this._renderContent}
 
          />
-         <Footer>
-           <FooterTab>
-             <Button onPress={() => {
-             this.setModalVisible(true);
-           }} style={{flex:1}}>
-               <FontAwesome name="comment-o" size={20}/>
-             </Button>
-           </FooterTab>
-         </Footer>
          <Modal
           animationType="slide"
           transparent={false}
@@ -362,6 +353,16 @@ renderContent={this._renderContent}
         </Modal>
 
       </LazyContainer>
+      <Footer>
+        <FooterTab>
+          <Button onPress={() => {
+          this.setModalVisible(true);
+        }} style={{flex:1}}>
+            <FontAwesome name="comment-o" size={20}/>
+          </Button>
+        </FooterTab>
+      </Footer>
+
       </Container>
 
 

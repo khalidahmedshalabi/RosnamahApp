@@ -22,7 +22,6 @@ class ForumCategories extends Component {
 }
   componentDidMount(){
     const { currLang } = this.props
-
 		const {
 			key, // id
 			label, // full name
@@ -30,16 +29,18 @@ class ForumCategories extends Component {
 			isRTL, // if RTL
 			isDefault // if default
 		 } = currLang
-    GET('forum_categories?lang='+code,
-			res => {
-				// on success
-        this.setState({categories:res.data.response,type:res.data.type})
-			},
-			err => {
-        alert('error loading data please restart the app')
-			},
-			false // should authorise this request?
-		)
+     GET('forum_categories?lang='+key,
+ 			res => {
+ 				// on success
+ 				console.log('dadad '+res.data.categories)
+ 				this.setState({ categories: res.data.categories })
+ 			},
+ 			() => {
+        alert('aaaaa')
+ 			},
+ 			false // should authorise this request?
+ 		)
+
 
   }
   renderCategory = (item, index) => {

@@ -25,7 +25,8 @@ class ForumCategories extends Component {
     GET('forum_posts?category_id='+this.props.navigation.state.params.category_id,
 			res => {
 				// on success
-        this.setState({categories:res.data.response,type:res.data.type})
+        console.log(res)
+        this.setState({categories:res.data.response})
 			},
 			err => {
         alert('error loading data please restart the app')
