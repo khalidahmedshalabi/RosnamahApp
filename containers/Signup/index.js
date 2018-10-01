@@ -18,7 +18,7 @@ class Signup extends Component {
 			PrivacyModalVisible: false,
 			TermsModalVisible: false,
 			name: null,
-			email: `${Math.random().toString()}@a.com`,
+			email: ``,
 			password: null,
 			passwordConf: null,
 		}
@@ -78,14 +78,15 @@ class Signup extends Component {
 	signUp = () => {
 		const { name, email, password, passwordConf } = this.state
 		const { translate, navigation } = this.props;
-		if(!(name != null && email != null && password != null && passwordConf != null)) {
+		if((name != null && email != null && password != null && passwordConf != null)) {
 			if(isValidEmail(email)) {
 				if(passwordConf == password) {
 					navigation.navigate('PhoneVerification', {
 						user: {
-							name: Math.random().toString(), email: `${Math.random().toString()}@a.com`, password: Math.random().toString()
+							name:this.state.name, email: this.state.email, password: this.state.password
 						}
 					})
+					// alert(this.state.password)
 				} else {
 					alert(translate("error_wrong_password"))
 				}
@@ -114,7 +115,7 @@ class Signup extends Component {
 				}} >
 					{/* <Text style={ styles.title } >{ translate('signup_title') }</Text> */}
 					<View style={{ flex: 0.3, justifyContent: 'center', paddingHorizontal: 10 }}>
-					<FontedText 
+					<FontedText
 						text={translate('signup_title')}
 						style={{
 							color: 'black',

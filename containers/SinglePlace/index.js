@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, View, TouchableOpacity,ScrollView, Image, Text,Dimensions, Platform } from 'react-native'
+import { FlatList, View, TouchableOpacity,Modal,TouchableHighlight,ScrollView, Image, Text,Dimensions, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { getTranslate } from 'react-localize-redux';
 import LazyContainer from '../../components/LazyContainer'
@@ -16,9 +16,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontedText from '../../components/FontedText';
 import { NavigationActions } from 'react-navigation'
 import StarRating from 'react-native-star-rating';
-import YouTube from 'react-native-youtube'
-import {Container,Icon,Content, Accordion} from 'native-base'
+import {Container,Icon,Content, Accordion,Footer, FooterTab,List, ListItem,Item, Thumbnail,Button} from 'native-base'
 import { GET } from '../../utils/Network';
+import Communications from 'react-native-communications';
+import { store } from '../../App';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import FontedInput from '../../components/FontedInput';
 
 class SinglePlace extends Component {
   constructor(props) {
@@ -44,7 +47,11 @@ class SinglePlace extends Component {
       description:'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.ومن هنا وجب على المصممأيضعنصوصا مؤقتة على التصميً.',
       times:'..'
     },
-    starCount:3
+    starCount:3,
+    modalVisible: false,
+    comments:[],
+    comment:''
+
   }
 
 }
@@ -72,7 +79,21 @@ class SinglePlace extends Component {
 		)
 
   }
-
+  setModalVisible(visible) {
+  this.setState({modalVisible: visible});
+}
+comment = ()=>{
+  comments = this.state.comments;
+  comments.push({
+    comment:this.state.comment,
+    time:'3pm',
+    user:{
+      name:'مستخدم تجريبي',
+      profile_img_url:'https://images.vexels.com/media/users/3/145908/preview2/52eabf633ca6414e60a7677b0b917d92-male-avatar-maker.jpg'
+    }
+  });
+  this.setState({comments,comment:''});
+}
   _renderItem = ({item, index}) => {
        return (
            <View>
@@ -85,19 +106,7 @@ class SinglePlace extends Component {
 
                     />
                     :
-                    <YouTube
-      videoId='2GyL8-Ks5TY'   // The YouTube video ID
-      play={false}             // control playback of video with true/false
-      fullscreen={true}       // control whether the video should play in fullscreen or inline
-      loop={false}             // control whether the video should loop when ended
-
-      onReady={e => this.setState({ isReady: true })}
-      onChangeState={e => this.setState({ status: e.state })}
-      onChangeQuality={e => this.setState({ quality: e.quality })}
-      onError={e => this.setState({ error: e.error })}
-
-      style={{ alignSelf: 'stretch', height: 300 }}
-    />
+            null
               }
             </View>
 
@@ -132,6 +141,18 @@ return (
       : <Icon style={{ fontSize: 18 ,color:'white',}} name="add-circle" />}
   </View>
 );
+}
+visit(){
+  GET('place/make_visit?place_id='+this.props.navigation.state.params.place_id+'&user_id='+store.getState().user.auth_token,
+    res => {
+      // on success
+
+      alert('تم تسجيل زياره')
+    },
+    () => {
+    },
+    true // should authorise this request?
+  )
 }
 _renderContent(content) {
 return (
@@ -186,7 +207,6 @@ return (
           }
         } style={{flex:.1,padding:10}} />
         </Header>
-        <ScrollView>
       <Carousel
         data={this.state.images}
         renderItem={this._renderItem}
@@ -239,9 +259,11 @@ return (
         </View>
 
 
-        <View style={{flex:.2,alignItems:'center'}}>
-        <Ionicons name="ios-checkmark-circle-outline" size={30} color={secondColor}  />
-        </View>
+        <TouchableOpacity onPress={()=>{
+          this.visit();
+        }} style={{flex:.2,alignItems:'center'}}>
+        <Ionicons  name="ios-checkmark-circle-outline" size={30} color={secondColor}  />
+        </TouchableOpacity>
 
 
         <View style={{flex:.2,alignItems:'center'}}>
@@ -249,9 +271,11 @@ return (
         </View>
 
 
-        <View style={{flex:.2,alignItems:'center'}}>
-        <Ionicons name="ios-call-outline" size={30} color={secondColor}  />
-        </View>
+        <TouchableOpacity activeOpacity={.9} onPress={()=>{
+          Communications.phonecall(this.state.post.phone);
+        }} style={{flex:.2,alignItems:'center'}}>
+        <Ionicons  name="ios-call-outline" size={30} color={secondColor}  />
+        </TouchableOpacity>
 
 
         <View style={{flex:.2,alignItems:'center'}}>
@@ -261,19 +285,82 @@ return (
       {
         // times content ------>
       }
-      <Container>
-        <Content padder>
           <Accordion
           dataArray={dataArray}
           renderHeader={this._renderHeader}
 renderContent={this._renderContent}
 
          />
-       </Content>
-     </Container>
+         <Footer>
+           <FooterTab>
+             <Button onPress={() => {
+             this.setModalVisible(true);
+           }} style={{flex:1}}>
+               <FontAwesome name="comment-o" size={20}/>
+             </Button>
+           </FooterTab>
+         </Footer>
+         <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          >
+          <Container>
+          {
+            //head starts here
+          }
+          <Header>
+          <View style={{flexDirection:'row',flex:.9,justifyContent:'center',alignItems:'center'}}>
+          <FontAwesome style={{paddingRight:3,textAlign:'center',alignItems:'center'}} name="comment-o" size={20}/>
+          <FontedText style={{textAlign:'center'}}  text="التعليقات"/>
+          </View>
+          <TouchableHighlight
+            onPress={() => {
+              this.setModalVisible(!this.state.modalVisible);
+            }}
+            style={{flex:.1,justifyContent:'center',alignItems:'center'}}>
+          <Ionicons style={{}} name="ios-arrow-back" size={20}/>
+          </TouchableHighlight>
+         </Header>
 
+         {
+           //the end of head
+         }
 
-      </ScrollView>
+         <Content>
+         {
+           //comments listing
+         }
+         <List dataArray={this.state.comments}
+             renderRow={(item) =>
+               <ListItem avatar>
+                 <Left>
+                   <Thumbnail source={{ uri: item.user.profile_img_url}} />
+                 </Left>
+                 <Body>
+                   <FontedText style={{textAlign:'right'}} text={item.user.name}/>
+
+                   <Text style={{textAlign:'right'}} note>{item.comment}</Text>
+                 </Body>
+                 <Right>
+                   <Text note>{item.time}</Text>
+                 </Right>
+               </ListItem>
+             }>
+           </List>
+
+         </Content>
+           <Item>
+             <FontedInput
+             onChangeText={(comment) => this.setState({comment})}
+         value={this.state.comment}
+         style={{padding:15}}
+         onSubmitEditing={()=> {this.comment()}} placeholder={translate('comment')} />
+           </Item>
+       </Container>
+
+        </Modal>
+
       </LazyContainer>
       </Container>
 

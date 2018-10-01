@@ -37,7 +37,7 @@ class codeConfirmation extends Component {
 		// ..
 	}
 
-	  
+
 	  _onFinishCheckingCode(code) {
 			this.setState({ code }, this.VerifyCode);
 		// if (!isValid) {
@@ -56,8 +56,8 @@ class codeConfirmation extends Component {
 		//   );
 		// }
 	  }
-	  
-		
+
+
 		VerifyCode = () => {
 			// navigation.navigate('ResetPassword')
 			console.log(this.state.code)
@@ -66,6 +66,7 @@ class codeConfirmation extends Component {
 			}, res => {
 				if(res.status === 200) {
 					console.log(res.data)
+					this.props.navigation.navigate('MainDrawerNavigator')
 				} else {
 					// handle errs here.....
 					console.log(res);
@@ -102,7 +103,7 @@ class codeConfirmation extends Component {
 						containerStyle={{ marginTop: 30 }}
 						codeInputStyle={{ borderWidth: 1.5 }}
 					/>
-				
+
 					<View style={ styles.footer } >
 						<Button rounded style={ styles.signupBtn } onPress={this.VerifyCode} >
 							<Text style={ styles.footerTxt } >{ translate('Phone_verification_verify_btn') }</Text>

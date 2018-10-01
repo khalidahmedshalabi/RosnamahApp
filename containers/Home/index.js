@@ -8,6 +8,9 @@ import MainHeader from '../../components/MainHeader'
 import { GET } from '../../utils/Network';
 import FontedText from '../../components/FontedText';
 import { shouldShowAdMobInterstitial } from '../../utils/AdMob';
+import Server from '../../constants/Server';
+import axios from 'axios';
+
 //import CategoryBox from '../../components/CategoriesPlaces/CategoryBox';
 
 class Home extends Component {
@@ -15,7 +18,18 @@ class Home extends Component {
 		super(props);
 
 		this.state = {
-			categories: []
+			categories: [{
+id: 1,
+name: "Usa",
+descc: "librality states",
+image: "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350"
+},
+{
+id: 6,
+name: "حسام",
+descc: "شسبشسب",
+image: "https://firebasestorage.googleapis.com/v0/b/rosnamahapp.appspot.com/o/categories%2F1535583155199.jpeg?alt=media&token=fb7ebb66-9e47-4228-8388-aa2834b70b51"
+},]
 		}
 	}
 
@@ -24,16 +38,21 @@ class Home extends Component {
 
 		const { currLang } = this.props
 		const { code } = currLang
-		
 		GET('Categories?parent_id=0&lang='+code,
 			res => {
 				// on success
+				console.log(res)
 				this.setState({ categories: res.data.response })
 			},
 			() => {
 			},
 			false // should authorise this request?
 		)
+		// axios.get('http://178.128.160.237/api/v1/Categories?parent_id=0&lang=1').then(function (data){
+		// 	alert(data.response[0])
+		// 		this.setState({ categories: data.response })
+		//
+		// })
   	}
 
 	_keyExtractor = (item) => item.id;

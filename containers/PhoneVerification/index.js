@@ -6,7 +6,7 @@ import { Container, Text, Content, Form, Item, Input, Label, Button } from 'nati
 import styles from './styles';
 import CountryPicker from 'react-native-country-picker-modal'
 const PNF = require('google-libphonenumber').PhoneNumberFormat;
-const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance(); 
+const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
 import isNumeric from '../../utils/Number';
 import { POST } from "../../utils/Network"
 
@@ -73,7 +73,7 @@ class Signup extends Component {
 								filterPlaceholder={translate('SearchCountryCode')}
 								autoFocusFilter={false}
 								onChange={value => {
-									this.setState({ 
+									this.setState({
 										cca2: value.cca2, callingCode: value.callingCode,
 									})
 								}}
@@ -85,11 +85,11 @@ class Signup extends Component {
 						<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
 							<Item floatingLabel style={{ flex: 1, }}>
 								<Label>{'     ' + translate('Phone_verification_phone_input')}</Label>
-								<Input 
-									ref='mobileNo' 
-									keyboardType="numeric" 
+								<Input
+									ref='mobileNo'
+									keyboardType="numeric"
 									onChangeText={number => this.setState({ number })}
-									style={ styles.input } 
+									style={ styles.input }
 								/>
 							</Item>
 						</View>

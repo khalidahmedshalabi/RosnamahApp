@@ -60,7 +60,7 @@ const HTTP_REQUEST = (
 	}).then(function (response) {
 		if (shouldDisplayOverlay)
 			EventRegister.emit('onHttpRequestStateChange', false);
-
+			// alert(JSON.stringfy(response.response))
 		HandleHttpResponses(
 			response,
 			onSuccess,
