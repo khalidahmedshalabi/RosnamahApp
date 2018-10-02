@@ -10,6 +10,7 @@ import Server from '../../constants/Server'
 import PostBox from '../../components/PostBox'
 import { GET } from '../../utils/Network';
 import { Container, Header, Content, Card, CardItem, Thumbnail,Text, Button, Icon, Left, Body, Right } from 'native-base';
+import FontedText from '../../components/FontedText';
 
 class ForumCategories extends Component {
   constructor(props) {
@@ -67,6 +68,20 @@ class ForumCategories extends Component {
 					ItemSeparatorComponent={
 						() => <View style={{ height:10, backgroundColor:'white'  }}></View>
 					}
+          ListHeaderComponent={()=>(
+            <TouchableOpacity style={{backgroundColor:secondColor,flex:1,margin:10}}  onPress={()=>this.props.navigation.navigate('AddPost',{category_id:this.props.navigation.state.params.category_id})}>
+            <FontedText
+              style={{
+                padding: 10,
+                fontStyle: "italic",
+                borderRadius:4,
+                textAlign:'center',
+                color:'white'
+              }}
+              text={translate('AddPost')}
+            />
+                        </TouchableOpacity>
+          )}
 					renderItem={({ item, index }) => (
             <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'SinglePost',
                 params: {

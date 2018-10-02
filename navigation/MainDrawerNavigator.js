@@ -80,14 +80,7 @@ const MainDrawerNavigator = createDrawerNavigator({
 			),
 		}
 	},
-	AddPost: {
-		screen: AddPost,
-		navigationOptions: {
-			drawerIcon: ({ tintColor }) => (
-				<EvilIcons name='plus' color={mainColor} size={drawerIconSize} tintColor={tintColor} />
-			),
-		}
-	},
+	
 	FavPlaces: {
 		screen: FavPlaces,
 		navigationOptions: {

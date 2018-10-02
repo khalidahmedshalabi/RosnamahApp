@@ -83,7 +83,9 @@ export const en = {
 	web:'Web',
 	CantHaveEmptyInputs: 'Please fill in all inputs',
 	NetworkFailure: 'Network Failure',
-
+	AddPost:'Add Post',
+	submit:'Submit',
+	postTitle:'Post Title'
 };
 
 // Arabic
@@ -161,5 +163,11 @@ export const ar = {
 	web:'موقع الويب',
 	CantHaveEmptyInputs: 'من فضلك قم بملء كل المدخلات',
 	NetworkFailure: 'فشل فى الشبكة',
-	DrawerItem_AddPost:'اضافه بوست تجريبي'
+	DrawerItem_AddPost:'اضافه بوست تجريبي',
+	AddPost:'اضافه منشور',
+	submit:'موافق',
+	postTitle:'العنوان'
+
+
+
 };

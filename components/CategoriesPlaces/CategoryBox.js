@@ -5,22 +5,24 @@ import { FlatList, View, TouchableOpacity, Image, Text } from 'react-native'
 import { bgColor, secondColor,mainColor,borderColor,headerColor } from '../../constants/Colors';
 import FontedText from '../FontedText';
 
+import  {ListView,ImageBackground,Divider,Title,Subtitle,Tile} from '@shoutem/ui'
 
 export default class CategoryBox extends Component{
 	// Gives the correct icon based on current language settings (RTL or LTR)
 	render() {
     return (
 		<View
-			style={{ flex: 1,height:250, borderRadius: 10, marginHorizontal: 5,backgroundColor:'white' }}>
-			<Image
-				resizeMode='cover'
-				style={{ flex: 1  }}
-				source={{ uri: this.props.image }}
-				/>
-			<View style={{justifyContent: 'center',height:100,borderColor:borderColor,borderWidth:.2  }}>
-				<FontedText style={{ flex:.4, paddingHorizontal: 27 ,color: headerColor, fontSize: 20,fontWeight:'bold' }} text={this.props.title}></FontedText>
-				<FontedText style={{flex:.2,paddingHorizontal: 26, color: 'gray', fontSize: 15 }} text={this.props.title}></FontedText>
-			</View>
+			style={{ flex: 1,backgroundColor:'white' }}>
+
+			<ImageBackground
+					styleName="large-ultra-wide"
+					source={{uri: this.props.image}}
+			>
+					<Tile>
+					<FontedText style={{ flex:1,color: 'white', fontSize: 25,fontWeight:'bold' }} text={this.props.title}></FontedText>
+					</Tile>
+			</ImageBackground>
+			<Divider styleName="line"/>
 
 		</View>
 	)

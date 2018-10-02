@@ -22,6 +22,11 @@ import applyWebLinkFormat from './applyWebLinkFormat'
 import applyListFormat from './applyListFormat'
 import { TextInput } from 'react-native-gesture-handler';
 import applyImage from './applyImage';
+import FontedInput from '../../components/FontedInput';
+import FontedText from '../../components/FontedText';
+import { connect } from 'react-redux'
+import { getTranslate } from 'react-localize-redux';
+
 // var shortUrl = require('node-url-shortener');
 // const { setKey, shorten, expand } = require('react-native-google-shortener');
 // setKey("AIzaSyCgZhI2uotbTgGJ4u2urJJTc3L1kpj0k24");
@@ -56,11 +61,12 @@ const CUSTOM_Formats = [
   { key: 'H5', title: 'H5', prefix: '#####', onPress: applyListFormat },
   { key: 'H6', title: 'H6', prefix: '######', onPress: applyListFormat },
 ];
-export default class RichTextExample extends Component {
+class RichTextExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
       post: "",
+      title:'',
       shouldRenderButtons: true
     }
   }
@@ -71,6 +77,8 @@ export default class RichTextExample extends Component {
     // });
   }
   submitPost = () => {
+    post = this.state.post;
+    title = this.state.title;
     // alert("uploading...")
     // var i = 0;
     // var imgs = [];
@@ -81,7 +89,7 @@ export default class RichTextExample extends Component {
     // if(str.includes("[IMG]")) {
     //   while (str.search("content://") != -1) {
     //     var uri = str.substring(
-    //         str.lastIndexOf("]") + 2, 
+    //         str.lastIndexOf("]") + 2,
     //         str.lastIndexOf(")")
     //     )
     //     imgs.push(uri)
@@ -114,15 +122,18 @@ export default class RichTextExample extends Component {
     }
   };
   render() {
-    const { navigation } = this.props 
+    const { translate, navigation } = this.props
+
     return (
       <LazyContainer style={{ flex: 1, backgroundColor: bgColor }}>
         <MainHeader navigation={navigation} />
         <Button onPress={this.submitPost} style={{ width, backgroundColor: "#6e2edd", justifyContent: "center", alignContent: "center" }}>
-          <Text style={{ color: '#ffffff', textAlign: "center", fontSize: 18 }}>Submit</Text>
+          <FontedText style={{ color: '#ffffff', textAlign: "center", fontSize: 18 }} text={translate('submit')}/>
         </Button>
         <View style={styles.container}>
-          <TextInput style={{ fontSize: 28, fontWeight: "bold", color: "#6e2edd", borderBottomWidth: 0 }} placeholder="post title" />
+          <FontedInput style={{ fontSize: 28, fontWeight: "bold",textAlign:'center', color: "#6e2edd", borderBottomWidth: 0 }} placeholder="post title" value={this.state.title} onChangeText={(title)=>{
+            this.setState({title})
+          }} />
           <MarkdownEditor markdownButton={this.defaultMarkdownButton} onMarkdownChange={str => this.onStrChange(str)} Formats={CUSTOM_Formats} />
         </View>
         {
@@ -132,6 +143,10 @@ export default class RichTextExample extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+	translate: getTranslate(state.locale),
+})
+export default connect(mapStateToProps)(RichTextExample)
 
 const styles = StyleSheet.create({
   container: {

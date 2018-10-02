@@ -9,6 +9,8 @@ import CategoryBox from '../../components/CategoriesPlaces/CategoryBox.js'
 import Server from '../../constants/Server'
 import PlaceBox from '../../components/CategoriesPlaces/CategoryBox.js'
 import { GET } from '../../utils/Network';
+import  {ListView,ImageBackground,Divider,Title,Subtitle,Tile} from '@shoutem/ui'
+import FontedText from '../../components/FontedText';
 
 class ForumCategories extends Component {
   constructor(props) {
@@ -32,11 +34,9 @@ class ForumCategories extends Component {
      GET('forum_categories?lang='+key,
  			res => {
  				// on success
- 				console.log('dadad '+res.data.categories)
  				this.setState({ categories: res.data.categories })
  			},
  			() => {
-        alert('aaaaa')
  			},
  			false // should authorise this request?
  		)
@@ -47,16 +47,18 @@ class ForumCategories extends Component {
 		return (
 			<TouchableOpacity
 			onPress={()=> {this.props.navigation.navigate('ForumPosts',{category_id:item.id})}}
-				style={{ flex: 1, height: 250, borderRadius: 10, marginHorizontal: 5, backgroundColor: 'white' }}>
-				<Image
-					resizeMode='cover'
-					style={{ flex: 0.8, borderTopLeftRadius: 10, borderTopRightRadius: 13 }}
-					source={{ uri: item.image }}
-					/>
+				style={{ flex: 1,  backgroundColor: 'white' }}>
 
-				<View style={{ flex: 0.2, paddingHorizontal: 12, justifyContent: 'center' }}>
-					<Text style={{ color: '#515254', fontSize: 17 }}>{item.name}</Text>
-				</View>
+        <ImageBackground
+            styleName="large-ultra-wide"
+            source={{uri: item.image}}
+        >
+            <Tile>
+            <FontedText style={{ color: 'white', fontSize: 25 }} text={item.name} />
+            </Tile>
+        </ImageBackground>
+        <Divider styleName="line"/>
+
 			</TouchableOpacity>
 		)
 	}
@@ -68,12 +70,12 @@ class ForumCategories extends Component {
 			<LazyContainer style={{ flex: 1, backgroundColor: bgColor }}>
 				<MainHeader navigation={navigation} />
 				<FlatList
-					contentContainerStyle={{ paddingVertical: 12 }}
-					numColumns={2}
+					contentContainerStyle={{ paddingVertical: 3 }}
+					numColumns={1}
 					data={this.state.categories}
 					style={{ flex: 1 }}
 					ItemSeparatorComponent={
-						() => <View style={{ height:10, backgroundColor:'white'  }}></View>
+						() => <View style={{ height:3, backgroundColor:'white'  }}></View>
 					}
 					renderItem={({ item, index }) => this.renderCategory(item, index)  }
               />

@@ -15,6 +15,7 @@ import ResetPassword from '../containers/ResetPassword'
 import Settings from '../containers/Settings';
 import AboutUs from '../containers/AboutUs';
 import Search from '../containers/Search';
+import AddPost from '../containers/AddPost';
 
 // This is the core of the navigator: route configs, etc...
 const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
@@ -33,6 +34,7 @@ const RootNavigatorCore = ({ screenProps, initialRouteName }) => {
 		ResetPassword: {screen: ResetPassword},
 		Settings: {screen: Settings},
 		Search: { screen: Search },
+		AddPost:{screen:AddPost}
 	};
 
 	const stackNavigatorConfigs = {

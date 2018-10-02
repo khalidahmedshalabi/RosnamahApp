@@ -10,6 +10,7 @@ import FontedText from '../../components/FontedText';
 import { shouldShowAdMobInterstitial } from '../../utils/AdMob';
 import Server from '../../constants/Server';
 import axios from 'axios';
+import  {ListView,ImageBackground,Divider,Title,Subtitle,Tile} from '@shoutem/ui'
 
 //import CategoryBox from '../../components/CategoriesPlaces/CategoryBox';
 
@@ -64,17 +65,19 @@ image: "https://firebasestorage.googleapis.com/v0/b/rosnamahapp.appspot.com/o/ca
 
 		return (
 			<TouchableOpacity
+			activeOpacity={.9}
 				onPress={() => { navigation.navigate('CategoriesPlaces', { category_id: item.id }) }}
-				style={{ flex: 1, height: 250, borderRadius: 10, marginHorizontal: 5, backgroundColor: 'white' }}>
-				<Image
-					resizeMode='cover'
-					style={{ flex: 0.8, borderTopLeftRadius: 10, borderTopRightRadius: 13 }}
-					source={{ uri: item.image }}
-				/>
+				style={{ flex: 1, backgroundColor: 'white' }}>
 
-				<View style={{ flex: 0.2, paddingHorizontal: 12, justifyContent: 'center' }}>
-					<FontedText style={{ color: '#515254', fontSize: 17 }} text={item.name} />
-				</View>
+				<ImageBackground
+						styleName="large-ultra-wide"
+						source={{uri: item.image}}
+				>
+						<Tile>
+						<FontedText style={{ color: 'white', fontSize: 25 }} text={item.name} />
+						</Tile>
+				</ImageBackground>
+				<Divider styleName="line"/>
 			</TouchableOpacity>
 		)
 	}
@@ -86,13 +89,13 @@ image: "https://firebasestorage.googleapis.com/v0/b/rosnamahapp.appspot.com/o/ca
 			<Container style={{ backgroundColor: bgColor }}>
 				<MainHeader navigation={navigation} />
 				<FlatList
-					contentContainerStyle={{ paddingVertical: 12 }}
-					numColumns={2}
+					contentContainerStyle={{ paddingVertical: 3 }}
+					numColumns={1}
 					data={this.state.categories}
 					keyExtractor={this._keyExtractor}
 					style={{ flex: 1 }}
 					ItemSeparatorComponent={
-						() => <View style={{ height: 12, backgroundColor: 'transparent' }}></View>
+						() => <View style={{ height: 3, backgroundColor: 'transparent' }}></View>
 					}
 					renderItem={({ item }) => this.renderCategory(item)}
 				/>
