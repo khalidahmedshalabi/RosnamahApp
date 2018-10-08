@@ -43,7 +43,7 @@ export const HandleHttpResponses = (response, onSuccess, onFailure) => {
 const HTTP_REQUEST = (
 	method, endpoint, post_data,
 	onSuccess, onFailure, shouldAuthorize,
-	shouldDisplayOverlay = true, contentType = 'application/json;charset=utf-8') => {
+	shouldDisplayOverlay = true, contentType = 'application/json; charset=utf-8') => {
 
 	if (shouldDisplayOverlay)
 		EventRegister.emit('onHttpRequestStateChange', true);
@@ -52,11 +52,14 @@ const HTTP_REQUEST = (
 		method,
 		headers: shouldAuthorize || shouldAuthorize === undefined ? {
 			'Content-Type': contentType,
-			'Authorization': store.getState().user.auth_token
-		} : { 'Content-Type': contentType },
+			'Authorization': store.getState().user.auth_token,
+			'Charset': 'utf-8',
+		} : { 'Content-Type': contentType,'Charset': 'utf-8',
+ 		},
 		url: `${Server.base_url}${Server.api_path}${endpoint}`,
 		//url: 'https//www.google.com',
-		data: post_data
+		data: post_data,
+		Charset:'utf-8'
 	}).then(function (response) {
 		if (shouldDisplayOverlay)
 			EventRegister.emit('onHttpRequestStateChange', false);

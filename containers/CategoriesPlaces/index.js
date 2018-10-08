@@ -22,7 +22,7 @@ class CategoriesPlaces extends Component {
 }
   componentDidMount(){
     const { currLang } = this.props
-
+    alert('aa'+this.props.navigation.state.params.category_id)
 		const {
 			key, // id
 			label, // full name
@@ -45,6 +45,7 @@ class CategoriesPlaces extends Component {
 
 	render () {
 		const { translate, navigation } = this.props
+    const utf8 = require('utf8');
 
 		return (
 			<LazyContainer style={{ flex: 1, backgroundColor: bgColor }}>
@@ -66,7 +67,7 @@ class CategoriesPlaces extends Component {
                       key: Math.random() })}>
 
                   <CategoryBox
-                  title = {item.name}
+                  title = {utf8.decode(item.name)}
                   image = {item.image}
                   desc={item.descc}
 
@@ -77,12 +78,12 @@ class CategoriesPlaces extends Component {
                   <TouchableOpacity activeOpacity={.8}  onPress={()=>this.props.navigation.navigate( {routeName: 'SinglePlace',
                       params: {
                           place_id:item.id,
-                          place_name:item.name
+                          place_name:utf8.decode(item.name)
                       },
                       key: Math.random() })}>
 
                   <PlaceBox
-                  title = {item.name}
+                  title = {utf8.decode(item.name)}
                   image = {item.image}
                   desc={item.description}
                   />

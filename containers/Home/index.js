@@ -11,10 +11,12 @@ import { shouldShowAdMobInterstitial } from '../../utils/AdMob';
 import Server from '../../constants/Server';
 import axios from 'axios';
 import  {ListView,ImageBackground,Divider,Title,Subtitle,Tile} from '@shoutem/ui'
+import Fetch from 'react-native-fetch'
 
 //import CategoryBox from '../../components/CategoriesPlaces/CategoryBox';
 
 class Home extends Component {
+
 	constructor(props) {
 		super(props);
 
@@ -42,16 +44,24 @@ image: "https://firebasestorage.googleapis.com/v0/b/rosnamahapp.appspot.com/o/ca
 		GET('Categories?parent_id=0&lang='+code,
 			res => {
 				// on success
-				console.log(res)
 				this.setState({ categories: res.data.response })
 			},
 			() => {
 			},
 			false // should authorise this request?
 		)
-		// axios.get('http://178.128.160.237/api/v1/Categories?parent_id=0&lang=1').then(function (data){
-		// 	alert(data.response[0])
-		// 		this.setState({ categories: data.response })
+		// console.log('aaa')
+		// fetch('http://http://178.128.160.237/api/v1/Categories?parent_id=0&lang=1').then((res)=>{
+		// 	console.log('aaaa'+res);
+		// })
+// 		fetch('https://facebook.github.io/react-native/movies.json')
+//       .then((response) => response.json())
+//       .then((responseJson) => {
+// console.log(responseJson)
+// });
+		// axios.get('http://178.128.160.237/api/v1/Categories?parent_id=0&lang=1').then(function (res){
+		// 	console.log(res.data.response);
+		// 		this.setState({ categories: data.data.response })
 		//
 		// })
   	}
@@ -59,11 +69,16 @@ image: "https://firebasestorage.googleapis.com/v0/b/rosnamahapp.appspot.com/o/ca
 	_keyExtractor = (item) => item.id;
 
 	renderCategory = (item) => {
-		//return <CategoryBox item={item} navigation={this.props.navigation} />
+		//return <CategoryBox i tem={item} navigation={this.props.navigation} />
 
 		const { navigation } = this.props;
+		const utf8 = require('utf8');
+		const { currLang } = this.props
+
+		const { code } = currLang
 
 		return (
+
 			<TouchableOpacity
 			activeOpacity={.9}
 				onPress={() => { navigation.navigate('CategoriesPlaces', { category_id: item.id }) }}
@@ -74,7 +89,8 @@ image: "https://firebasestorage.googleapis.com/v0/b/rosnamahapp.appspot.com/o/ca
 						source={{uri: item.image}}
 				>
 						<Tile>
-						<FontedText style={{ color: 'white', fontSize: 25 }} text={item.name} />
+
+						<FontedText style={{ color: 'white', fontSize: 25 }} text={utf8.decode(item.name)} />
 						</Tile>
 				</ImageBackground>
 				<Divider styleName="line"/>
@@ -99,6 +115,7 @@ image: "https://firebasestorage.googleapis.com/v0/b/rosnamahapp.appspot.com/o/ca
 					}
 					renderItem={({ item }) => this.renderCategory(item)}
 				/>
+
 			</Container>
 		)
 	}
